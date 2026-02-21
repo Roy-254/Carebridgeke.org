@@ -18,7 +18,6 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { AuthModal } from "@/components/auth/auth-modal";
 import { useAuth } from "@/context/auth-context";
-import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -26,15 +25,6 @@ export function Header() {
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const router = useRouter();
-
-    const handleStartCampaign = () => {
-        if (isAuthenticated) {
-            router.push("/campaign/create");
-        } else {
-            setIsAuthModalOpen(true);
-        }
-    };
 
     const userInitials = user?.full_name
         ? user.full_name.split(" ").map(n => n[0]).join("").toUpperCase().substring(0, 2)
@@ -125,13 +115,6 @@ export function Header() {
                                     )}
                                 </div>
                             )}
-
-                            <Button variant="primary" size="sm" onClick={handleStartCampaign} className="hidden sm:flex">
-                                Start Campaign
-                            </Button>
-                            <Button variant="primary" size="sm" onClick={handleStartCampaign} className="sm:hidden px-3 text-xs">
-                                Start
-                            </Button>
 
                             {/* Mobile Menu Hamburger */}
                             <button className="md:hidden p-1 text-[var(--text-secondary)]" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
