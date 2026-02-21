@@ -1,0 +1,5 @@
+﻿Email test_user_jetski@gmail.com -> Error: email rate limit exceeded
+Email test.user.jetski@gmail.com -> Error: email rate limit exceeded
+Email test1771667539585@gmail.com -> Error: email rate limit exceeded
+Email test_user1771667539885@gmail.com -> Error: email rate limit exceeded
+Email roosevelt@gmail.com -> Error: email rate limit exceeded
