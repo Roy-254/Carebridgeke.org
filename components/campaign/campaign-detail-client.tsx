@@ -5,14 +5,13 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
-    Users, Clock, MapPin, Calendar, ChevronLeft, Share2,
+    Users, MapPin, Calendar, ChevronLeft, Share2,
     MessageCircle, AlertCircle, ShieldCheck, Download,
     MoreVertical, ThumbsUp, BadgeCheck, Eye, FileText
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ProgressBar } from "@/components/ui/progress-bar";
-import { formatCurrency, calculatePercentage, formatDate, formatRelativeTime, shareOnWhatsApp, shareOnFacebook, getDaysRemaining } from "@/lib/utils";
+import { formatCurrency, formatDate, formatRelativeTime, shareOnWhatsApp, shareOnFacebook } from "@/lib/utils";
 import { CATEGORY_LABELS, CATEGORY_COLORS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { ReportModal } from "@/components/campaign/report-modal";
@@ -61,9 +60,6 @@ export function CampaignDetailClient({ campaign }: { campaign: Campaign }) {
     const [showReportModal, setShowReportModal] = useState(false);
 
     const sortedImages = [...(campaign.images ?? [])].sort((a, b) => a.order_index - b.order_index);
-    const confirmedDonations = (campaign.donations ?? []).filter(d => d.status === "confirmed");
-    const percentage = calculatePercentage(campaign.current_amount, campaign.target_amount);
-    const daysLeft = campaign.deadline ? getDaysRemaining(campaign.deadline) : null;
     const campaignUrl = typeof window !== "undefined"
         ? `${window.location.origin}/campaign/${campaign.slug}`
         : `/campaign/${campaign.slug}`;
@@ -201,9 +197,8 @@ export function CampaignDetailClient({ campaign }: { campaign: Campaign }) {
                         {/* Content Tabs */}
                         <div className="border-b border-[var(--border-light)] flex gap-8">
                             {[
-                                { key: "story" as Tab, label: "The Story" },
+                                { key: "story" as Tab, label: "The Project Story" },
                                 { key: "updates" as Tab, label: `Updates (${campaign.updates?.length ?? 0})` },
-                                { key: "donors" as Tab, label: `Donors (${confirmedDonations.length})` },
                             ].map(tab => (
                                 <button
                                     key={tab.key}
@@ -261,11 +256,11 @@ export function CampaignDetailClient({ campaign }: { campaign: Campaign }) {
                                     </div>
                                 )}
 
-                                {/* Comments with messages */}
-                                {confirmedDonations.filter(d => d.message).length > 0 && (
+                                {/* Words of encouragement section */}
+                                {(campaign.donations ?? []).filter(d => d.status === "confirmed" && d.message).length > 0 && (
                                     <div className="space-y-6 pt-6 border-t border-[var(--border-light)]">
                                         <h3 className="text-2xl font-bold">Words of encouragement</h3>
-                                        {confirmedDonations.filter(d => d.message).map((don) => {
+                                        {(campaign.donations ?? []).filter(d => d.status === "confirmed" && d.message).map((don) => {
                                             const name = don.is_anonymous ? "Anonymous" : (don.donor_name ?? "Donor");
                                             return (
                                                 <div key={don.id} className="flex gap-4">
@@ -307,32 +302,7 @@ export function CampaignDetailClient({ campaign }: { campaign: Campaign }) {
                             </div>
                         )}
 
-                        {activeTab === "donors" && (
-                            <div className="space-y-4">
-                                {confirmedDonations.length === 0 ? (
-                                    <p className="text-[var(--text-muted)] py-8 text-center">Be the first to donate!</p>
-                                ) : (
-                                    confirmedDonations.map((don) => {
-                                        const name = don.is_anonymous ? "Anonymous" : (don.donor_name ?? "Donor");
-                                        return (
-                                            <div key={don.id} className="flex items-center justify-between p-4 bg-[var(--bg-secondary)] rounded-xl border border-[var(--border-light)]">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="w-10 h-10 rounded-full bg-[var(--bg-primary)] flex items-center justify-center font-bold text-[var(--text-muted)]">
-                                                        {name[0]}
-                                                    </div>
-                                                    <div>
-                                                        <div className="text-sm font-bold text-[var(--text-primary)]">{name}</div>
-                                                        {don.message && <div className="text-xs text-[var(--text-secondary)] truncate max-w-[200px] italic">"{don.message}"</div>}
-                                                        <div className="text-[10px] text-[var(--text-muted)]">{formatRelativeTime(don.created_at)}</div>
-                                                    </div>
-                                                </div>
-                                                <div className="text-sm font-bold text-[var(--primary-green)] font-mono">{formatCurrency(don.amount)}</div>
-                                            </div>
-                                        );
-                                    })
-                                )}
-                            </div>
-                        )}
+                        {/* Donors tab removed to align with charity model */}
                     </div>
 
                     {/* ── Right Column: Sticky ── */}
@@ -341,23 +311,9 @@ export function CampaignDetailClient({ campaign }: { campaign: Campaign }) {
                             {/* Donation Card */}
                             <Card className="border-2 border-[var(--primary-green)]/10 shadow-2xl overflow-hidden">
                                 <CardContent className="p-8 space-y-6">
-                                    <div className="space-y-3">
-                                        <div className="flex items-baseline gap-2 flex-wrap">
-                                            <span className="text-4xl font-extrabold text-[var(--text-primary)] font-mono tracking-tighter">
-                                                {formatCurrency(campaign.current_amount)}
-                                            </span>
-                                            <span className="text-sm font-bold text-[var(--text-secondary)]">
-                                                raised of {formatCurrency(campaign.target_amount)}
-                                            </span>
-                                        </div>
-                                        <ProgressBar current={campaign.current_amount} target={campaign.target_amount} size="lg" className="h-4" />
-                                        <div className="flex justify-between items-center text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider">
-                                            <span className="text-[var(--primary-green)]">{percentage}% complete</span>
-                                            <span className="flex items-center gap-1">
-                                                <Users className="w-3.5 h-3.5 text-[var(--primary-green)]" />
-                                                {confirmedDonations.length} donors
-                                            </span>
-                                        </div>
+                                    <div className="space-y-1">
+                                        <h3 className="text-2xl font-bold text-[var(--text-primary)]">Support this Project</h3>
+                                        <p className="text-sm text-[var(--text-secondary)]">Your contribution directly funds this initiative.</p>
                                     </div>
 
                                     <div className="space-y-3">
@@ -379,19 +335,7 @@ export function CampaignDetailClient({ campaign }: { campaign: Campaign }) {
                                         </Button>
                                     </div>
 
-                                    {daysLeft !== null && (
-                                        <div className="bg-orange-50 dark:bg-orange-900/10 p-4 rounded-xl flex items-center gap-3 border border-orange-100 dark:border-orange-900/20">
-                                            <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center shrink-0">
-                                                <Clock className="w-5 h-5 text-orange-600" />
-                                            </div>
-                                            <div>
-                                                <div className="text-sm font-bold text-orange-800 dark:text-orange-300">
-                                                    {daysLeft === 0 ? "Ending today!" : `${daysLeft} days remaining`}
-                                                </div>
-                                                <div className="text-xs text-orange-600 dark:text-orange-400">Help reach the goal before time runs out</div>
-                                            </div>
-                                        </div>
-                                    )}
+                                    {/* Deadlines removed */}
                                 </CardContent>
 
                                 <div className="px-8 py-4 bg-[var(--bg-secondary)] border-t border-[var(--border-light)] flex items-center justify-center gap-6">
@@ -431,37 +375,7 @@ export function CampaignDetailClient({ campaign }: { campaign: Campaign }) {
                             </div>
 
                             {/* Recent Donations */}
-                            {confirmedDonations.length > 0 && (
-                                <Card className="bg-[var(--bg-secondary)] border-[var(--border-light)]">
-                                    <CardContent className="p-6">
-                                        <h4 className="text-xs font-bold uppercase tracking-widest text-[var(--text-muted)] mb-5">Recent Donations</h4>
-                                        <div className="space-y-4">
-                                            {confirmedDonations.slice(0, 5).map((don) => {
-                                                const name = don.is_anonymous ? "Anonymous" : (don.donor_name ?? "Donor");
-                                                return (
-                                                    <div key={don.id} className="flex justify-between items-center">
-                                                        <div className="flex items-center gap-2">
-                                                            <div className="w-8 h-8 rounded-full bg-[var(--bg-primary)] flex items-center justify-center text-xs font-bold text-[var(--text-secondary)]">
-                                                                {name[0]}
-                                                            </div>
-                                                            <div>
-                                                                <div className="text-xs font-bold text-[var(--text-primary)]">{name}</div>
-                                                                <div className="text-[10px] text-[var(--text-muted)]">{formatRelativeTime(don.created_at)}</div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="text-sm font-bold text-[var(--primary-green)] font-mono">{formatCurrency(don.amount)}</div>
-                                                    </div>
-                                                );
-                                            })}
-                                        </div>
-                                        {confirmedDonations.length > 5 && (
-                                            <Button variant="ghost" className="w-full mt-5 text-xs font-bold text-[var(--primary-green)]">
-                                                See All {confirmedDonations.length} Donors
-                                            </Button>
-                                        )}
-                                    </CardContent>
-                                </Card>
-                            )}
+                            {/* Recent Donations hidden to align with charity privacy */}
                         </div>
                     </div>
                 </div>

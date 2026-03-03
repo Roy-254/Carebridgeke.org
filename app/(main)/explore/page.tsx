@@ -12,17 +12,16 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CampaignCard } from "@/components/campaign/campaign-card";
-import { KENYAN_COUNTIES, CATEGORY_LABELS, CAMPAIGN_CATEGORIES } from "@/lib/constants";
-import { Campaign } from "@/types";
+import { KENYAN_COUNTIES, CATEGORY_LABELS } from "@/lib/constants";
 
-export default function ExplorePage() {
+export default function ExploreProjectsPage() {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [selectedCounty, setSelectedCounty] = useState<string | null>(null);
     const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-    // Mock data for initial UI rendering - to be replaced by Supabase call
-    const campaigns: any[] = [
+    // Mock data — to be replaced by Supabase call
+    const projects: any[] = [
         {
             id: "1",
             title: "Help Sarah Complete Her Medical Degree",
@@ -59,7 +58,6 @@ export default function ExplorePage() {
             is_urgent: true,
             view_count: 89
         }
-        // More mock items could go here
     ];
 
     return (
@@ -69,10 +67,10 @@ export default function ExplorePage() {
                 <div className="container-custom">
                     <div className="max-w-4xl">
                         <h1 className="text-3xl md:text-5xl font-extrabold text-[var(--text-primary)] mb-4 tracking-tight">
-                            Explore <span className="text-[var(--primary-green)]">Campaigns</span>
+                            Our <span className="text-[var(--primary-green)]">Projects</span>
                         </h1>
                         <p className="text-[var(--text-secondary)] text-lg max-w-2xl">
-                            Discover and support verified fundraising requests from communities across Kenya. Every donation, no matter the size, builds a bridge of hope.
+                            Discover and support verified charitable projects across Kenya. Every donation, no matter the size, changes a life.
                         </p>
                     </div>
                 </div>
@@ -107,7 +105,7 @@ export default function ExplorePage() {
                                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-muted)]" />
                                 <input
                                     type="text"
-                                    placeholder="Keywords..."
+                                    placeholder="Search projects..."
                                     className="input pl-10 text-sm"
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
@@ -117,13 +115,13 @@ export default function ExplorePage() {
 
                         {/* Categories */}
                         <div className="space-y-3">
-                            <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--text-muted)]">Category</h3>
+                            <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--text-muted)]">Focus Area</h3>
                             <div className="flex flex-col gap-1">
                                 <button
                                     className={`text-left px-3 py-2 rounded-md text-sm transition-colors ${!selectedCategory ? 'bg-[var(--primary-green)]/10 text-[var(--primary-green)] font-bold' : 'hover:bg-[var(--bg-secondary)] text-[var(--text-secondary)]'}`}
                                     onClick={() => setSelectedCategory(null)}
                                 >
-                                    All Categories
+                                    All Areas
                                 </button>
                                 {Object.entries(CATEGORY_LABELS).map(([key, label]) => (
                                     <button
@@ -182,7 +180,7 @@ export default function ExplorePage() {
                     <div className="flex-1">
                         <div className="flex items-center justify-between mb-6">
                             <div className="text-sm text-[var(--text-secondary)]">
-                                Showing <span className="font-bold text-[var(--text-primary)]">{campaigns.length}</span> active campaigns
+                                Showing <span className="font-bold text-[var(--text-primary)]">{projects.length}</span> active projects
                             </div>
 
                             <div className="flex items-center gap-2">
@@ -202,20 +200,20 @@ export default function ExplorePage() {
                             </div>
                         </div>
 
-                        {/* Campaign Grid */}
+                        {/* Project Grid */}
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {campaigns.map((campaign) => (
-                                <CampaignCard key={campaign.id} campaign={campaign} />
+                            {projects.map((project) => (
+                                <CampaignCard key={project.id} campaign={project} />
                             ))}
 
-                            {campaigns.length === 0 && (
+                            {projects.length === 0 && (
                                 <div className="col-span-full py-20 text-center space-y-4">
                                     <div className="w-16 h-16 bg-[var(--bg-tertiary)] rounded-full flex items-center justify-center mx-auto">
                                         <Search className="w-8 h-8 text-[var(--text-muted)]" />
                                     </div>
-                                    <h3 className="text-xl font-bold">No campaigns found</h3>
+                                    <h3 className="text-xl font-bold">No projects found</h3>
                                     <p className="text-[var(--text-secondary)] max-w-xs mx-auto">
-                                        Try adjusting your filters or search keywords to find what you're looking for.
+                                        Try adjusting your filters to find what you&apos;re looking for.
                                     </p>
                                     <Button variant="outline" onClick={() => {
                                         setSelectedCategory(null);
@@ -228,8 +226,8 @@ export default function ExplorePage() {
                             )}
                         </div>
 
-                        {/* Pagination Placeholder */}
-                        {campaigns.length > 0 && (
+                        {/* Pagination */}
+                        {projects.length > 0 && (
                             <div className="mt-12 flex justify-center border-t border-[var(--border-light)] pt-10">
                                 <div className="flex items-center gap-2">
                                     <Button variant="outline" size="sm" disabled>Previous</Button>
@@ -246,7 +244,7 @@ export default function ExplorePage() {
                         )}
                     </div>
                 </div>
-            </main >
+            </main>
         </>
     );
 }

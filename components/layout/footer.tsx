@@ -14,15 +14,15 @@ export function Footer() {
                             <span className="font-bold text-[var(--text-primary)]">Care Bridge Kenya</span>
                         </div>
                         <p className="text-sm text-[var(--text-secondary)]">
-                            Building bridges of hope across Kenya, one campaign at a time.
+                            A registered charity organisation building bridges of hope across Kenya — one project at a time.
                         </p>
                     </div>
 
                     <div>
                         <h4 className="font-bold text-[var(--text-primary)] mb-4">Quick Links</h4>
                         <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
-                            <li><Link href="/explore" className="hover:text-[var(--primary-green)]">Explore Campaigns</Link></li>
-                            <li><Link href="/#how-it-works" className="hover:text-[var(--primary-green)]">How It Works</Link></li>
+                            <li><Link href="/explore" className="hover:text-[var(--primary-green)]">Our Projects</Link></li>
+                            <li><Link href="/#how-it-works" className="hover:text-[var(--primary-green)]">How to Help</Link></li>
                             <li><Link href="/#about" className="hover:text-[var(--primary-green)]">About Us</Link></li>
                             <li><Link href="/faq" className="hover:text-[var(--primary-green)]">FAQ</Link></li>
                         </ul>
@@ -33,7 +33,7 @@ export function Footer() {
                         <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                             <li><Link href="/contact" className="hover:text-[var(--primary-green)]">Contact Us</Link></li>
                             <li><Link href="/help" className="hover:text-[var(--primary-green)]">Help Center</Link></li>
-                            <li><Link href="/trust-safety" className="hover:text-[var(--primary-green)]">Trust & Safety</Link></li>
+                            <li><Link href="/trust-safety" className="hover:text-[var(--primary-green)]">Trust &amp; Safety</Link></li>
                             <li><Link href="/terms" className="hover:text-[var(--primary-green)]">Terms of Service</Link></li>
                         </ul>
                     </div>
@@ -54,7 +54,7 @@ export function Footer() {
                 </div>
 
                 <div className="pt-8 border-t border-[var(--border-light)] text-center text-sm text-[var(--text-secondary)]">
-                    <p>&copy; {new Date().getFullYear()} Care Bridge Kenya. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} Care Bridge Kenya. All rights reserved. Registered Charity Organisation.</p>
                 </div>
             </div>
         </footer>

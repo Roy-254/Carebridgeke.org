@@ -2,10 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Users, Clock, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { ProgressBar } from "@/components/ui/progress-bar";
-import { formatCurrency, calculatePercentage } from "@/lib/utils";
 import { CATEGORY_LABELS, CATEGORY_COLORS } from "@/lib/constants";
 import { Campaign } from "@/types";
 
@@ -51,24 +49,11 @@ export function CampaignCard({ campaign }: CampaignCardProps) {
                         </h3>
                     </div>
 
-                    <div className="mt-4 space-y-4">
-                        <div className="space-y-1.5">
-                            <div className="flex justify-between text-[11px] font-bold uppercase tracking-tighter text-[var(--text-secondary)]">
-                                <span>{percentage}% Raised</span>
-                                <span className="text-[var(--text-primary)]">{formatCurrency(campaign.current_amount)}</span>
-                            </div>
-                            <ProgressBar current={campaign.current_amount} target={campaign.target_amount} size="sm" />
-                        </div>
-
-                        <div className="flex items-center justify-between pt-2 border-t border-[var(--border-light)]/50">
-                            <div className="flex items-center gap-1.5 text-[var(--text-secondary)]">
-                                <Users className="w-4 h-4 text-[var(--primary-green)]" />
-                                <span className="text-xs font-bold">{campaign.view_count || 0} supporters</span>
-                            </div>
-
-                            <div className="flex items-center gap-1.5 text-[var(--text-secondary)]">
-                                <Clock className="w-4 h-4 text-[var(--primary-red)]" />
-                                <span className="text-xs font-bold">12 days left</span>
+                    <div className="mt-4 pt-4 border-t border-[var(--border-light)]/50">
+                        <div className="flex items-center justify-between">
+                            <span className="text-xs font-bold text-[var(--primary-green)] uppercase">Support Project</span>
+                            <div className="w-8 h-8 rounded-full bg-[var(--primary-green)]/10 flex items-center justify-center group-hover:bg-[var(--primary-green)] group-hover:text-white transition-all">
+                                <span className="text-lg">→</span>
                             </div>
                         </div>
                     </div>

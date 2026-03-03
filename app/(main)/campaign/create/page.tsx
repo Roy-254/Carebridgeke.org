@@ -12,6 +12,7 @@ import { SuccessView } from "@/components/campaign/create/success";
 import { ChevronLeft, ChevronRight, Save, Loader2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProgressBar } from "@/components/ui/progress-bar";
+import { AuthModal } from "@/components/auth/auth-modal";
 import { cn } from "@/lib/utils";
 
 const STEP_LABELS = ["Basics", "Your Story", "Verification", "Review & Submit"];
@@ -25,13 +26,14 @@ function CampaignCreateContent() {
     } = useCampaign();
     const router = useRouter();
     const [lastSaved, setLastSaved] = useState<Date>(new Date());
+    const [showAuthModal, setShowAuthModal] = useState(false);
 
-    // Protected Route — redirect unauthenticated users to sign-in
+    // Protected Route — prompt unauthenticated users to sign-in
     useEffect(() => {
         if (!authLoading && !isAuthenticated) {
-            router.push("/auth/sign-in?next=/campaign/create");
+            setShowAuthModal(true);
         }
-    }, [isAuthenticated, authLoading, router]);
+    }, [isAuthenticated, authLoading]);
 
     // Auto-save indicator (cosmetic; actual save on submit)
     useEffect(() => {
@@ -53,7 +55,13 @@ function CampaignCreateContent() {
         );
     }
 
-    if (!isAuthenticated) return null;
+    if (!isAuthenticated) {
+        return (
+            <div className="min-h-screen bg-[var(--bg-primary)] flex items-center justify-center">
+                <AuthModal isOpen={showAuthModal} onClose={() => router.push("/")} />
+            </div>
+        );
+    }
 
     const renderStep = () => {
         switch (currentStep) {
