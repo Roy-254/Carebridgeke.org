@@ -12,8 +12,6 @@ interface CampaignCardProps {
 }
 
 export function CampaignCard({ campaign }: CampaignCardProps) {
-    const percentage = calculatePercentage(campaign.current_amount, campaign.target_amount);
-
     return (
         <Link href={`/campaign/${campaign.slug}`} className="block h-full">
             <Card className="h-full overflow-hidden group border-[var(--border-light)] hover:border-[var(--primary-green)]/30">
