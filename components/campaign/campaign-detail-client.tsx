@@ -79,8 +79,8 @@ export function CampaignDetailClient({ campaign }: { campaign: Campaign }) {
 
     return (
         <>
-            {/* Sticky breadcrumb */}
-            <div className="border-b border-[var(--border-light)] py-4 sticky top-16 z-40 bg-[var(--bg-primary)]/90 backdrop-blur-md">
+            {/* Breadcrumb */}
+            <div className="border-b border-[var(--border-light)] py-4 bg-[var(--bg-primary)]">
                 <div className="container-custom flex items-center justify-between">
                     <Link href="/explore" className="flex items-center gap-1.5 text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--primary-green)] transition-colors group">
                         <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
