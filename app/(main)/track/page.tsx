@@ -18,9 +18,9 @@ interface TrackResult {
     confirmation_code: string;
     donor_name: string;
     amount: number;
-    currency: string;
+    currency: "KES" | "USD";
     created_at: string;
-    status: string;
+    status: "pending" | "confirmed" | "failed" | "refunded";
     fund_status: "pending" | "distributed" | "completed";
     message?: string;
     campaign?: {
@@ -166,7 +166,7 @@ function TrackForm() {
                             <div className="divide-y divide-[var(--border-light)]">
                                 {[
                                     ["Donor", result.donor_name],
-                                    ["Amount", formatCurrency(result.amount, result.currency)],
+                                    ["Amount", formatCurrency(result.amount, result.currency as "KES" | "USD")],
                                     ["Date", new Date(result.created_at).toLocaleDateString("en-KE", { day: "numeric", month: "long", year: "numeric" })],
                                     ["Project", result.campaign?.title ?? "—"],
                                     ["Category", result.campaign ? (CATEGORY_LABELS[result.campaign.category as keyof typeof CATEGORY_LABELS] ?? result.campaign.category) : "—"],
