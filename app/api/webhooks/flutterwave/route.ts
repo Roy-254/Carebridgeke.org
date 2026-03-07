@@ -95,10 +95,10 @@ export async function POST(req: NextRequest) {
             }
 
             // 5. Increment campaign current_amount
-            await supabaseAdmin.rpc("increment_campaign_amount", {
+            await Promise.resolve(supabaseAdmin.rpc("increment_campaign_amount", {
                 campaign_id: donation.campaign_id,
                 amount: donation.amount,
-            }).catch(console.error);
+            })).catch(console.error);
 
             // 6. Send email receipt with tracking code (fire-and-forget)
             if (donation.donor_email) {
