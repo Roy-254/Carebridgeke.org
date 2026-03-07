@@ -9,6 +9,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { getFeaturedCampaigns } from "@/lib/supabase/queries";
+import { CATEGORY_LABELS } from "@/lib/constants";
 
 // ─── Types ──────────────────────────────────────────
 interface FeaturedProject {
@@ -23,44 +24,44 @@ interface FeaturedProject {
     creator?: { full_name: string };
     images?: { storage_url: string; order_index: number }[];
     donations?: { id: string }[];
+    description?: string;
 }
 
 
-// ─── Mock Fallback Data ──────────────────────────────
 const MOCK_PROJECTS: FeaturedProject[] = [
     {
         id: "1",
-        slug: "sarah-medical-degree",
-        title: "Help Sarah Complete Her Medical Degree",
+        slug: "every-kid-studies",
+        title: "Making sure every kid studies",
+        description: "Providing tuition support and learning materials to help underprivileged students stay in school and unlock their potential.",
         category: "school_fees",
-        county: "Nairobi",
         current_amount: 350000,
         target_amount: 500000,
-        creator: { full_name: "Sarah Wanjiku" },
-        images: [{ storage_url: "/sarah.png", order_index: 0 }],
+        creator: { full_name: "Care Bridge Kenya" },
+        images: [{ storage_url: "/school-fees-project.png", order_index: 0 }],
         donations: Array(45).fill({ id: "x" }),
     },
     {
         id: "2",
-        slug: "emergency-surgery-baby-john",
-        title: "Emergency Surgery for Baby John",
+        slug: "clearing-hospital-bills",
+        title: "Clearing hospital bills",
+        description: "Supporting families burdened by medical debt, ensuring quality healthcare is accessible without financial ruin.",
         category: "medical",
-        county: "Kisumu",
         current_amount: 180000,
-        target_amount: 250000,
-        creator: { full_name: "Mary Njeri" },
-        images: [{ storage_url: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&h=600&fit=crop", order_index: 0 }],
+        target_amount: 500000,
+        creator: { full_name: "Care Bridge Kenya" },
+        images: [{ storage_url: "/medical-relief-project.png", order_index: 0 }],
         donations: Array(67).fill({ id: "x" }),
     },
     {
         id: "3",
-        slug: "water-well-turkana",
-        title: "Build a Water Well for Turkana Community",
+        slug: "impacting-lives",
+        title: "Impacting lives of the less privileged",
+        description: "Community-led initiatives providing essential resources and sustainable support for vulnerable families across Kenya.",
         category: "community",
-        county: "Turkana",
         current_amount: 420000,
         target_amount: 600000,
-        creator: { full_name: "Turkana Community Leaders" },
+        creator: { full_name: "Care Bridge Kenya" },
         images: [{ storage_url: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&h=600&fit=crop", order_index: 0 }],
         donations: Array(89).fill({ id: "x" }),
     },
@@ -135,7 +136,7 @@ export default async function HomePage() {
         <div className="space-y-0">
 
             {/* ── Hero ── */}
-            <section className="relative py-28 md:py-44 overflow-hidden min-h-[600px] flex items-center">
+            <section className="relative py-20 md:py-32 overflow-hidden min-h-[560px] flex items-center">
                 {/* Background image */}
                 <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -203,7 +204,7 @@ export default async function HomePage() {
                         {projects.map((project) => {
                             const coverImage = getCoverImage(project.images);
                             const categoryColor = CATEGORY_COLORS[project.category] ?? CATEGORY_COLORS.other;
-                            const categoryLabel = project.category.replace("_", " ");
+                            const categoryLabel = CATEGORY_LABELS[project.category as keyof typeof CATEGORY_LABELS] ?? project.category;
 
                             return (
                                 <Card key={project.id} className="overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
@@ -222,17 +223,14 @@ export default async function HomePage() {
                                             <span className={`px-2.5 py-1 text-xs font-semibold rounded-full capitalize ${categoryColor}`}>
                                                 {categoryLabel}
                                             </span>
-                                            {project.county && (
-                                                <span className="text-xs text-[var(--text-muted)]">• {project.county}</span>
-                                            )}
                                         </div>
 
                                         <h3 className="text-lg font-bold text-[var(--text-primary)] line-clamp-2 leading-snug">
                                             {project.title}
                                         </h3>
 
-                                        <p className="text-sm text-[var(--text-secondary)] mb-auto">
-                                            Beneficiary: {project.creator?.full_name ?? "Anonymous"}
+                                        <p className="text-sm text-[var(--text-secondary)] mb-auto line-clamp-3">
+                                            {project.description}
                                         </p>
 
                                         <div className="pt-4">

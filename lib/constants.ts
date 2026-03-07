@@ -13,9 +13,9 @@ export type CampaignCategory = typeof CAMPAIGN_CATEGORIES[keyof typeof CAMPAIGN_
 
 export const CATEGORY_LABELS: Record<CampaignCategory, string> = {
     school_fees: "School Fees",
-    medical: "Medical Bills",
+    medical: "Medical",
     emergency: "Emergency",
-    community: "Community Projects",
+    community: "Community",
     other: "Other",
 };
 

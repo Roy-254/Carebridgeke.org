@@ -28,10 +28,6 @@ export function CampaignCard({ campaign }: CampaignCardProps) {
                             Urgent
                         </div>
                     )}
-                    <div className="absolute bottom-3 left-3 bg-white/90 dark:bg-black/80 backdrop-blur-md px-2 py-1 rounded-md text-[10px] font-bold flex items-center gap-1 uppercase tracking-tight">
-                        <MapPin className="w-3 h-3 text-[var(--primary-green)]" />
-                        {campaign.county || "Kenya"}
-                    </div>
                 </div>
 
                 <CardContent className="p-5 flex flex-col justify-between h-[calc(100%-12rem)]">
@@ -45,6 +41,11 @@ export function CampaignCard({ campaign }: CampaignCardProps) {
                         <h3 className="text-base font-bold text-[var(--text-primary)] mb-2 line-clamp-2 leading-tight group-hover:text-[var(--primary-green)] transition-colors">
                             {campaign.title}
                         </h3>
+                        {campaign.description && (
+                            <p className="text-sm text-[var(--text-secondary)] line-clamp-2 leading-snug">
+                                {campaign.description}
+                            </p>
+                        )}
                     </div>
 
                     <div className="mt-4 pt-4 border-t border-[var(--border-light)]/50">

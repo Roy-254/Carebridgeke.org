@@ -108,14 +108,14 @@ export function DonateClient({ campaign }: DonateClientProps) {
     return (
         <div className="min-h-screen bg-[var(--bg-primary)]">
             {/* Top nav */}
-            <div className="border-b border-[var(--border-light)] py-4 sticky top-16 z-40 bg-[var(--bg-primary)]/90 backdrop-blur-md">
+            <div className="border-b border-[var(--border-light)] py-4 sticky top-20 z-40 bg-[var(--bg-primary)]/90 backdrop-blur-md">
                 <div className="container-custom flex items-center justify-between">
                     <Link
                         href={`/campaign/${campaign.slug}`}
                         className="flex items-center gap-1.5 text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--primary-green)] transition-colors group"
                     >
                         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                        Back to Campaign
+                        Back to Project
                     </Link>
                     <div className="flex items-center gap-1.5 text-xs text-[var(--text-muted)] font-semibold">
                         <Lock className="w-3.5 h-3.5 text-blue-500" />
@@ -164,7 +164,7 @@ export function DonateClient({ campaign }: DonateClientProps) {
                             <p className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Why donate safely here</p>
                             {[
                                 { icon: ShieldCheck, text: "256-bit SSL encryption on all payments" },
-                                { icon: BadgeCheck, text: "Campaigns verified by our Trust & Safety team" },
+                                { icon: BadgeCheck, text: "Mission-driven initiatives verified by our team" },
                                 { icon: Users, text: "Funds tracked transparently" },
                             ].map(({ icon: Icon, text }) => (
                                 <div key={text} className="flex items-center gap-3 text-sm text-[var(--text-secondary)]">

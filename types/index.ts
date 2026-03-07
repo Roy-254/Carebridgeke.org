@@ -25,6 +25,7 @@ export interface Campaign {
     title: string;
     slug: string;
     category: CampaignCategory;
+    description?: string;
     target_amount: number;
     current_amount: number;
     currency: "KES" | "USD";

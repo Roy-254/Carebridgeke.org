@@ -22,9 +22,10 @@ export function Footer() {
                         <h4 className="font-bold text-[var(--text-primary)] mb-4">Quick Links</h4>
                         <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                             <li><Link href="/explore" className="hover:text-[var(--primary-green)]">Our Projects</Link></li>
-                            <li><Link href="/#how-it-works" className="hover:text-[var(--primary-green)]">How to Help</Link></li>
-                            <li><Link href="/#about" className="hover:text-[var(--primary-green)]">About Us</Link></li>
-                            <li><Link href="/faq" className="hover:text-[var(--primary-green)]">FAQ</Link></li>
+                            <li><Link href="/how-it-works" className="hover:text-[var(--primary-green)]">How It Works</Link></li>
+                            <li><Link href="/about" className="hover:text-[var(--primary-green)]">About Us</Link></li>
+                            <li><Link href="/transparency" className="hover:text-[var(--primary-green)]">Transparency</Link></li>
+                            <li><Link href="/contact#faq" className="hover:text-[var(--primary-green)]">FAQ</Link></li>
                         </ul>
                     </div>
 
@@ -32,9 +33,9 @@ export function Footer() {
                         <h4 className="font-bold text-[var(--text-primary)] mb-4">Support</h4>
                         <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                             <li><Link href="/contact" className="hover:text-[var(--primary-green)]">Contact Us</Link></li>
-                            <li><Link href="/help" className="hover:text-[var(--primary-green)]">Help Center</Link></li>
-                            <li><Link href="/trust-safety" className="hover:text-[var(--primary-green)]">Trust &amp; Safety</Link></li>
-                            <li><Link href="/terms" className="hover:text-[var(--primary-green)]">Terms of Service</Link></li>
+                            <li><Link href="/track" className="hover:text-[var(--primary-green)]">Track Donation</Link></li>
+                            <li><Link href="/accountability" className="hover:text-[var(--primary-green)]">How We Work</Link></li>
+                            <li><Link href="/reports/2026" className="hover:text-[var(--primary-green)]">Impact Report</Link></li>
                         </ul>
                     </div>
 

@@ -71,12 +71,12 @@ export function CreatorDashboardClient({ campaigns, profile }: { campaigns: Camp
                                 {profile.full_name}
                                 {profile.is_verified && <BadgeCheck className="w-5 h-5 text-[var(--primary-green)]" />}
                             </h1>
-                            <p className="text-[var(--text-muted)] text-sm">Creator Dashboard</p>
+                            <p className="text-[var(--text-muted)] text-sm">Mission Dashboard</p>
                         </div>
                     </div>
                     <Link href="/campaign/create">
                         <Button variant="primary" className="gap-2 h-11 px-6 font-bold shadow-lg shadow-[var(--primary-green)]/20">
-                            <Plus className="w-4 h-4" /> New Campaign
+                            <Plus className="w-4 h-4" /> New Project
                         </Button>
                     </Link>
                 </div>
@@ -126,7 +126,7 @@ export function CreatorDashboardClient({ campaigns, profile }: { campaigns: Camp
                         <p className="text-[var(--text-secondary)] font-medium">No campaigns here yet.</p>
                         <Link href="/campaign/create">
                             <Button variant="primary" className="gap-2">
-                                <Plus className="w-4 h-4" /> Start a Campaign
+                                <Plus className="w-4 h-4" /> Start a Project
                             </Button>
                         </Link>
                     </div>

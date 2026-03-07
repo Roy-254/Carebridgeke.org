@@ -42,3 +42,9 @@ next-env.d.ts
 
 # OS
 Thumbs.db
+
+# Sensitive Info
+*.txt
+*.txt.bak
+project password.txt
+google authentication personal details (ID, secret).txt
