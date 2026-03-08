@@ -79,7 +79,7 @@ export default function AboutPage() {
                         </div>
                         <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
                             <Image
-                                src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800&q=80"
+                                src="/site-images/community-unity.png"
                                 alt="Community members coming together"
                                 fill
                                 className="object-cover"

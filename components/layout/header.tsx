@@ -74,7 +74,7 @@ const MEGA_NAV: MegaMenu[] = [
         featured: {
             icon: TrendingUp,
             // Using the Our Projects image — community/giving scene
-            image: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=800&q=80",
+            image: "/site-images/community-leaders.png",
             heading: "Lifting burdens, building futures",
             body: "Care Bridge Kenya bridges the gap between donors and verified charitable initiatives — from school fees to emergency relief.",
             cta: { label: "Our Full Story", href: "/about" },
@@ -109,7 +109,7 @@ const MEGA_NAV: MegaMenu[] = [
         label: "Get Involved",
         featured: {
             icon: HandHeart,
-            image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80",
+            image: "/site-images/volunteer-impact.png",
             heading: "Join us in making a difference",
             body: "Whether you donate, volunteer, or share — every action helps a Kenyan family overcome hardship. No act is too small.",
             cta: { label: "Donate Now", href: "/donate" },
@@ -149,7 +149,7 @@ const MEGA_NAV: MegaMenu[] = [
         label: "Impact",
         featured: {
             icon: Globe,
-            image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80",
+            image: "/site-images/children-joy.png",
             heading: "Real change, real people",
             body: "Track how donations are used and follow the progress of every project we fund. Transparency is at the heart of what we do.",
             cta: { label: "See Our Work", href: "/our-work" },
