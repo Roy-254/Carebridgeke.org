@@ -30,9 +30,9 @@ type PayMethod = "mpesa" | "card";
 
 export function DonateClient({ campaign }: DonateClientProps) {
     const router = useRouter();
-    const [amount, setAmount] = useState<number | "">(1000);
+    const [amount, setAmount] = useState<number | "">(99);
     const [customAmount, setCustomAmount] = useState("");
-    const [isCustom, setIsCustom] = useState(false);
+    const [isCustom] = useState(false);
     const [payMethod, setPayMethod] = useState<PayMethod>("mpesa");
     const [donorName, setDonorName] = useState("");
     const [donorEmail, setDonorEmail] = useState("");
@@ -48,15 +48,14 @@ export function DonateClient({ campaign }: DonateClientProps) {
 
     const handlePreset = (val: number) => {
         setAmount(val);
-        setIsCustom(false);
         setCustomAmount("");
     };
 
     const handleDonate = async () => {
         setError("");
 
-        if (finalAmount < 50) {
-            setError("Minimum donation is KES 50.");
+        if (finalAmount < 99) {
+            setError("Minimum donation is KES 99.");
             return;
         }
         if (!donorName.trim() && !isAnonymous) {
@@ -196,32 +195,21 @@ export function DonateClient({ campaign }: DonateClientProps) {
                                 <span className="w-6 h-6 rounded-full bg-[var(--primary-green)] text-white text-xs font-bold flex items-center justify-center">1</span>
                                 Choose Amount
                             </h3>
-                            <div className="grid grid-cols-3 md:grid-cols-5 gap-2.5">
+                            <div className="grid grid-cols-1 gap-2.5">
                                 {SUGGESTED_DONATIONS.map((val) => (
                                     <button
                                         key={val}
                                         onClick={() => handlePreset(val)}
                                         className={cn(
-                                            "py-3 rounded-xl font-bold text-sm border-2 transition-all",
+                                            "py-4 rounded-xl font-bold text-lg border-2 transition-all",
                                             !isCustom && amount === val
                                                 ? "border-[var(--primary-green)] bg-[var(--primary-green)] text-white shadow-lg shadow-[var(--primary-green)]/20"
                                                 : "border-[var(--border-light)] text-[var(--text-secondary)] hover:border-[var(--primary-green)] hover:text-[var(--primary-green)]"
                                         )}
                                     >
-                                        {val >= 1000 ? `${val / 1000}K` : val}
+                                        KES {val}
                                     </button>
                                 ))}
-                                <button
-                                    onClick={() => { setIsCustom(true); setAmount(""); }}
-                                    className={cn(
-                                        "py-3 rounded-xl font-bold text-sm border-2 transition-all",
-                                        isCustom
-                                            ? "border-[var(--primary-green)] bg-[var(--primary-green)]/10 text-[var(--primary-green)]"
-                                            : "border-[var(--border-light)] text-[var(--text-muted)] hover:border-[var(--primary-green)]"
-                                    )}
-                                >
-                                    Custom
-                                </button>
                             </div>
                             {isCustom && (
                                 <div className="relative">
@@ -339,10 +327,10 @@ export function DonateClient({ campaign }: DonateClientProps) {
                         {/* Submit */}
                         <button
                             onClick={handleDonate}
-                            disabled={isLoading || finalAmount < 50}
+                            disabled={isLoading || finalAmount < 99}
                             className={cn(
                                 "w-full h-16 rounded-2xl font-extrabold text-lg text-white transition-all flex items-center justify-center gap-3 shadow-xl",
-                                isLoading || finalAmount < 50
+                                isLoading || finalAmount < 99
                                     ? "bg-gray-300 dark:bg-gray-700 cursor-not-allowed shadow-none"
                                     : "bg-[var(--primary-green)] hover:brightness-110 shadow-[var(--primary-green)]/30 active:scale-[0.98]"
                             )}

@@ -18,23 +18,15 @@ interface Project {
 }
 
 // ─── Constants ───────────────────────────────────────────────────
-const AMOUNTS = [500, 1000, 2500, 5000, 10000];
+const AMOUNTS = [99];
 
 const IMPACT: Record<number, string> = {
-    500: "Provides learning materials for 1 student",
-    1000: "Supports a medical consultation",
-    2500: "Covers monthly school fees for one child",
-    5000: "Emergency family assistance",
-    10000: "Major impact across multiple projects",
+    99: "Your small gift makes a huge difference in Kenyan lives today.",
 };
 
 function getImpact(amount: number): string {
-    if (amount <= 0) return "";
-    if (amount <= 500) return IMPACT[500];
-    if (amount <= 1000) return IMPACT[1000];
-    if (amount <= 2500) return IMPACT[2500];
-    if (amount <= 5000) return IMPACT[5000];
-    return IMPACT[10000];
+    if (amount >= 99) return IMPACT[99];
+    return "";
 }
 
 // ─── Phone formatter ─────────────────────────────────────────────
@@ -59,9 +51,8 @@ function DonationForm() {
     const [projectsLoading, setProjectsLoading] = useState(false);
 
     // State: amount
-    const [preset, setPreset] = useState<number | null>(null);
-    const [customActive, setCustomActive] = useState(false);
-    const [customAmount, setCustomAmount] = useState("");
+    const [preset, setPreset] = useState<number | null>(99);
+    const [customActive] = useState(false);
 
     // State: donor details
     const [name, setName] = useState("");
@@ -75,11 +66,11 @@ function DonationForm() {
     const [errors, setErrors] = useState<Record<string, string>>({});
 
     // Derived
-    const amount = customActive ? Number(customAmount) || 0 : (preset ?? 0);
+    const amount = preset ?? 0;
     const impact = getImpact(amount);
 
     const formReady =
-        amount >= 100 &&
+        amount >= 99 &&
         email.trim() !== "" &&
         phone.replace(/\D/g, "").length >= 9 &&
         agreedTerms;
@@ -115,7 +106,7 @@ function DonationForm() {
     // ── Validation ────────────────────────────────────────────
     function validate(): boolean {
         const e: Record<string, string> = {};
-        if (amount < 100) e.amount = "Minimum donation is KES 100.";
+        if (amount < 99) e.amount = "Donation amount must be KES 99.";
         if (!email.trim()) e.email = "Email address is required.";
         else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = "Enter a valid email address.";
         const digits = phone.replace(/\D/g, "");
@@ -277,50 +268,26 @@ function DonationForm() {
                 </p>
 
                 {/* Preset grid */}
-                <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-4">
+                <div className="grid grid-cols-1 gap-2 mb-4">
                     {AMOUNTS.map((a) => (
                         <button
                             key={a}
                             type="button"
-                            onClick={() => { setPreset(a); setCustomActive(false); setCustomAmount(""); }}
-                            className={`h-12 rounded-xl font-bold text-sm transition-all ${!customActive && preset === a
-                                ? "bg-[var(--primary-green)] text-white shadow-md shadow-green-900/20"
+                            onClick={() => { setPreset(a); }}
+                            className={`h-14 rounded-xl font-bold text-lg transition-all ${!customActive && preset === a
+                                ? "bg-[var(--primary-green)] text-white shadow-md shadow-green-900/20 ring-4 ring-[var(--primary-green)]/20"
                                 : "border-2 border-[var(--border-light)] text-[var(--text-secondary)] hover:border-[var(--primary-green)] hover:text-[var(--primary-green)] bg-[var(--bg-primary)]"
                                 }`}
                         >
-                            {a >= 1000 ? `${a / 1000}K` : a}
+                            KES {a}
                         </button>
                     ))}
-                    <button
-                        type="button"
-                        onClick={() => { setCustomActive(true); setPreset(null); }}
-                        className={`h-12 rounded-xl font-bold text-sm transition-all col-span-3 sm:col-span-6 lg:col-span-1 ${customActive
-                            ? "bg-[var(--primary-green)] text-white shadow-md shadow-green-900/20"
-                            : "border-2 border-[var(--border-light)] text-[var(--text-secondary)] hover:border-[var(--primary-green)] hover:text-[var(--primary-green)] bg-[var(--bg-primary)]"
-                            }`}
-                    >
-                        Custom
-                    </button>
                 </div>
 
-                {/* Custom input */}
-                {customActive && (
-                    <div className="relative mb-4">
-                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm font-bold text-[var(--text-muted)]">KES</span>
-                        <input
-                            type="number"
-                            min={100}
-                            value={customAmount}
-                            onChange={(e) => setCustomAmount(e.target.value)}
-                            placeholder="Enter amount (minimum 100)"
-                            className="w-full pl-14 pr-4 h-13 rounded-xl border-2 border-[var(--primary-green)] bg-[var(--bg-primary)] text-[var(--text-primary)] font-semibold focus:outline-none focus:ring-2 focus:ring-[var(--primary-green)]/20 transition-all text-base"
-                            autoFocus
-                        />
-                    </div>
-                )}
+
 
                 {/* Impact message */}
-                {amount >= 100 && (
+                {amount >= 99 && (
                     <div className="flex items-start gap-3 bg-green-50 dark:bg-green-900/20 rounded-xl px-4 py-3 animate-fade-in">
                         <Sparkles className="w-4 h-4 text-[var(--primary-green)] shrink-0 mt-0.5" />
                         <p className="text-sm font-semibold text-[var(--primary-green)]">{impact}</p>

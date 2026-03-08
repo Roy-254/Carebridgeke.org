@@ -70,7 +70,7 @@ export type PaymentMethod = typeof PAYMENT_METHODS[keyof typeof PAYMENT_METHODS]
 /**
  * Donation amounts (suggested)
  */
-export const SUGGESTED_DONATIONS = [100, 500, 1000, 5000, 10000];
+export const SUGGESTED_DONATIONS = [99];
 
 /**
  * Platform fee (5%)
