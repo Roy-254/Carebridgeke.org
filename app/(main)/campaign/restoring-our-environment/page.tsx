@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 export const metadata = {
     title: "Restoring Our Environment | Care Bridge Kenya",
     description:
-        "Help Care Bridge Kenya clean up Kenya's open spaces — collecting litter from informal dumpsites, unclogging roadside drainage channels, and revitalising public parks, markets, schools, and community buildings.",
+        "Help Care Bridge Kenya clean up Kenya — collecting litter from informal dumpsites, unclogging roadside drainage channels, and revitalising public parks, markets, schools, and community buildings.",
 };
 
 const ACTIVITIES = [
@@ -14,19 +14,19 @@ const ACTIVITIES = [
         icon: Trash2,
         color: "text-amber-600 bg-amber-50 dark:bg-amber-900/20",
         title: "Open-Area Litter Collection",
-        body: "Open fields and neglected lots across Kenya have become informal dumpsites. We organise coordinated litter-collection drives to remove solid waste — rescuing these spaces and returning them to the communities they belong to.",
+        body: "We organise coordinated drives to remove solid waste from open fields and informal dumpsites, rescuing shared spaces for the community.",
     },
     {
         icon: Droplets,
         color: "text-blue-600 bg-blue-50 dark:bg-blue-900/20",
         title: "Drainage Channel Restoration",
-        body: "Roadside storm drains silently choke on rubbish thrown in over time. When rains arrive, blocked channels cause flooding and water damage. Our teams clear these drains of debris so water flows freely and flooding risk is dramatically reduced.",
+        body: "Our teams clear roadside drains of debris and rubbish. This ensures water flows freely during rainy seasons, preventing flooding and water damage.",
     },
     {
         icon: Building2,
         color: "text-green-600 bg-green-50 dark:bg-green-900/20",
         title: "Public Space Revitalisation",
-        body: "Public parks, markets, police stations, schools, and community buildings fall into disrepair when maintenance is neglected. We deploy volunteer crews for deep-cleaning sessions and light restoration work — including repainting walls — to dignify these shared spaces.",
+        body: "We revitalise schools, markets, and parks through deep-cleaning and repair. We also repaint structures to restore dignity to public facilities.",
     },
 ];
 
@@ -39,7 +39,7 @@ export default function RestoringOurEnvironmentPage() {
         <div className="min-h-screen bg-[var(--bg-primary)]">
 
             {/* ── Hero ── */}
-            <section className="relative py-20 md:py-28 overflow-hidden">
+            <section className="relative py-28 md:py-44 lg:py-52 overflow-hidden flex items-center min-h-[70vh]">
                 <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                     style={{ backgroundImage: "url('/environment-project.png')" }}
@@ -61,7 +61,7 @@ export default function RestoringOurEnvironmentPage() {
                     </h1>
 
                     <p className="text-lg md:text-xl text-white/85 mb-10 max-w-2xl leading-relaxed">
-                        Cleaning up Kenya's open spaces — one dumpsite, one drain, one public park at a time.
+                        Cleaning up Kenya — one dumpsite, one drain, one public park at a time.
                         Join us in making our communities healthier and more dignified for everyone.
                     </p>
 
@@ -75,33 +75,7 @@ export default function RestoringOurEnvironmentPage() {
                 </div>
             </section>
 
-            {/* ── Fundraising Progress ── */}
-            <section className="py-10 bg-[var(--bg-secondary)] border-b border-[var(--border-light)]">
-                <div className="container-custom max-w-3xl">
-                    <div className="flex items-center justify-between mb-3">
-                        <div>
-                            <span className="text-2xl font-extrabold text-[var(--text-primary)]">
-                                KES {CURRENT_AMOUNT.toLocaleString()}
-                            </span>
-                            <span className="text-[var(--text-muted)] text-sm ml-2">raised</span>
-                        </div>
-                        <div className="text-right">
-                            <span className="text-sm font-semibold text-[var(--text-secondary)]">
-                                Goal: KES {TARGET_AMOUNT.toLocaleString()}
-                            </span>
-                        </div>
-                    </div>
-                    <div className="h-3 rounded-full bg-[var(--border-light)] overflow-hidden">
-                        <div
-                            className="h-full rounded-full bg-gradient-to-r from-[var(--primary-green)] to-[#22d3ee] transition-all duration-700"
-                            style={{ width: `${Math.max(PROGRESS, 1)}%` }}
-                        />
-                    </div>
-                    <p className="text-xs text-[var(--text-muted)] mt-2">
-                        {PROGRESS}% funded · Be the first to support this initiative
-                    </p>
-                </div>
-            </section>
+
 
             {/* ── About the Project ── */}
             <section className="py-16 md:py-20">
@@ -112,7 +86,7 @@ export default function RestoringOurEnvironmentPage() {
                     </h2>
                     <div className="space-y-4 text-[var(--text-secondary)] leading-relaxed text-base">
                         <p>
-                            Across Kenya, informal dumpsites have taken hold in open fields and neglected lots. Roadside drainage channels — built to carry away stormwater — are choked with rubbish and become flood hazards every rainy season. Meanwhile, many public parks, markets, schools, and community buildings go without the basic upkeep they deserve.
+                            Across Kenya, informal dumpsites have taken hold in open fields and neglected areas. Roadside drainage channels are often choked with rubbish, becoming flood hazards during the rainy season. Meanwhile, many public parks, markets, and schools go without the basic upkeep they deserve.
                         </p>
                         <p>
                             Through our <strong className="text-[var(--text-primary)]">Restoring Our Environment</strong> initiative, we organise
@@ -151,7 +125,7 @@ export default function RestoringOurEnvironmentPage() {
                     <div className="grid md:grid-cols-2 gap-10 items-center">
                         <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
                             <Image
-                                src="https://images.unsplash.com/photo-1619452893977-2e7d2a08bb67?w=800&q=80"
+                                src="/volunteers-cleaning.png"
                                 alt="Volunteers cleaning a public space in Kenya"
                                 fill
                                 className="object-cover"

@@ -69,7 +69,7 @@ const MOCK_PROJECTS: FeaturedProject[] = [
         id: "4",
         slug: "restoring-our-environment",
         title: "Restoring Our Environment",
-        description: "Cleaning up Kenya's open spaces — collecting litter from informal dumpsites, unclogging roadside drainage channels, and revitalising public parks, markets, schools, and community buildings.",
+        description: "Cleaning up Kenya — collecting litter from informal dumpsites, unclogging roadside drainage channels, and revitalising public parks, markets, schools, and community buildings.",
         category: "community",
         current_amount: 0,
         target_amount: 800000,

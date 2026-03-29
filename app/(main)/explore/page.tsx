@@ -59,7 +59,7 @@ export default function ExploreProjectsPage() {
         {
             id: "4",
             title: "Restoring Our Environment",
-            description: "Cleaning up Kenya's open spaces — collecting litter from informal dumpsites, unclogging roadside drainage channels, and revitalising public parks, markets, schools, and community buildings.",
+            description: "Cleaning up Kenya — collecting litter from informal dumpsites, unclogging roadside drainage channels, and revitalising public parks, markets, schools, and community buildings.",
             category: "community",
             slug: "restoring-our-environment",
             images: ["/environment-project.png"],
