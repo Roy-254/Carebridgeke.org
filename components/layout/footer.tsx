@@ -42,7 +42,7 @@ export function Footer() {
                     <div>
                         <h4 className="font-bold text-[var(--text-primary)] mb-4">Connect</h4>
                         <p className="text-sm text-[var(--text-secondary)] mb-2">support@carebridgekenya.com</p>
-                        <p className="text-sm text-[var(--text-secondary)] mb-4">+254 700 000 000</p>
+                        <p className="text-sm text-[var(--text-secondary)] mb-4">0740 797 404</p>
                         <div className="flex gap-3">
                             <a href="#" className="w-10 h-10 rounded-full bg-[var(--bg-secondary)] flex items-center justify-center hover:bg-[var(--primary-green)] hover:text-white transition-colors">
                                 <MessageCircle className="w-5 h-5" />

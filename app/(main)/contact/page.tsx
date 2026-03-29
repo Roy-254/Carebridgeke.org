@@ -98,7 +98,7 @@ export default function ContactPage() {
                                     <div>
                                         <p className="font-bold text-[var(--text-primary)] mb-1">WhatsApp / Phone</p>
                                         <a href="https://wa.me/254700000000" className="text-sm text-[var(--primary-green)] hover:underline font-medium" target="_blank" rel="noopener noreferrer">
-                                            +254 700 000 000
+                                            0740 797 404
                                         </a>
                                         <p className="text-xs text-[var(--text-muted)] mt-1">Available Monday – Friday, 9 am – 6 pm EAT.</p>
                                     </div>

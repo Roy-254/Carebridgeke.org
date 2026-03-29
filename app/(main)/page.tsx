@@ -10,6 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getFeaturedCampaigns } from "@/lib/supabase/queries";
 import { CATEGORY_LABELS } from "@/lib/constants";
+import { FeaturedHorizontal } from "@/components/campaign/featured-horizontal";
 
 // ─── Types ──────────────────────────────────────────
 interface FeaturedProject {
@@ -196,70 +197,8 @@ export default async function HomePage() {
             </section>
 
 
-            {/* ── Featured Projects ── */}
-            <section className="py-16 md:py-24 bg-[var(--bg-primary)]">
-                <div className="container-custom">
-                    <div className="flex items-center justify-between mb-12">
-                        <div>
-                            <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-2">Featured Projects</h2>
-                            <p className="text-[var(--text-secondary)]">Verified projects needing your support right now</p>
-                        </div>
-                        <Link href="/explore">
-                            <Button variant="outline">
-                                All Projects
-                                <ArrowRight className="w-4 h-4" />
-                            </Button>
-                        </Link>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {projects.map((project) => {
-                            const coverImage = getCoverImage(project.images);
-                            const categoryColor = CATEGORY_COLORS[project.category] ?? CATEGORY_COLORS.other;
-                            const categoryLabel = CATEGORY_LABELS[project.category as keyof typeof CATEGORY_LABELS] ?? project.category;
-
-                            return (
-                                <Card key={project.id} className="overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
-                                    <div className="relative h-52 overflow-hidden shrink-0">
-                                        <Image
-                                            src={coverImage}
-                                            alt={project.title}
-                                            fill
-                                            className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                            unoptimized={coverImage.startsWith("https://images.unsplash.com") || coverImage.startsWith("/")}
-                                        />
-                                    </div>
-
-                                    <CardContent className="p-6 space-y-4 flex-1 flex flex-col">
-                                        <div className="flex items-center gap-2">
-                                            <span className={`px-2.5 py-1 text-xs font-semibold rounded-full capitalize ${categoryColor}`}>
-                                                {categoryLabel}
-                                            </span>
-                                        </div>
-
-                                        <h3 className="text-lg font-bold text-[var(--text-primary)] line-clamp-2 leading-snug">
-                                            {project.title}
-                                        </h3>
-
-                                        <p className="text-sm text-[var(--text-secondary)] mb-auto line-clamp-3">
-                                            {project.description}
-                                        </p>
-
-                                        <div className="pt-4">
-                                            <Link href={`/campaign/${project.slug}`}>
-                                                <Button variant="primary" className="w-full">
-                                                    Support
-                                                    <ArrowRight className="w-4 h-4" />
-                                                </Button>
-                                            </Link>
-                                        </div>
-                                    </CardContent>
-                                </Card>
-                            );
-                        })}
-                    </div>
-                </div>
-            </section>
+            {/* ── Featured Projects (Horizontal Scroll) ── */}
+            <FeaturedHorizontal projects={projects} />
 
             {/* ── Focus Areas ── */}
             <section className="py-16 md:py-24 bg-[var(--bg-secondary)]">

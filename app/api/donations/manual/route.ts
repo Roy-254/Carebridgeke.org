@@ -203,8 +203,9 @@ function buildConfirmationEmail({
   phone: string;
 }) {
   const paybillNo = "123456";
-  const tillNo = "654321";
-  const whatsapp = "+254 700 000 000";
+  const tillNo = "4721832"; // Updated to real till
+  const WHATSAPP = "0740 797 404";
+  const SUPPORT_PHONE = "0740 797 404";
   const supportEmail = "donations@carebridgeke.org";
 
   return `<!DOCTYPE html>
@@ -315,7 +316,7 @@ function buildConfirmationEmail({
                   </tr>`).join("")}
                 </table>
                 <p style="margin:16px 0 0;font-size:13px;color:#7c3aed;background:#f5f3ff;padding:12px;border-radius:8px;">
-                  <strong>After paying via Till:</strong> Please forward your M-Pesa confirmation SMS to us on WhatsApp: <strong>${whatsapp}</strong> with your code <strong>${confirmationCode}</strong>.
+                  <strong>After paying via Till:</strong> Please forward your M-Pesa confirmation SMS to us on WhatsApp: <strong>${WHATSAPP}</strong> with your code <strong>${confirmationCode}</strong>.
                 </p>
               </td></tr>
             </table>
@@ -345,7 +346,7 @@ function buildConfirmationEmail({
 
             <!-- Help -->
             <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin:0;border-top:1px solid #e2e8f0;padding-top:22px;">
-              Questions? Email us at <a href="mailto:${supportEmail}" style="color:#16a34a;">${supportEmail}</a> or WhatsApp us at <strong>${whatsapp}</strong>.
+              Questions? Email us at <a href="mailto:${supportEmail}" style="color:#16a34a;">${supportEmail}</a> or WhatsApp us at <strong>${WHATSAPP}</strong>.
               You will receive project updates at this address. To unsubscribe, reply with "unsubscribe".
             </p>
           </td>
