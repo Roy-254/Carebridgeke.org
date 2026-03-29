@@ -55,6 +55,18 @@ export default function ExploreProjectsPage() {
             target_amount: 500000,
             is_urgent: false,
             view_count: 89
+        },
+        {
+            id: "4",
+            title: "Restoring Our Environment",
+            description: "Cleaning up Kenya's open spaces — collecting litter from informal dumpsites, unclogging roadside drainage channels, and revitalising public parks, markets, schools, and community buildings.",
+            category: "community",
+            slug: "restoring-our-environment",
+            images: ["/environment-project.png"],
+            current_amount: 0,
+            target_amount: 800000,
+            is_urgent: false,
+            view_count: 0
         }
     ];
 

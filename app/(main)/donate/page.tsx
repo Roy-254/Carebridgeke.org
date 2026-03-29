@@ -4,7 +4,8 @@ import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import {
     Heart, Loader2, CheckCircle2, ChevronDown,
-    User, Mail, Phone, Sparkles, Info,
+    User, Mail, Phone, Sparkles, Info, X, Search,
+    AlertTriangle,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { CATEGORY_LABELS } from "@/lib/constants";
@@ -31,10 +32,18 @@ function getImpact(amount: number): string {
 
 // ─── Phone formatter ─────────────────────────────────────────────
 function formatPhone(raw: string): string {
-    const digits = raw.replace(/\D/g, "").slice(0, 9);
-    if (digits.length <= 3) return digits;
-    if (digits.length <= 6) return `${digits.slice(0, 3)} ${digits.slice(3)}`;
-    return `${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6)}`;
+    let digits = raw.replace(/\D/g, "");
+
+    // If typing 9 digits and first is not 0, prefix with 0
+    if (digits.length === 9 && digits[0] !== "0") {
+        digits = "0" + digits;
+    }
+
+    digits = digits.slice(0, 10); // cap at 10
+
+    if (digits.length <= 4) return digits;
+    if (digits.length <= 7) return `${digits.slice(0, 4)} ${digits.slice(4)}`;
+    return `${digits.slice(0, 4)} ${digits.slice(4, 7)} ${digits.slice(7)}`;
 }
 
 // ─── DonationForm (inner — needs searchParams) ───────────────────
@@ -65,14 +74,19 @@ function DonationForm() {
     const [submitting, setSubmitting] = useState(false);
     const [errors, setErrors] = useState<Record<string, string>>({});
 
+    // State: UI Modals
+    const [showSelectionModal, setShowSelectionModal] = useState<"project" | "category" | null>(null);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [showSkipEmailModal, setShowSkipEmailModal] = useState(false);
+    const [isEmailSkipped, setIsEmailSkipped] = useState(false);
+
     // Derived
     const amount = preset ?? 0;
     const impact = getImpact(amount);
 
     const formReady =
         amount >= 99 &&
-        email.trim() !== "" &&
-        phone.replace(/\D/g, "").length >= 9 &&
+        phone.replace(/\D/g, "").length >= 10 &&
         agreedTerms;
 
     // ── Load projects ──────────────────────────────────────────
@@ -107,10 +121,15 @@ function DonationForm() {
     function validate(): boolean {
         const e: Record<string, string> = {};
         if (amount < 99) e.amount = "Donation amount must be KES 99.";
-        if (!email.trim()) e.email = "Email address is required.";
-        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = "Enter a valid email address.";
+
+        // Email is optional, but must be valid if provided
+        if (email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            e.email = "Enter a valid email address.";
+        }
+
         const digits = phone.replace(/\D/g, "");
-        if (!digits || digits.length < 9) e.phone = "Enter a valid Kenyan phone number (9 digits).";
+        if (digits.length < 10) e.phone = "Enter a 10-digit phone number.";
+        else if (!digits.startsWith("0")) e.phone = "Phone number must start with 0.";
         if (!agreedTerms) e.terms = "Please agree to our Terms of Service.";
         if (donationType === "project" && !selectedProject) e.project = "Please select a project.";
         if (donationType === "category" && !selectedCategory) e.category = "Please select a category.";
@@ -118,17 +137,26 @@ function DonationForm() {
         return Object.keys(e).length === 0;
     }
 
+    const handleMaybeSubmit = () => {
+        if (!validate()) return;
+        if (!email.trim() && !isEmailSkipped) {
+            setShowSkipEmailModal(true);
+            return;
+        }
+        handleSubmit();
+    };
+
     // ── Submit ────────────────────────────────────────────────
     async function handleSubmit() {
-        if (!validate()) return;
         setSubmitting(true);
+        setShowSkipEmailModal(false);
         try {
             const res = await fetch("/api/donations/manual", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     donor_name: name.trim() || null,
-                    donor_email: email.trim().toLowerCase(),
+                    donor_email: email.trim().toLowerCase() || null,
                     donor_phone: "+254" + phone.replace(/\D/g, "").slice(-9),
                     amount,
                     currency: "KES",
@@ -162,8 +190,111 @@ function DonationForm() {
     }
 
     // ── Render ────────────────────────────────────────────────
+    const filteredProjects = projects.filter(p =>
+        p.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div className="max-w-2xl mx-auto space-y-6 pb-16">
+
+            {/* Selection Modal (Aesthetically pleasing alternative to dropdowns) */}
+            {showSelectionModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+                    <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setShowSelectionModal(null)} />
+                    <div className="relative bg-[var(--bg-secondary)] w-full max-w-md rounded-3xl border border-[var(--border-light)] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+                        <div className="p-6 border-b border-[var(--border-light)] flex items-center justify-between">
+                            <h3 className="text-xl font-extrabold text-[var(--text-primary)]">
+                                {showSelectionModal === "project" ? "Select a Project" : "Select a Focus Area"}
+                            </h3>
+                            <button onClick={() => setShowSelectionModal(null)} className="p-2 rounded-full hover:bg-[var(--bg-tertiary)] text-[var(--text-muted)]">
+                                <X className="w-5 h-5" />
+                            </button>
+                        </div>
+
+                        {showSelectionModal === "project" && (
+                            <div className="p-4 border-b border-[var(--border-light)]">
+                                <div className="relative">
+                                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-muted)]" />
+                                    <input
+                                        type="text"
+                                        placeholder="Search projects..."
+                                        className="w-full bg-[var(--bg-primary)] border border-[var(--border-light)] rounded-xl py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-[var(--primary-green)] transition-all"
+                                        value={searchTerm}
+                                        onChange={(e) => setSearchTerm(e.target.value)}
+                                        autoFocus
+                                    />
+                                </div>
+                            </div>
+                        )}
+
+                        <div className="max-h-[60vh] overflow-y-auto p-2">
+                            {showSelectionModal === "project" ? (
+                                filteredProjects.length > 0 ? (
+                                    filteredProjects.map(p => (
+                                        <button
+                                            key={p.id}
+                                            onClick={() => {
+                                                setSelectedProject(p);
+                                                setShowSelectionModal(null);
+                                                setSearchTerm("");
+                                            }}
+                                            className="w-full text-left p-4 rounded-2xl hover:bg-[var(--primary-green)]/10 hover:text-[var(--primary-green)] transition-all group border border-transparent hover:border-[var(--primary-green)]/20 mb-1"
+                                        >
+                                            <p className="font-bold text-sm block leading-snug">{p.title}</p>
+                                            <p className="text-[10px] uppercase font-bold tracking-widest opacity-60 mt-1">{CATEGORY_LABELS[p.category as keyof typeof CATEGORY_LABELS] ?? p.category}</p>
+                                        </button>
+                                    ))
+                                ) : (
+                                    <div className="p-8 text-center text-[var(--text-muted)] text-sm">No projects found.</div>
+                                )
+                            ) : (
+                                Object.entries(CATEGORY_LABELS).map(([key, label]) => (
+                                    <button
+                                        key={key}
+                                        onClick={() => {
+                                            setSelectedCategory(key);
+                                            setShowSelectionModal(null);
+                                        }}
+                                        className="w-full text-left p-4 rounded-2xl hover:bg-[var(--primary-green)]/10 hover:text-[var(--primary-green)] transition-all group border border-transparent hover:border-[var(--primary-green)]/20 mb-1"
+                                    >
+                                        <p className="font-bold text-sm">{label}</p>
+                                    </button>
+                                ))
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Skip Email Confirmation Modal */}
+            {showSkipEmailModal && (
+                <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+                    <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setShowSkipEmailModal(false)} />
+                    <div className="relative bg-[var(--bg-secondary)] w-full max-w-sm rounded-3xl border border-amber-200/50 shadow-2xl p-8 text-center animate-in fade-in zoom-in duration-200">
+                        <div className="w-16 h-16 bg-amber-50 dark:bg-amber-900/20 rounded-full flex items-center justify-center mx-auto mb-5">
+                            <AlertTriangle className="w-8 h-8 text-amber-600 dark:text-amber-400" />
+                        </div>
+                        <h3 className="text-xl font-extrabold text-[var(--text-primary)] mb-3">Skip Receipt?</h3>
+                        <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-8">
+                            Without an email, we won&apos;t be able to automatically send your donation receipt and impact updates.
+                        </p>
+                        <div className="flex flex-col gap-3">
+                            <button
+                                onClick={handleSubmit}
+                                className="w-full py-4 rounded-2xl bg-[var(--bg-tertiary)] text-[var(--text-primary)] font-extrabold hover:bg-[var(--bg-tertiary)]/80 transition-all text-sm"
+                            >
+                                Proceed without receipt
+                            </button>
+                            <button
+                                onClick={() => setShowSkipEmailModal(false)}
+                                className="w-full py-4 rounded-2xl bg-[var(--primary-green)] text-white font-extrabold hover:brightness-110 transition-all text-sm"
+                            >
+                                Go back & add email
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {/* Global form error */}
             {errors.form && (
@@ -201,28 +332,22 @@ function DonationForm() {
                             <p className="font-bold text-[var(--text-primary)] text-sm">Specific Project</p>
                             <p className="text-xs text-[var(--text-muted)] mt-0.5">Choose a campaign to support directly</p>
                             {donationType === "project" && (
-                                <div className="mt-3 relative">
+                                <div className="mt-3">
                                     {projectsLoading ? (
                                         <div className="flex items-center gap-2 text-xs text-[var(--text-muted)]">
                                             <Loader2 className="w-3 h-3 animate-spin" /> Loading projects…
                                         </div>
                                     ) : (
-                                        <div className="relative">
-                                            <select
-                                                value={selectedProject?.id ?? ""}
-                                                onChange={(e) => setSelectedProject(projects.find(p => p.id === e.target.value) ?? null)}
-                                                className="w-full appearance-none h-11 pl-4 pr-10 rounded-xl border-2 border-[var(--border-light)] bg-[var(--bg-primary)] text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--primary-green)] transition-all"
-                                            >
-                                                <option value="">— Select a project —</option>
-                                                {projects.map(p => (
-                                                    <option key={p.id} value={p.id}>
-                                                        {p.title} ({CATEGORY_LABELS[p.category as keyof typeof CATEGORY_LABELS] ?? p.category})
-                                                    </option>
-                                                ))}
-                                                {projects.length === 0 && <option disabled>No active projects yet</option>}
-                                            </select>
-                                            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-muted)] pointer-events-none" />
-                                        </div>
+                                        <button
+                                            type="button"
+                                            onClick={() => setShowSelectionModal("project")}
+                                            className="w-full flex items-center justify-between h-11 px-4 rounded-xl border-2 border-[var(--border-light)] bg-[var(--bg-primary)] text-sm text-[var(--text-primary)] hover:border-[var(--primary-green)]/40 transition-all"
+                                        >
+                                            <span className={selectedProject ? "font-bold" : "text-[var(--text-muted)]"}>
+                                                {selectedProject ? selectedProject.title : "— Click to select a project —"}
+                                            </span>
+                                            <ChevronDown className="w-4 h-4 text-[var(--text-muted)]" />
+                                        </button>
                                     )}
                                     {errors.project && <p className="text-xs text-red-600 mt-1">{errors.project}</p>}
                                 </div>
@@ -238,18 +363,17 @@ function DonationForm() {
                             <p className="font-bold text-[var(--text-primary)] text-sm">Program Category</p>
                             <p className="text-xs text-[var(--text-muted)] mt-0.5">Support a specific cause area</p>
                             {donationType === "category" && (
-                                <div className="mt-3 relative">
-                                    <select
-                                        value={selectedCategory}
-                                        onChange={(e) => setSelectedCategory(e.target.value)}
-                                        className="w-full appearance-none h-11 pl-4 pr-10 rounded-xl border-2 border-[var(--border-light)] bg-[var(--bg-primary)] text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--primary-green)] transition-all"
+                                <div className="mt-3">
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowSelectionModal("category")}
+                                        className="w-full flex items-center justify-between h-11 px-4 rounded-xl border-2 border-[var(--border-light)] bg-[var(--bg-primary)] text-sm text-[var(--text-primary)] hover:border-[var(--primary-green)]/40 transition-all"
                                     >
-                                        <option value="">— Select a category —</option>
-                                        {Object.entries(CATEGORY_LABELS).map(([key, label]) => (
-                                            <option key={key} value={key}>{label}</option>
-                                        ))}
-                                    </select>
-                                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-muted)] pointer-events-none" />
+                                        <span className={selectedCategory ? "font-bold" : "text-[var(--text-muted)]"}>
+                                            {selectedCategory ? CATEGORY_LABELS[selectedCategory as keyof typeof CATEGORY_LABELS] : "— Click to select a category —"}
+                                        </span>
+                                        <ChevronDown className="w-4 h-4 text-[var(--text-muted)]" />
+                                    </button>
                                     {errors.category && <p className="text-xs text-red-600 mt-1">{errors.category}</p>}
                                 </div>
                             )}
@@ -327,21 +451,24 @@ function DonationForm() {
                 {/* Email */}
                 <div>
                     <label className="block text-sm font-bold text-[var(--text-primary)] mb-1.5">
-                        Email Address <span className="text-red-500">*</span>
+                        Email Address <span className="text-[var(--text-muted)] font-normal">(Optional)</span>
                     </label>
                     <div className="relative">
                         <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-muted)]" />
                         <input
                             type="email"
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                                setIsEmailSkipped(false);
+                            }}
                             placeholder="your.email@example.com"
                             className={`w-full pl-10 pr-4 h-11 rounded-xl border ${errors.email ? "border-red-400" : "border-[var(--border-light)]"} bg-[var(--bg-primary)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary-green)]/30 focus:border-[var(--primary-green)] transition-all`}
                         />
                     </div>
                     {errors.email
                         ? <p className="text-xs text-red-600 mt-1">{errors.email}</p>
-                        : <p className="text-xs text-[var(--text-muted)] mt-1">For donation receipt and payment instructions</p>
+                        : <p className="text-xs text-[var(--text-muted)] mt-1">Leave blank to skip receipt. Add for donation confirmations.</p>
                     }
                 </div>
 
@@ -360,9 +487,9 @@ function DonationForm() {
                                 type="tel"
                                 value={phone}
                                 onChange={(e) => setPhone(formatPhone(e.target.value))}
-                                placeholder="712 345 678"
+                                placeholder="0700 000 000"
                                 className={`w-full pl-10 pr-4 h-11 rounded-xl border ${errors.phone ? "border-red-400" : "border-[var(--border-light)]"} bg-[var(--bg-primary)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] text-sm font-mono focus:outline-none focus:ring-2 focus:ring-[var(--primary-green)]/30 focus:border-[var(--primary-green)] transition-all`}
-                                maxLength={11}
+                                maxLength={12}
                             />
                         </div>
                     </div>
@@ -415,7 +542,7 @@ function DonationForm() {
             {/* ── SECTION 4: Submit ─────────────────────────────── */}
             <button
                 type="button"
-                onClick={handleSubmit}
+                onClick={handleMaybeSubmit}
                 disabled={!formReady || submitting}
                 className={`w-full h-14 rounded-2xl font-extrabold text-base flex items-center justify-center gap-3 transition-all duration-200 ${formReady && !submitting
                     ? "bg-[var(--primary-green)] hover:brightness-110 text-white shadow-lg shadow-green-900/20 cursor-pointer"

@@ -65,6 +65,18 @@ const MOCK_PROJECTS: FeaturedProject[] = [
         images: [{ storage_url: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&h=600&fit=crop", order_index: 0 }],
         donations: Array(89).fill({ id: "x" }),
     },
+    {
+        id: "4",
+        slug: "restoring-our-environment",
+        title: "Restoring Our Environment",
+        description: "Cleaning up Kenya's open spaces — collecting litter from informal dumpsites, unclogging roadside drainage channels, and revitalising public parks, markets, schools, and community buildings.",
+        category: "community",
+        current_amount: 0,
+        target_amount: 800000,
+        creator: { full_name: "Care Bridge Kenya" },
+        images: [{ storage_url: "/environment-project.png", order_index: 0 }],
+        donations: Array(0).fill({ id: "x" }),
+    },
 ];
 
 // ─── Helpers ─────────────────────────────────────────
@@ -89,7 +101,7 @@ export default async function HomePage() {
     let projects: FeaturedProject[] = MOCK_PROJECTS;
 
     try {
-        const liveCampaigns = await getFeaturedCampaigns(3);
+        const liveCampaigns = await getFeaturedCampaigns(4);
         if (liveCampaigns.length > 0) {
             projects = liveCampaigns as unknown as FeaturedProject[];
         }

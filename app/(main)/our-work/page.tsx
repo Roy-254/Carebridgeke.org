@@ -60,10 +60,10 @@ export default function OurWorkPage() {
                         <div>
                             <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--primary-green)]">Active Now</span>
                             <h2 className="text-3xl font-extrabold text-[var(--text-primary)] mt-2 mb-5 leading-snug">
-                                Three Projects Running in 2026
+                                Four Projects Running in 2026
                             </h2>
                             <p className="text-[var(--text-secondary)] leading-relaxed mb-5">
-                                We launched in 2026 with three carefully selected projects: a school fees support initiative, a medical relief fund, and a community development project. These are our proof of concept — we wanted to demonstrate the model before scaling it.
+                                We launched in 2026 with four carefully selected projects: a school fees support initiative, a medical relief fund, a community development project, and an environmental restoration drive. These are our proof of concept — we wanted to demonstrate the model before scaling it.
                             </p>
                             <p className="text-[var(--text-secondary)] leading-relaxed">
                                 Each project has a dedicated page where you can see the story behind the need, the target amount, funds raised so far, and updates from both our team and the beneficiaries.
@@ -87,7 +87,7 @@ export default function OurWorkPage() {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                             <div className="absolute bottom-5 left-5 flex gap-4">
                                 <div className="text-white">
-                                    <div className="text-2xl font-extrabold font-mono">3</div>
+                                    <div className="text-2xl font-extrabold font-mono">4</div>
                                     <div className="text-xs text-white/70 uppercase tracking-wide">Active projects</div>
                                 </div>
                                 <div className="text-white">
@@ -124,6 +124,14 @@ export default function OurWorkPage() {
                                 img: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80",
                                 raised: "KES 420,000",
                                 goal: "KES 600,000",
+                            },
+                            {
+                                slug: "restoring-our-environment",
+                                title: "Restoring Our Environment",
+                                category: "Community",
+                                img: "/environment-project.png",
+                                raised: "KES 0",
+                                goal: "KES 800,000",
                             },
                         ].map(project => (
                             <Link key={project.slug} href={`/donate/${project.slug}`}

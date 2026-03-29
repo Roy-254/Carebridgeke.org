@@ -1,1 +1,0 @@
-﻿Email test.user.1771615101282@gmail.com -> Error: Email not confirmed

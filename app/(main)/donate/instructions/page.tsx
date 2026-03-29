@@ -10,7 +10,7 @@ import {
 
 // ─── Config (update once numbers are live) ─────────────────────
 const PAYBILL = "123456";
-const TILL = "654321";
+const TILL = "4721832";
 const WHATSAPP = "+254 700 000 000";
 const SUPPORT_EMAIL = "donations@carebridgeke.org";
 const SUPPORT_PHONE = "+254 700 000 000";
