@@ -39,7 +39,8 @@ export function FeaturedHorizontal({ projects }: { projects: FeaturedProject[] }
 
     // We calculate horizontal scroll based on how many items we have
     // This allows the right-most tile to be fully exposed before the user finishes scrolling
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${(projects.length - 1.5) * 20}%`]);
+    // Snappy scroll speed and precise translation for smaller cards
+    const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${(projects.length - 0.5) * 25}%`]);
 
     return (
         <section ref={targetRef} className="relative h-[250vh] bg-[var(--bg-primary)]">
@@ -47,10 +48,10 @@ export function FeaturedHorizontal({ projects }: { projects: FeaturedProject[] }
                 <div className="container-custom mb-12">
                     <div className="flex items-center justify-between">
                         <div>
-                            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary-green)] mb-3 block">Make an Impact</span>
-                            <h2 className="text-4xl md:text-6xl font-extrabold text-[var(--text-primary)] mb-4 tracking-tight">Featured Projects</h2>
-                            <p className="text-[var(--text-secondary)] text-lg md:text-xl max-w-xl">
-                                Verified projects needing your support right now. Scroll to explore our latest initiatives.
+                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--primary-green)] mb-2 block">Our Impact</span>
+                            <h2 className="text-3xl md:text-5xl font-black text-[var(--text-primary)] mb-3 tracking-tight">Featured Projects</h2>
+                            <p className="text-[var(--text-secondary)] text-base md:text-lg max-w-lg opacity-80">
+                                Verified projects needing your support right now.
                             </p>
                         </div>
                         <div className="hidden md:block">
@@ -78,11 +79,11 @@ export function FeaturedHorizontal({ projects }: { projects: FeaturedProject[] }
                             return (
                                 <motion.div 
                                     key={project.id} 
-                                    className="w-[380px] md:w-[500px] shrink-0"
-                                    whileHover={{ y: -10 }}
+                                    className="w-[320px] md:w-[420px] shrink-0"
+                                    whileHover={{ y: -8 }}
                                     transition={{ duration: 0.3 }}
                                 >
-                                    <Card className="overflow-hidden group h-[520px] flex flex-col border-[var(--border-light)] bg-[var(--bg-secondary)] shadow-sm hover:shadow-2xl transition-shadow duration-500 rounded-3xl">
+                                    <Card className="overflow-hidden group h-[460px] flex flex-col border-[var(--border-light)] bg-[var(--bg-secondary)] shadow-sm hover:shadow-xl transition-all duration-500 rounded-2xl">
                                         <div className="relative h-64 overflow-hidden shrink-0">
                                             <Image
                                                 src={coverImage}
@@ -100,19 +101,19 @@ export function FeaturedHorizontal({ projects }: { projects: FeaturedProject[] }
 
                                         <CardContent className="p-8 space-y-4 flex-1 flex flex-col justify-between">
                                             <div>
-                                                <h3 className="text-2xl font-black text-[var(--text-primary)] line-clamp-2 leading-[1.1] mb-4 group-hover:text-[var(--primary-green)] transition-colors">
+                                                <h3 className="text-xl font-bold text-[var(--text-primary)] line-clamp-2 leading-tight mb-3 group-hover:text-[var(--primary-green)] transition-colors">
                                                     {project.title}
                                                 </h3>
-                                                <p className="text-base text-[var(--text-secondary)] line-clamp-3 leading-relaxed opacity-80">
+                                                <p className="text-sm text-[var(--text-secondary)] line-clamp-3 leading-relaxed opacity-75">
                                                     {project.description}
                                                 </p>
                                             </div>
 
-                                            <div className="pt-8 border-t border-[var(--border-light)]/40 flex items-center justify-between">
+                                            <div className="pt-6 border-t border-[var(--border-light)]/40">
                                                 <Link href={`/campaign/${project.slug}`} className="w-full">
-                                                    <Button className="w-full h-14 rounded-2xl bg-[var(--primary-green)] hover:bg-[var(--primary-green)]/90 text-white font-bold text-lg group/btn shadow-lg shadow-green-900/20">
+                                                    <Button className="w-full h-12 rounded-xl bg-[var(--primary-green)] hover:bg-[var(--primary-green)]/90 text-white font-bold text-base group/btn">
                                                         Support Now
-                                                        <ArrowRight className="w-5 h-5 ml-2 group-hover/btn:translate-x-2 transition-transform" />
+                                                        <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1.5 transition-transform" />
                                                     </Button>
                                                 </Link>
                                             </div>
@@ -123,14 +124,14 @@ export function FeaturedHorizontal({ projects }: { projects: FeaturedProject[] }
                         })}
                         
                         {/* Final spacer/CTA card to reveal at the end */}
-                        <div className="w-[300px] md:w-[400px] shrink-0 pr-[10vw] flex items-center justify-center">
+                        <div className="w-[280px] md:w-[350px] shrink-0 pr-[10vw] flex items-center justify-center">
                             <Link href="/explore" className="group">
-                                <div className="p-10 rounded-3xl bg-[var(--bg-secondary)] border-2 border-dashed border-[var(--border-light)] hover:border-[var(--primary-green)] transition-all text-center">
-                                    <div className="w-20 h-20 bg-[var(--primary-green)]/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                                        <ArrowRight className="w-10 h-10 text-[var(--primary-green)]" />
+                                <div className="p-8 rounded-2xl bg-[var(--bg-secondary)] border-2 border-dashed border-[var(--border-light)] hover:border-[var(--primary-green)] transition-all text-center">
+                                    <div className="w-16 h-16 bg-[var(--primary-green)]/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                        <ArrowRight className="w-8 h-8 text-[var(--primary-green)]" />
                                     </div>
-                                    <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">Explore More</h3>
-                                    <p className="text-sm text-[var(--text-secondary)]">View all ongoing projects in Kenya</p>
+                                    <h3 className="text-lg font-bold text-[var(--text-primary)] mb-1">Explore More</h3>
+                                    <p className="text-xs text-[var(--text-secondary)]">View all ongoing projects</p>
                                 </div>
                             </Link>
                         </div>
