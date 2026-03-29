@@ -44,26 +44,29 @@ export function FeaturedHorizontal({ projects }: { projects: FeaturedProject[] }
 
     return (
         <section ref={targetRef} className="relative h-[250vh] bg-[var(--bg-primary)]">
-            <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-                <div className="container-custom pt-20 pb-12">
-                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
-                        <div className="max-w-2xl text-left">
-                            <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--primary-green)] mb-3 block">OUR IMPACT</span>
-                            <h2 className="text-4xl md:text-5xl font-black text-[var(--text-primary)] mb-4 tracking-tight leading-none">Featured Projects</h2>
-                            <p className="text-[var(--text-secondary)] text-base md:text-lg opacity-80 leading-relaxed">
-                                Verified projects needing your support right now.
-                            </p>
-                        </div>
-                        <div className="shrink-0">
-                            <Link href="/explore">
-                                <Button variant="outline" size="lg" className="rounded-full px-8 hover:bg-[var(--primary-green)] hover:text-white transition-all font-bold border-[var(--border-light)] text-[var(--text-primary)] h-12">
-                                    View All Projects
-                                    <ArrowRight className="w-5 h-5 ml-2" />
-                                </Button>
-                            </Link>
-                        </div>
+            {/* Header: Placed outside sticky to allow it to scroll up and away */}
+            <div className="container-custom pt-32 pb-16">
+                <div className="flex flex-col items-end text-right gap-6">
+                    <div className="max-w-2xl">
+                        <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[var(--primary-green)] mb-3 block">OUR IMPACT</span>
+                        <h2 className="text-4xl md:text-6xl font-black text-[var(--text-primary)] mb-4 tracking-tighter leading-none">Featured Projects</h2>
+                        <p className="text-[var(--text-secondary)] text-base md:text-xl opacity-80 leading-relaxed max-w-lg ml-auto">
+                            Verified projects needing your support right now.
+                        </p>
+                    </div>
+                    <div>
+                        <Link href="/explore">
+                            <Button variant="outline" size="lg" className="rounded-full px-10 hover:bg-[var(--primary-green)] hover:text-white transition-all font-bold border-[var(--border-light)] text-[var(--text-primary)] h-14 text-lg group">
+                                View All Projects
+                                <ArrowRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
+                            </Button>
+                        </Link>
                     </div>
                 </div>
+            </div>
+
+            <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+
 
                 <div className="relative">
                     {/* Shadow indicators */}
@@ -79,12 +82,12 @@ export function FeaturedHorizontal({ projects }: { projects: FeaturedProject[] }
                             return (
                                 <motion.div 
                                     key={project.id} 
-                                    className="w-[320px] md:w-[450px] shrink-0"
+                                    className="w-[300px] md:w-[420px] shrink-0"
                                     whileHover={{ y: -8 }}
                                     transition={{ duration: 0.3 }}
                                 >
-                                    <Card className="overflow-hidden group min-h-[480px] flex flex-col border-[var(--border-light)] bg-[var(--bg-secondary)] shadow-sm hover:shadow-2xl transition-all duration-500 rounded-2xl items-stretch">
-                                        <div className="relative h-[240px] overflow-hidden shrink-0">
+                                    <Card className="overflow-hidden group min-h-[460px] flex flex-col border-[var(--border-light)] bg-[var(--bg-secondary)] shadow-sm hover:shadow-2xl transition-all duration-500 rounded-2xl items-stretch">
+                                        <div className="relative h-[220px] overflow-hidden shrink-0">
                                             <Image
                                                 src={coverImage}
                                                 alt={project.title}
@@ -93,15 +96,15 @@ export function FeaturedHorizontal({ projects }: { projects: FeaturedProject[] }
                                                 unoptimized={coverImage.startsWith("https://images.unsplash.com") || coverImage.startsWith("/")}
                                             />
                                             <div className="absolute top-5 left-5">
-                                                <span className={`px-4 py-1.5 text-[10px] font-black rounded-full uppercase tracking-widest backdrop-blur-md shadow-lg border border-white/10 ${categoryColor}`}>
+                                                <span className={`px-4 py-1.5 text-[9px] font-black rounded-full uppercase tracking-widest backdrop-blur-md shadow-lg border border-white/10 ${categoryColor}`}>
                                                     {categoryLabel}
                                                 </span>
                                             </div>
                                         </div>
 
-                                        <CardContent className="p-8 space-y-4 flex-1 flex flex-col justify-between">
+                                        <CardContent className="p-7 space-y-4 flex-1 flex flex-col justify-between">
                                             <div>
-                                                <h3 className="text-xl md:text-2xl font-black text-[var(--text-primary)] line-clamp-1 leading-tight mb-4 group-hover:text-[var(--primary-green)] transition-colors">
+                                                <h3 className="text-lg md:text-xl font-black text-[var(--text-primary)] line-clamp-1 leading-tight mb-3 group-hover:text-[var(--primary-green)] transition-colors">
                                                     {project.title}
                                                 </h3>
                                                 <p className="text-base text-[var(--text-secondary)] line-clamp-3 leading-relaxed opacity-80">
@@ -109,9 +112,9 @@ export function FeaturedHorizontal({ projects }: { projects: FeaturedProject[] }
                                                 </p>
                                             </div>
 
-                                            <div className="pt-8 border-t border-[var(--border-light)]/40 overflow-hidden">
+                                            <div className="pt-6 border-t border-[var(--border-light)]/40 overflow-hidden">
                                                 <Link href={`/campaign/${project.slug}`} className="w-full">
-                                                    <Button className="w-full h-14 rounded-2xl bg-[var(--primary-green)] hover:bg-[var(--primary-green)]/90 text-white font-bold text-lg group/btn shadow-lg shadow-green-900/10">
+                                                    <Button className="w-full h-12 rounded-xl bg-[var(--primary-green)] hover:bg-[var(--primary-green)]/90 text-white font-bold text-base group/btn shadow-lg shadow-green-900/10">
                                                         Support Now
                                                         <ArrowRight className="w-5 h-5 ml-2 group-hover/btn:translate-x-2 transition-transform" />
                                                     </Button>
