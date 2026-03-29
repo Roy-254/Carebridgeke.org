@@ -62,7 +62,7 @@ export default function ExploreProjectsPage() {
             description: "Cleaning up Kenya — collecting litter from informal dumpsites, unclogging roadside drainage channels, and revitalising public parks, markets, schools, and community buildings.",
             category: "community",
             slug: "restoring-our-environment",
-            images: ["/environment-project.png"],
+            images: ["/environment-hero.png"],
             current_amount: 0,
             target_amount: 800000,
             is_urgent: false,

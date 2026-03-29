@@ -75,7 +75,7 @@ const MOCK_PROJECTS: FeaturedProject[] = [
         current_amount: 0,
         target_amount: 800000,
         creator: { full_name: "Care Bridge Kenya" },
-        images: [{ storage_url: "/environment-project.png", order_index: 0 }],
+        images: [{ storage_url: "/environment-hero.png", order_index: 0 }],
         donations: Array(0).fill({ id: "x" }),
     },
 ];

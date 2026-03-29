@@ -129,7 +129,7 @@ export default function OurWorkPage() {
                                 slug: "restoring-our-environment",
                                 title: "Restoring Our Environment",
                                 category: "Community",
-                                img: "/environment-project.png",
+                                img: "/environment-hero.png",
                                 raised: "KES 0",
                                 goal: "KES 800,000",
                             },

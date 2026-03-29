@@ -42,7 +42,7 @@ export default function RestoringOurEnvironmentPage() {
             <section className="relative py-28 md:py-44 lg:py-52 overflow-hidden flex items-center min-h-[70vh]">
                 <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                    style={{ backgroundImage: "url('/environment-project.png')" }}
+                    style={{ backgroundImage: "url('/environment-hero.png')" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/35" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary-green)]/25 via-transparent to-transparent" />
