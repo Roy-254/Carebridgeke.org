@@ -45,20 +45,20 @@ export function FeaturedHorizontal({ projects }: { projects: FeaturedProject[] }
     return (
         <section ref={targetRef} className="relative h-[250vh] bg-[var(--bg-primary)]">
             <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-                <div className="container-custom py-16">
-                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[var(--border-light)] pb-8 mb-10">
-                        <div>
-                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--primary-green)] mb-2 block">Our Impact</span>
-                            <h2 className="text-3xl md:text-5xl font-black text-[var(--text-primary)] tracking-tight">Featured Projects</h2>
-                        </div>
-                        <div className="flex flex-col items-start md:items-end gap-4">
-                            <p className="text-[var(--text-secondary)] text-sm md:text-base max-w-sm md:text-right opacity-80">
+                <div className="container-custom pt-20 pb-12">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
+                        <div className="max-w-2xl text-left">
+                            <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--primary-green)] mb-3 block">OUR IMPACT</span>
+                            <h2 className="text-4xl md:text-5xl font-black text-[var(--text-primary)] mb-4 tracking-tight leading-none">Featured Projects</h2>
+                            <p className="text-[var(--text-secondary)] text-base md:text-lg opacity-80 leading-relaxed">
                                 Verified projects needing your support right now.
                             </p>
+                        </div>
+                        <div className="shrink-0">
                             <Link href="/explore">
-                                <Button variant="outline" size="sm" className="rounded-full px-6 hover:bg-[var(--primary-green)] hover:text-white transition-all font-bold">
+                                <Button variant="outline" size="lg" className="rounded-full px-8 hover:bg-[var(--primary-green)] hover:text-white transition-all font-bold border-[var(--border-light)] text-[var(--text-primary)] h-12">
                                     View All Projects
-                                    <ArrowRight className="w-4 h-4 ml-2" />
+                                    <ArrowRight className="w-5 h-5 ml-2" />
                                 </Button>
                             </Link>
                         </div>
@@ -79,12 +79,12 @@ export function FeaturedHorizontal({ projects }: { projects: FeaturedProject[] }
                             return (
                                 <motion.div 
                                     key={project.id} 
-                                    className="w-[280px] md:w-[350px] shrink-0"
-                                    whileHover={{ y: -5 }}
+                                    className="w-[320px] md:w-[450px] shrink-0"
+                                    whileHover={{ y: -8 }}
                                     transition={{ duration: 0.3 }}
                                 >
-                                    <Card className="overflow-hidden group h-[400px] flex flex-col border-[var(--border-light)] bg-[var(--bg-secondary)] shadow-sm hover:shadow-lg transition-all duration-500 rounded-xl">
-                                        <div className="relative h-48 overflow-hidden shrink-0">
+                                    <Card className="overflow-hidden group min-h-[480px] flex flex-col border-[var(--border-light)] bg-[var(--bg-secondary)] shadow-sm hover:shadow-2xl transition-all duration-500 rounded-2xl items-stretch">
+                                        <div className="relative h-[240px] overflow-hidden shrink-0">
                                             <Image
                                                 src={coverImage}
                                                 alt={project.title}
@@ -92,28 +92,28 @@ export function FeaturedHorizontal({ projects }: { projects: FeaturedProject[] }
                                                 className="object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
                                                 unoptimized={coverImage.startsWith("https://images.unsplash.com") || coverImage.startsWith("/")}
                                             />
-                                            <div className="absolute top-4 left-4">
-                                                <span className={`px-3 py-1 text-[9px] font-black rounded-full uppercase tracking-widest backdrop-blur-md shadow-lg border border-white/10 ${categoryColor}`}>
+                                            <div className="absolute top-5 left-5">
+                                                <span className={`px-4 py-1.5 text-[10px] font-black rounded-full uppercase tracking-widest backdrop-blur-md shadow-lg border border-white/10 ${categoryColor}`}>
                                                     {categoryLabel}
                                                 </span>
                                             </div>
                                         </div>
 
-                                        <CardContent className="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                                        <CardContent className="p-8 space-y-4 flex-1 flex flex-col justify-between">
                                             <div>
-                                                <h3 className="text-lg font-bold text-[var(--text-primary)] line-clamp-1 leading-tight mb-2 group-hover:text-[var(--primary-green)] transition-colors">
+                                                <h3 className="text-xl md:text-2xl font-black text-[var(--text-primary)] line-clamp-1 leading-tight mb-4 group-hover:text-[var(--primary-green)] transition-colors">
                                                     {project.title}
                                                 </h3>
-                                                <p className="text-xs text-[var(--text-secondary)] line-clamp-3 leading-relaxed opacity-75">
+                                                <p className="text-base text-[var(--text-secondary)] line-clamp-3 leading-relaxed opacity-80">
                                                     {project.description}
                                                 </p>
                                             </div>
 
-                                            <div className="pt-4 border-t border-[var(--border-light)]/40">
+                                            <div className="pt-8 border-t border-[var(--border-light)]/40 overflow-hidden">
                                                 <Link href={`/campaign/${project.slug}`} className="w-full">
-                                                    <Button className="w-full h-10 rounded-lg bg-[var(--primary-green)] hover:bg-[var(--primary-green)]/90 text-white font-bold text-xs group/btn">
+                                                    <Button className="w-full h-14 rounded-2xl bg-[var(--primary-green)] hover:bg-[var(--primary-green)]/90 text-white font-bold text-lg group/btn shadow-lg shadow-green-900/10">
                                                         Support Now
-                                                        <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                                                        <ArrowRight className="w-5 h-5 ml-2 group-hover/btn:translate-x-2 transition-transform" />
                                                     </Button>
                                                 </Link>
                                             </div>
