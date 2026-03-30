@@ -45,20 +45,20 @@ export function FeaturedHorizontal({ projects }: { projects: FeaturedProject[] }
     return (
         <section ref={targetRef} className="relative h-[250vh] bg-[var(--bg-primary)]">
             {/* Header: Left-aligned text, right-aligned button, scrolls away naturally */}
-            <div className="container-custom pt-32 pb-16">
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-[var(--border-light)] pb-12 mb-8">
+            <div className="container-custom pt-20 pb-10">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-6">
                     <div className="max-w-2xl text-left">
-                        <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[var(--primary-green)] mb-3 block">OUR IMPACT</span>
-                        <h2 className="text-4xl md:text-6xl font-black text-[var(--text-primary)] mb-4 tracking-tighter leading-none">Featured Projects</h2>
-                        <p className="text-[var(--text-secondary)] text-base md:text-xl opacity-80 leading-relaxed max-w-lg">
+                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--primary-green)] mb-2 block">OUR IMPACT</span>
+                        <h2 className="text-3xl md:text-5xl font-black text-[var(--text-primary)] mb-3 tracking-tight leading-none">Featured Projects</h2>
+                        <p className="text-[var(--text-secondary)] text-sm md:text-base opacity-75 leading-relaxed max-w-lg">
                             Verified projects needing your support right now.
                         </p>
                     </div>
                     <div className="shrink-0">
                         <Link href="/explore">
-                            <Button variant="outline" size="lg" className="rounded-full px-10 hover:bg-[var(--primary-green)] hover:text-white transition-all font-bold border-[var(--border-light)] text-[var(--text-primary)] h-14 text-lg group">
+                            <Button variant="outline" size="lg" className="rounded-full px-8 hover:bg-[var(--primary-green)] hover:text-white transition-all font-bold border-[var(--border-light)] text-[var(--text-primary)] h-12 text-sm group">
                                 View All Projects
-                                <ArrowRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
+                                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                             </Button>
                         </Link>
                     </div>
