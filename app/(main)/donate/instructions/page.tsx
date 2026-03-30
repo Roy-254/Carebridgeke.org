@@ -9,8 +9,6 @@ import {
 } from "lucide-react";
 
 // ─── Config (update once numbers are live) ─────────────────────
-const PAYBILL = "123456";
-const TILL = "4721832";
 const WHATSAPP = "0740 797 404";
 const SUPPORT_EMAIL = "donations@carebridgeke.org";
 const SUPPORT_PHONE = "0740 797 404";
@@ -62,7 +60,6 @@ function InstructionsContent() {
     const phone = searchParams.get("phone") ?? "—";
     const supporting = searchParams.get("supporting") ?? "General Fund";
 
-    const [activeTab, setActiveTab] = useState<"paybill" | "till">("paybill");
     const [resending, setResending] = useState(false);
     const [resendStatus, setResendStatus] = useState<"idle" | "sent" | "error">("idle");
     const [paymentStatus, setPaymentStatus] = useState<"pending" | "confirmed" | "failed">("pending");
@@ -229,151 +226,46 @@ function InstructionsContent() {
                 </div>
             )}
 
-            {/* ── Payment instructions ────────────────────────── */}
-            <div className="bg-[var(--bg-secondary)] rounded-2xl border border-[var(--border-light)] overflow-hidden">
-                <div className="px-6 pt-6 pb-0">
-                    <h2 className="text-lg font-extrabold text-[var(--text-primary)] mb-4">
-                        How to Complete Your Donation
-                    </h2>
-                    {/* Tabs */}
-                    <div className="flex border-b border-[var(--border-light)]">
-                        <button
-                            onClick={() => setActiveTab("paybill")}
-                            className={`px-5 py-2.5 text-sm font-bold border-b-2 transition-colors ${activeTab === "paybill"
-                                ? "border-[var(--primary-green)] text-[var(--primary-green)]"
-                                : "border-transparent text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
-                                }`}
-                        >
-                            📱 Paybill <span className="text-xs font-normal ml-1 opacity-70">(Recommended)</span>
-                        </button>
-                        <button
-                            onClick={() => setActiveTab("till")}
-                            className={`px-5 py-2.5 text-sm font-bold border-b-2 transition-colors ${activeTab === "till"
-                                ? "border-[var(--primary-green)] text-[var(--primary-green)]"
-                                : "border-transparent text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
-                                }`}
-                        >
-                            📱 Till Number
-                        </button>
-                    </div>
-                </div>
-
-                <div className="p-6">
-                    {activeTab === "paybill" ? (
-                        <div className="space-y-4 animate-fade-in">
-                            <div className="space-y-1 text-sm text-[var(--text-secondary)]">
-                                {[
-                                    "Open M-Pesa on your phone",
-                                    <span key="2">Select <strong>Lipa na M-Pesa</strong></span>,
-                                    <span key="3">Select <strong>Paybill</strong></span>,
-                                ].map((step, i) => (
-                                    <div key={i} className="flex items-center gap-3 py-2">
-                                        <div className="w-6 h-6 rounded-full bg-[var(--primary-green)]/10 flex items-center justify-center shrink-0">
-                                            <span className="text-xs font-bold text-[var(--primary-green)]">{i + 1}</span>
-                                        </div>
-                                        <span>{step}</span>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="bg-[var(--bg-primary)] rounded-xl border border-[var(--border-light)] px-5 py-4 space-y-1">
-                                <p className="text-xs font-bold uppercase tracking-wide text-[var(--text-muted)] mb-2">Enter these details:</p>
-                                <CopyRow label="Business Number" value={PAYBILL} />
-                                <CopyRow label="Account Number (use YOUR code)" value={code} />
-                                <CopyRow label="Amount (KES)" value={amount} />
-                            </div>
-
-                            <div className="space-y-1 text-sm text-[var(--text-secondary)]">
-                                {["Enter your M-Pesa PIN", "Confirm payment — done! ✅"].map((step, i) => (
-                                    <div key={i} className="flex items-center gap-3 py-2">
-                                        <div className="w-6 h-6 rounded-full bg-[var(--primary-green)]/10 flex items-center justify-center shrink-0">
-                                            <span className="text-xs font-bold text-[var(--primary-green)]">{i + 4}</span>
-                                        </div>
-                                        <span>{step}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    ) : (
-                        <div className="space-y-4 animate-fade-in">
-                            <div className="space-y-1 text-sm text-[var(--text-secondary)]">
-                                {[
-                                    "Open M-Pesa on your phone",
-                                    <span key="2">Select <strong>Lipa na M-Pesa</strong></span>,
-                                    <span key="3">Select <strong>Buy Goods and Services</strong></span>,
-                                ].map((step, i) => (
-                                    <div key={i} className="flex items-center gap-3 py-2">
-                                        <div className="w-6 h-6 rounded-full bg-cyan-500/10 flex items-center justify-center shrink-0">
-                                            <span className="text-xs font-bold text-cyan-600 dark:text-cyan-400">{i + 1}</span>
-                                        </div>
-                                        <span>{step}</span>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="bg-[var(--bg-primary)] rounded-xl border border-[var(--border-light)] px-5 py-4 space-y-1">
-                                <p className="text-xs font-bold uppercase tracking-wide text-[var(--text-muted)] mb-2">Enter these details:</p>
-                                <CopyRow label="Till Number" value={TILL} />
-                                <CopyRow label="Amount (KES)" value={amount} />
-                            </div>
-
-                            <div className="space-y-1 text-sm text-[var(--text-secondary)]">
-                                {["Enter your M-Pesa PIN", "Confirm payment"].map((step, i) => (
-                                    <div key={i} className="flex items-center gap-3 py-2">
-                                        <div className="w-6 h-6 rounded-full bg-cyan-500/10 flex items-center justify-center shrink-0">
-                                            <span className="text-xs font-bold text-cyan-600 dark:text-cyan-400">{i + 4}</span>
-                                        </div>
-                                        <span>{step}</span>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="bg-violet-50 dark:bg-violet-900/20 border border-violet-200 dark:border-violet-800 rounded-xl p-4">
-                                <p className="text-sm font-bold text-violet-700 dark:text-violet-300 mb-1">⚠️ Important — Till payments only</p>
-                                <p className="text-sm text-violet-600 dark:text-violet-400">
-                                    After paying, please forward your M-Pesa SMS to WhatsApp:{" "}
-                                    <strong>{WHATSAPP}</strong>{" "}
-                                    and include your code: <span className="font-mono font-bold">{code}</span>.
-                                    This lets us match and confirm your donation quickly.
-                                </p>
-                            </div>
-                        </div>
-                    )}
-                </div>
-            </div>
-
             {/* ── What happens next  ──────────────────────────── */}
-            <div className="bg-[var(--bg-secondary)] rounded-2xl border border-[var(--border-light)] p-6">
-                <h2 className="font-extrabold text-[var(--text-primary)] mb-5">What Happens Next</h2>
-                <div className="space-y-0">
+            <div className="bg-[var(--bg-secondary)] rounded-2xl border border-[var(--border-light)] p-8">
+                <h2 className="text-xl font-extrabold text-[var(--text-primary)] mb-8 text-center">Your Donation Journey</h2>
+                <div className="relative space-y-0">
+                    {/* Vertical line connecting steps */}
+                    <div className="absolute left-[19px] top-4 bottom-4 w-0.5 bg-gradient-to-b from-[var(--primary-green)] to-[var(--bg-tertiary)] hidden sm:block" />
+                    
                     {[
                         {
-                            icon: "📧", when: "NOW", iconBg: "bg-green-100 dark:bg-green-900/30", iconColor: "text-green-700 dark:text-green-300",
-                            desc: "You've received an email with these payment instructions.",
+                            icon: "📱", when: "STEP 1: NOW", iconBg: "bg-green-100 dark:bg-green-900/30", iconColor: "text-green-700 dark:text-green-300",
+                            title: "Check Your Phone",
+                            desc: `An automated M-Pesa prompt has been sent to ${phone}. Enter your PIN to authorise the gift.`,
                         },
                         {
-                            icon: "💳", when: "YOU — Complete M-Pesa", iconBg: "bg-blue-100 dark:bg-blue-900/30", iconColor: "text-blue-700 dark:text-blue-300",
-                            desc: "Follow the instructions above to send your donation.",
+                            icon: "⚡", when: "STEP 2: INSTANT", iconBg: "bg-blue-100 dark:bg-blue-900/30", iconColor: "text-blue-700 dark:text-blue-300",
+                            title: "Automated Verification",
+                            desc: "Once you enter your PIN, our systems verify the payment instantly. No manual matching required.",
                         },
                         {
-                            icon: "✅", when: "WITHIN 24 HOURS", iconBg: "bg-amber-100 dark:bg-amber-900/30", iconColor: "text-amber-700 dark:text-amber-300",
-                            desc: "We verify your payment and send an official receipt to your email.",
+                            icon: "📧", when: "STEP 3: DONE", iconBg: "bg-amber-100 dark:bg-amber-900/30", iconColor: "text-amber-700 dark:text-amber-300",
+                            title: "Digital Receipt",
+                            desc: `A confirmation receipt will be sent to ${email} as soon as the payment hits our system.`,
                         },
                         {
-                            icon: "📊", when: "ONGOING", iconBg: "bg-violet-100 dark:bg-violet-900/30", iconColor: "text-violet-700 dark:text-violet-300",
-                            desc: "Receive updates as your donation creates real impact on the ground.",
+                            icon: "📊", when: "STEP 4: ONGOING", iconBg: "bg-violet-100 dark:bg-violet-900/30", iconColor: "text-violet-700 dark:text-violet-300",
+                            title: "Real Impact",
+                            desc: "Receive regular updates and stories showing exactly how your donation is changing lives.",
                         },
-                    ].map(({ icon, when, iconBg, iconColor, desc }, i, arr) => (
-                        <div key={when} className="flex gap-4">
-                            <div className="flex flex-col items-center">
-                                <div className={`w-10 h-10 rounded-full ${iconBg} flex items-center justify-center text-lg shrink-0`}>
+                    ].map(({ icon, when, iconBg, iconColor, title, desc }, i) => (
+                        <div key={when} className="flex gap-6 relative group">
+                            <div className="flex flex-col items-center shrink-0">
+                                <div className={`w-10 h-10 rounded-full ${iconBg} flex items-center justify-center text-lg z-10 shadow-sm border border-white/10`}>
                                     {icon}
                                 </div>
-                                {i < arr.length - 1 && <div className="w-0.5 bg-[var(--border-light)] flex-1 my-1" />}
+                                {i < 3 && <div className="w-0.5 bg-[var(--border-light)] flex-1 my-1 sm:hidden" />}
                             </div>
-                            <div className="pb-6">
-                                <p className={`text-xs font-bold uppercase tracking-widest ${iconColor} mb-0.5`}>{when}</p>
-                                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{desc}</p>
+                            <div className="pb-10">
+                                <p className={`text-[10px] font-extrabold uppercase tracking-[0.2em] ${iconColor} mb-1`}>{when}</p>
+                                <h4 className="text-base font-extrabold text-[var(--text-primary)] mb-1.5">{title}</h4>
+                                <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-lg">{desc}</p>
                             </div>
                         </div>
                     ))}
@@ -381,24 +273,26 @@ function InstructionsContent() {
             </div>
 
             {/* ── Donation summary ────────────────────────────── */}
-            <div className="bg-[var(--bg-secondary)] rounded-2xl border border-[var(--border-light)] p-6">
-                <h2 className="font-extrabold text-[var(--text-primary)] mb-4">Your Donation Summary</h2>
-                <div className="space-y-2">
-                    <CopyRow label="Amount" value={formattedAmount} />
-                    <div className="flex items-center justify-between py-2.5 border-b border-[var(--border-light)]">
-                        <span className="text-sm text-[var(--text-muted)]">Supporting</span>
-                        <span className="font-semibold text-[var(--text-primary)] text-sm text-right max-w-[55%] truncate">{supporting}</span>
+            <div className="bg-[var(--bg-secondary)] rounded-2xl border border-[var(--border-light)] p-8">
+                <h2 className="text-lg font-extrabold text-[var(--text-primary)] mb-6 flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[var(--primary-green)]" />
+                    Donation Summary
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-[var(--bg-primary)] p-4 rounded-xl border border-[var(--border-light)]">
+                        <p className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider mb-1">Amount</p>
+                        <p className="text-xl font-black text-[var(--text-primary)]">{formattedAmount}</p>
                     </div>
-                    <CopyRow label="Confirmation Code" value={code} />
-                    <div className="flex items-center gap-2 py-2.5 border-b border-[var(--border-light)]">
-                        <Mail className="w-4 h-4 text-[var(--text-muted)] shrink-0" />
-                        <span className="text-sm text-[var(--text-muted)]">Sent to</span>
-                        <span className="font-semibold text-[var(--text-primary)] text-sm ml-auto">{email}</span>
+                    <div className="bg-[var(--bg-primary)] p-4 rounded-xl border border-[var(--border-light)]">
+                        <p className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider mb-1">Confirmation Code</p>
+                        <div className="flex items-center justify-between">
+                            <p className="font-mono font-bold text-[var(--text-primary)]">{code || "PENDING"}</p>
+                            {code && <CopyButton text={code} />}
+                        </div>
                     </div>
-                    <div className="flex items-center gap-2 py-2.5">
-                        <Phone className="w-4 h-4 text-[var(--text-muted)] shrink-0" />
-                        <span className="text-sm text-[var(--text-muted)]">Phone</span>
-                        <span className="font-semibold text-[var(--text-primary)] text-sm ml-auto font-mono">{phone}</span>
+                    <div className="bg-[var(--bg-primary)] p-4 rounded-xl border border-[var(--border-light)] md:col-span-2">
+                        <p className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider mb-1">Supporting</p>
+                        <p className="font-bold text-[var(--text-primary)] truncate">{supporting}</p>
                     </div>
                 </div>
             </div>

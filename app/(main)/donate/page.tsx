@@ -558,7 +558,7 @@ function DonationForm() {
             >
                 {submitting
                     ? <><Loader2 className="w-5 h-5 animate-spin" /> Processing…</>
-                    : <><Heart className="w-5 h-5" fill="currentColor" /> Get Payment Instructions →</>
+                    : <><Heart className="w-5 h-5" fill="currentColor" /> Pay Now →</>
                 }
             </button>
 
