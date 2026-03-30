@@ -55,6 +55,8 @@ function CopyRow({ label, value }: { label: string; value: string }) {
 function InstructionsContent() {
     const searchParams = useSearchParams();
     const code = searchParams.get("code") ?? "";
+    const isStk = searchParams.get("stk") === "true";
+    const checkoutID = searchParams.get("checkoutID") ?? "";
     const amount = searchParams.get("amount") ?? "—";
     const email = searchParams.get("email") ?? "—";
     const phone = searchParams.get("phone") ?? "—";
@@ -63,10 +65,35 @@ function InstructionsContent() {
     const [activeTab, setActiveTab] = useState<"paybill" | "till">("paybill");
     const [resending, setResending] = useState(false);
     const [resendStatus, setResendStatus] = useState<"idle" | "sent" | "error">("idle");
+    const [paymentStatus, setPaymentStatus] = useState<"pending" | "confirmed" | "failed">("pending");
 
     const formattedAmount = new Intl.NumberFormat("en-KE", {
         style: "currency", currency: "KES", minimumFractionDigits: 0,
     }).format(Number(amount));
+
+    // ── Polling for payment status ───────────────────────────
+    useState(() => {
+        if (!isStk && !code) return;
+
+        const interval = setInterval(async () => {
+            try {
+                // We use our track API to check status
+                const res = await fetch(`/api/track?code=${checkoutID || code}`);
+                const data = await res.json();
+                if (data.donation?.status === "confirmed") {
+                    setPaymentStatus("confirmed");
+                    clearInterval(interval);
+                } else if (data.donation?.status === "failed") {
+                    setPaymentStatus("failed");
+                    clearInterval(interval);
+                }
+            } catch (e) {
+                console.error("Polling error:", e);
+            }
+        }, 3000); // Check every 3 seconds
+
+        return () => clearInterval(interval);
+    });
 
     async function resendEmail() {
         setResending(true);
@@ -97,7 +124,7 @@ function InstructionsContent() {
         }
     }
 
-    if (!code) {
+    if (!code && !checkoutID) {
         return (
             <div className="max-w-lg mx-auto text-center py-20">
                 <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
@@ -115,31 +142,92 @@ function InstructionsContent() {
     return (
         <div className="max-w-3xl mx-auto space-y-6 pb-16">
 
-            {/* ── Confirmation code card ──────────────────────── */}
-            <div className="bg-[var(--bg-secondary)] rounded-2xl border-2 border-[var(--primary-green)]/30 p-6 text-center">
-                <CheckCircle2 className="w-10 h-10 text-[var(--primary-green)] mx-auto mb-3" />
-                <p className="text-xs font-bold uppercase tracking-widest text-[var(--primary-green)] mb-2">
-                    Your Confirmation Code
-                </p>
-                <div className="flex items-center justify-center gap-3">
-                    <p className="font-mono text-2xl md:text-3xl font-extrabold text-[var(--text-primary)] tracking-widest">
-                        {code}
+            {/* ── STK Status / Confirmation card ──────────────────────── */}
+            {isStk && paymentStatus === "pending" && (
+                <div className="bg-[var(--primary-green)] text-white rounded-2xl p-8 text-center shadow-xl shadow-green-900/20 animate-pulse-slow">
+                    <div className="relative w-16 h-16 mx-auto mb-5">
+                        <Loader2 className="w-16 h-16 animate-spin opacity-20" />
+                        <Phone className="w-8 h-8 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                    </div>
+                    <h3 className="text-2xl font-extrabold mb-2">Check Your Phone!</h3>
+                    <p className="text-green-50 text-sm leading-relaxed max-w-sm mx-auto">
+                        An M-Pesa prompt has been sent to <strong>{phone}</strong>.<br />
+                        Enter your M-Pesa PIN to complete the donation.
                     </p>
-                    <CopyButton text={code} />
                 </div>
-                <p className="text-sm text-[var(--text-muted)] mt-3">
-                    Save this code — use it to track your donation at <span className="font-semibold text-[var(--primary-green)]">carebridgeke.org/track</span>. No account needed.
-                </p>
-            </div>
+            )}
+
+            {paymentStatus === "confirmed" && (
+                <div className="bg-green-500 text-white rounded-2xl p-8 text-center shadow-xl shadow-green-900/20 animate-in zoom-in duration-500">
+                    <CheckCircle2 className="w-16 h-16 mx-auto mb-4" />
+                    <h3 className="text-2xl font-extrabold mb-2">Payment Confirmed!</h3>
+                    <p className="text-green-50 mb-6">
+                        Thank you! Your donation of <strong>{formattedAmount}</strong> has been received successfully.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                        <Link href="/track" className="flex-1 sm:flex-none">
+                            <button className="w-full px-8 py-3 rounded-xl bg-white text-green-600 font-extrabold hover:bg-green-50 transition-all">
+                                View Your Impact
+                            </button>
+                        </Link>
+                        <Link href="/" className="flex-1 sm:flex-none">
+                            <button className="w-full px-8 py-3 rounded-xl bg-green-600 border border-green-400/30 text-white font-extrabold hover:bg-green-700 transition-all">
+                                Home
+                            </button>
+                        </Link>
+                    </div>
+                </div>
+            )}
+
+            {paymentStatus === "failed" && (
+                <div className="bg-red-500 text-white rounded-2xl p-8 text-center shadow-xl shadow-red-900/20">
+                    <AlertCircle className="w-16 h-16 mx-auto mb-4" />
+                    <h3 className="text-2xl font-extrabold mb-2">Payment Failed</h3>
+                    <p className="text-red-50 mb-4">
+                        The M-Pesa transaction was cancelled or timed out.
+                    </p>
+                    <button 
+                        onClick={() => window.location.reload()}
+                        className="px-8 py-3 rounded-xl bg-white text-red-600 font-extrabold hover:bg-red-50 transition-all"
+                    >
+                        Try Again
+                    </button>
+                </div>
+            )}
+
+            {/* ── Confirmation code card (Only show if not confirmed) ── */}
+            {paymentStatus !== "confirmed" && (
+                <div className="bg-[var(--bg-secondary)] rounded-2xl border-2 border-[var(--primary-green)]/30 p-6 text-center">
+                    <CheckCircle2 className="w-10 h-10 text-[var(--primary-green)] mx-auto mb-3" />
+                    <p className="text-xs font-bold uppercase tracking-widest text-[var(--primary-green)] mb-2">
+                        {isStk ? "Tracking Details" : "Your Confirmation Code"}
+                    </p>
+                    <div className="flex items-center justify-center gap-3">
+                        <p className="font-mono text-2xl md:text-3xl font-extrabold text-[var(--text-primary)] tracking-widest">
+                            {code || "......"}
+                        </p>
+                        {code && <CopyButton text={code} />}
+                    </div>
+                    <p className="text-sm text-[var(--text-muted)] mt-3">
+                        Save this code — use it to track your donation at <span className="font-semibold text-[var(--primary-green)]">carebridgeke.org/track</span>. No account needed.
+                    </p>
+                </div>
+            )}
 
             {/* ── Warning notice ──────────────────────────────── */}
-            <div className="flex items-start gap-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl px-5 py-4">
-                <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-                <p className="text-sm text-amber-700 dark:text-amber-300">
-                    <strong>Note:</strong> Our M-Pesa numbers are being finalised. If the numbers below don't work,
-                    check your email for the most up-to-date instructions, or WhatsApp us at <strong>{WHATSAPP}</strong>.
-                </p>
-            </div>
+            {paymentStatus !== "confirmed" && (
+                <div className="flex items-start gap-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl px-5 py-4">
+                    <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                    <div className="text-sm text-amber-700 dark:text-amber-300">
+                        {isStk ? (
+                            <p><strong>Didn't get the prompt?</strong> Ensure your phone is unlocked and try again. Alternatively, use the <strong>manual instructions</strong> below.</p>
+                        ) : (
+                            <p><strong>Note:</strong> Our M-Pesa numbers are being finalised. If the numbers below don't work,
+                            check your email for the most up-to-date instructions, or WhatsApp us at <strong>{WHATSAPP}</strong>.</p>
+                        )}
+                    </div>
+                </div>
+            )}
 
             {/* ── Payment instructions ────────────────────────── */}
             <div className="bg-[var(--bg-secondary)] rounded-2xl border border-[var(--border-light)] overflow-hidden">

@@ -27,14 +27,33 @@ export async function POST(req: Request) {
 
             console.log(`✅ Payment SUCCESS: ${checkoutID} (Receipt: ${receipt})`);
 
-            // Update donation status in Supabase (logic will go here)
-            // const supabase = createClient();
-            // await supabase.from('donations').update({ status: 'paid', mpesa_receipt: receipt }).eq('checkout_id', checkoutID);
+            // Update donation status in Supabase
+            const supabase = await createClient();
+            const { error: dbError } = await supabase
+                .from("donations")
+                .update({ 
+                    status: "confirmed", 
+                    payment_ref: receipt,
+                    updated_at: new Date().toISOString() 
+                })
+                .eq("mpesa_checkout_id", checkoutID);
+
+            if (dbError) {
+                console.error("Database error updating donation:", dbError);
+            }
 
             return NextResponse.json({ success: true, message: "Callback received and processed" });
         } else {
             // ResultCode !== 0 (Failed/Cancelled)
             console.log(`❌ Payment FAILED/CANCELLED: ${checkoutID} (ResultCode: ${result})`);
+            
+            // Mark as failed in DB
+            const supabase = await createClient();
+            await supabase
+                .from("donations")
+                .update({ status: "failed" })
+                .eq("mpesa_checkout_id", checkoutID);
+
             return NextResponse.json({ success: false, message: "Payment failed/cancelled" });
         }
     } catch (error) {

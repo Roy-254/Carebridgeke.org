@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { createClient } from "@/lib/supabase/server";
 
 const CONSUMER_KEY = process.env.MPESA_CONSUMER_KEY;
 const CONSUMER_SECRET = process.env.MPESA_CONSUMER_SECRET;
@@ -23,7 +24,18 @@ async function getAccessToken() {
  */
 export async function POST(req: Request) {
     try {
-        const { phone, amount, reference } = await req.json();
+        const body = await req.json();
+        const { 
+            phone, 
+            amount, 
+            reference, 
+            campaignId, 
+            donorName, 
+            donorEmail, 
+            donorId, 
+            isAnonymous, 
+            message 
+        } = body;
 
         // 1. Format phone (must be 254...)
         const formattedPhone = "254" + phone.replace(/\D/g, "").slice(-9);
@@ -61,6 +73,27 @@ export async function POST(req: Request) {
         const data = await res.json();
 
         if (data.ResponseCode === "0") {
+            // 4. Save pending donation to Supabase
+            const supabase = await createClient();
+
+            const { error: dbError } = await supabase.from("donations").insert({
+                campaign_id: campaignId,
+                donor_id: donorId || null,
+                donor_name: donorName || "Anonymous",
+                donor_email: donorEmail || "anonymous@example.com",
+                amount: amount,
+                payment_method: "mpesa",
+                mpesa_checkout_id: data.CheckoutRequestID,
+                status: "pending",
+                is_anonymous: isAnonymous || false,
+                message: message || "",
+            });
+
+            if (dbError) {
+                console.error("Database error saving pending donation:", dbError);
+                // We still return success to the user because STK push was triggered
+            }
+
             return NextResponse.json({ success: true, checkoutID: data.CheckoutRequestID });
         } else {
             return NextResponse.json({ success: false, error: data.CustomerMessage || "Failed to trigger STK Push" }, { status: 400 });

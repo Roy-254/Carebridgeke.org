@@ -150,39 +150,46 @@ function DonationForm() {
     async function handleSubmit() {
         setSubmitting(true);
         setShowSkipEmailModal(false);
+        setErrors({});
+
         try {
-            const res = await fetch("/api/donations/manual", {
+            // 1. Call STK Push API
+            const res = await fetch("/api/mpesa/stkpush", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    donor_name: name.trim() || null,
-                    donor_email: email.trim().toLowerCase() || null,
-                    donor_phone: "+254" + phone.replace(/\D/g, "").slice(-9),
+                    phone: phone.replace(/\D/g, ""), // Sends raw digits like 07...
                     amount,
-                    currency: "KES",
-                    donation_type: donationType,
-                    campaign_id: selectedProject?.id ?? null,
-                    project_category: donationType === "category" ? selectedCategory : null,
-                    campaign_title: selectedProject?.title ?? null,
-                    subscribe_updates: subscribe,
-                    is_anonymous: !name.trim(),
+                    campaignId: selectedProject?.id || null, // For general fund, this is null
+                    donorName: name.trim() || null,
+                    donorEmail: email.trim().toLowerCase() || null,
+                    donorId: null, // Logged in user ID if applicable
+                    isAnonymous: !name.trim(),
+                    message: "",
+                    reference: selectedProject?.slug?.slice(0, 15) || "CareBridge",
                 }),
             });
+
             const data = await res.json();
+
             if (!res.ok) {
-                setErrors({ form: data.error ?? "Something went wrong. Please try again." });
+                setErrors({ form: data.error || "Failed to trigger M-Pesa prompt. Please try again." });
                 return;
             }
-            // Redirect to instructions page
+
+            // 2. If successful, redirect to a "Waiting" or "Success" page
+            // We'll use the existing instructions page but pass a flag that STK was sent
             const params = new URLSearchParams({
-                code: data.confirmation_code,
+                stk: "true",
+                checkoutID: data.checkoutID,
                 amount: String(amount),
-                email: email.trim().toLowerCase(),
-                phone: "+254" + phone.replace(/\D/g, "").slice(-9),
-                supporting: data.supporting,
+                phone: phone,
+                supporting: selectedProject?.title || "General Fund",
             });
             router.push(`/donate/instructions?${params.toString()}`);
-        } catch {
+
+        } catch (err) {
+            console.error("Donation error:", err);
             setErrors({ form: "Network error. Please check your connection and try again." });
         } finally {
             setSubmitting(false);
