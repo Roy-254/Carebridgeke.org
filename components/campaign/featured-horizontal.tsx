@@ -104,10 +104,10 @@ export function FeaturedHorizontal({ projects }: { projects: FeaturedProject[] }
 
                                         <CardContent className="p-7 space-y-4 flex-1 flex flex-col justify-between">
                                             <div>
-                                                <h3 className="text-lg md:text-xl font-black text-[var(--text-primary)] line-clamp-1 leading-tight mb-3 group-hover:text-[var(--primary-green)] transition-colors">
+                                                <h3 className="text-base md:text-lg font-black text-[var(--text-primary)] line-clamp-1 leading-tight mb-2 group-hover:text-[var(--primary-green)] transition-colors">
                                                     {project.title}
                                                 </h3>
-                                                <p className="text-base text-[var(--text-secondary)] line-clamp-3 leading-relaxed opacity-80">
+                                                <p className="text-sm text-[var(--text-secondary)] line-clamp-3 leading-relaxed opacity-75">
                                                     {project.description}
                                                 </p>
                                             </div>
