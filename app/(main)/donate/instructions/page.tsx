@@ -329,6 +329,50 @@ function InstructionsContent() {
                 </Link>
             </div>
 
+            {/* ── Manual Backup Section ────────────────────────── */}
+            <div className="bg-[var(--bg-secondary)] rounded-2xl border-2 border-dashed border-[var(--border-light)] p-8">
+                <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/20 flex items-center justify-center">
+                        <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                    </div>
+                    <div>
+                        <h3 className="text-lg font-extrabold text-[var(--text-primary)]">If you did not receive the prompt message, use:</h3>
+                        <p className="text-sm text-[var(--text-muted)]">Manual Pay via Buy Goods (Till Number)</p>
+                    </div>
+                </div>
+
+                <div className="space-y-6">
+                    <div className="p-6 bg-[var(--bg-primary)] rounded-2xl border border-[var(--border-light)]">
+                        <div className="space-y-3">
+                            <div className="flex items-center justify-between py-2 border-b border-[var(--border-light)]">
+                                <span className="text-sm text-[var(--text-secondary)] font-bold">Till Number (Buy Goods)</span>
+                                <div className="flex items-center gap-2">
+                                    <span className="font-mono font-black text-[var(--primary-green)] text-lg tracking-tighter">4721832</span>
+                                    <CopyButton text="4721832" />
+                                </div>
+                            </div>
+                            <div className="flex items-center justify-between py-2 border-b border-[var(--border-light)]">
+                                <span className="text-sm text-[var(--text-secondary)] font-bold">Account Number</span>
+                                <div className="flex items-center gap-2">
+                                    <span className="font-mono font-bold text-[var(--text-primary)] text-sm">{code || "N/A"}</span>
+                                    {code && <CopyButton text={code} />}
+                                </div>
+                            </div>
+                            <div className="flex items-center justify-between py-2">
+                                <span className="text-sm text-[var(--text-secondary)] font-bold">Amount</span>
+                                <span className="font-extrabold text-[var(--text-primary)]">{formattedAmount}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="p-4 bg-violet-50 dark:bg-violet-900/10 rounded-xl border border-violet-100 dark:border-violet-800/30">
+                        <p className="text-sm text-violet-700 dark:text-violet-300 leading-relaxed">
+                            <strong>Note:</strong> After paying manually, please forward your M-Pesa SMS to WhatsApp: <strong>{WHATSAPP}</strong>. This helps us confirm your impact instantly!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             {/* Track CTA */}
             <div className="text-center py-4">
                 <p className="text-sm text-[var(--text-muted)] mb-3">Want to check on your donation later?</p>
