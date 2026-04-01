@@ -3,8 +3,8 @@ import { ShieldCheck, Search, FileText, CheckCircle2, Clock, ArrowRight, Heart, 
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-    title: "Accountability | Care Bridge Kenya",
-    description: "How Care Bridge Kenya uses donor funds, verifies projects, and maintains full transparency in all its operations.",
+    title: "Accountability | Unity Bridge Kenya",
+    description: "How Unity Bridge Kenya uses donor funds, verifies projects, and maintains full transparency in all its operations.",
 };
 
 const FUND_STEPS = [
@@ -105,7 +105,7 @@ export default function AccountabilityPage() {
                         <div>
                             <p className="font-bold text-[var(--text-primary)] text-sm mb-1">Platform Fee — 5%</p>
                             <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                                Care Bridge Kenya retains a small 5% platform fee from each donation to cover payment processing, staff, operations, and ongoing development. The remaining <strong>95%</strong> goes directly to the project. We are committed to publishing a full breakdown of how operating funds are used as we grow.
+                                Unity Bridge Kenya retains a small 5% platform fee from each donation to cover payment processing, staff, operations, and ongoing development. The remaining <strong>95%</strong> goes directly to the project. We are committed to publishing a full breakdown of how operating funds are used as we grow.
                             </p>
                         </div>
                     </div>
@@ -162,7 +162,7 @@ export default function AccountabilityPage() {
 
                     <div className="mt-10 p-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl">
                         <p className="text-sm text-amber-800 dark:text-amber-200 leading-relaxed">
-                            <strong>A note from us (2026):</strong> Care Bridge Kenya is a young organisation. We do not yet have audited financial statements or formal partnerships with regulatory bodies. We are building this transparency infrastructure step by step. If that level of maturity matters to you, we completely understand — and we invite you to check back as we grow. In the meantime, you can always contact us directly with any questions.
+                            <strong>A note from us (2026):</strong> Unity Bridge Kenya is a young organisation. We do not yet have audited financial statements or formal partnerships with regulatory bodies. We are building this transparency infrastructure step by step. If that level of maturity matters to you, we completely understand — and we invite you to check back as we grow. In the meantime, you can always contact us directly with any questions.
                         </p>
                     </div>
                 </div>

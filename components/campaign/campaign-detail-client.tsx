@@ -63,7 +63,7 @@ export function CampaignDetailClient({ campaign }: { campaign: Campaign }) {
         : `/campaign/${campaign.slug}`;
 
     const handleShare = (platform: string) => {
-        const text = `Help ${campaign.title} reach its goal on Care Bridge Kenya!`;
+        const text = `Help ${campaign.title} reach its goal on Unity Bridge Kenya!`;
         if (platform === "whatsapp") shareOnWhatsApp(text, campaignUrl);
         if (platform === "facebook") shareOnFacebook(campaignUrl);
         if (platform === "copy") {

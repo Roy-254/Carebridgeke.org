@@ -1,10 +1,10 @@
-# Care Bridge Kenya 🇰🇪
+# Unity Bridge Kenya 🇰🇪
 
 **Building Bridges of Hope**
 
 A modern, feature-rich crowdfunding platform designed specifically for Kenyan individuals and communities seeking financial assistance for school fees, medical bills, and other urgent needs.
 
-![Care Bridge Kenya](https://img.shields.io/badge/Status-In%20Development-yellow)
+![Unity Bridge Kenya](https://img.shields.io/badge/Status-In%20Development-yellow)
 ![Next.js](https://img.shields.io/badge/Next.js-16.1-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1-38bdf8)
@@ -53,7 +53,7 @@ A modern, feature-rich crowdfunding platform designed specifically for Kenyan in
 
 1. **Clone or navigate to the project directory:**
    ```bash
-   cd "c:/Users/roynm/Desktop/Web dev/Projects/Care bridge Kenya"
+   cd "c:/Users/roynm/Desktop/Web dev/Projects/Unity bridge Kenya"
    ```
 
 2. **Install dependencies:**
@@ -81,7 +81,7 @@ A modern, feature-rich crowdfunding platform designed specifically for Kenyan in
 ## 📁 Project Structure
 
 ```
-care-bridge-kenya/
+unity-bridge-kenya/
 ├── app/                          # Next.js App Router
 │   ├── globals.css              # Global styles with design system
 │   ├── layout.tsx               # Root layout
@@ -203,7 +203,7 @@ RESEND_API_KEY=
 AFRICAS_TALKING_API_KEY=
 
 # App Configuration
-NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_APP_URL=https://unitybridgeke.org
 NEXT_PUBLIC_PLATFORM_FEE=0.05
 ```
 
@@ -291,13 +291,13 @@ This is a private project currently in development. Contributions will be welcom
 
 ## 📄 License
 
-Copyright © 2026 Care Bridge Kenya. All rights reserved.
+Copyright © 2026 Unity Bridge Kenya. All rights reserved.
 
 ---
 
 ## 📞 Contact
 
-- **Email:** support@carebridgekenya.com
+- **Email:** support@unitybridgeke.org
 - **Phone:** +254 700 000 000
 - **Address:** Nairobi, Kenya
 

@@ -105,7 +105,7 @@ function TrackForm() {
                     Enter Your Confirmation Code
                 </label>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
-                    Your code was emailed to you after your donation. Format: <span className="font-mono font-bold text-[var(--primary-green)]">CBK-YYYYMMDD-XXXX</span>
+                    Your code was emailed to you after your donation. Format: <span className="font-mono font-bold text-[var(--primary-green)]">UBK-YYYYMMDD-XXXX</span>
                 </p>
                 <div className="flex gap-3">
                     <input
@@ -113,7 +113,7 @@ function TrackForm() {
                         value={code}
                         onChange={e => setCode(e.target.value.toUpperCase())}
                         onKeyDown={e => e.key === "Enter" && handleSearch()}
-                        placeholder="CBK-20260306-A1B2"
+                        placeholder="UBK-20260306-A1B2"
                         className="flex-1 h-13 px-5 rounded-xl border-2 border-[var(--border-light)] bg-[var(--bg-primary)] text-[var(--text-primary)] font-mono text-base font-semibold focus:outline-none focus:border-[var(--primary-green)] focus:ring-2 focus:ring-[var(--primary-green)]/20 transition-all uppercase placeholder:normal-case placeholder:font-sans placeholder:font-normal"
                         autoFocus
                     />
@@ -256,8 +256,8 @@ function TrackForm() {
                 <div className="grid sm:grid-cols-3 gap-4 mt-4">
                     {[
                         { icon: "📧", title: "Check Your Email", body: "Your code was sent to the email you provided at checkout." },
-                        { icon: "🔢", title: "Format", body: "Codes look like CBK-20260306-A1B2 — all caps, no spaces." },
-                        { icon: "💬", title: "Need Help?", body: "Contact us at hello@carebridgekenya.com if you cannot find your code." },
+                        { icon: "🔢", title: "Format", body: "Codes look like UBK-20260306-A1B2 — all caps, no spaces." },
+                        { icon: "💬", title: "Need Help?", body: "Contact us at support@unitybridgeke.org if you cannot find your code." },
                     ].map(item => (
                         <div key={item.title} className="bg-[var(--bg-secondary)] rounded-xl border border-[var(--border-light)] p-5 text-center">
                             <div className="text-3xl mb-2">{item.icon}</div>

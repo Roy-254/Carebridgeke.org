@@ -351,7 +351,7 @@ export function DonateClient({ campaign }: DonateClientProps) {
 
                         <p className="text-center text-xs text-[var(--text-muted)]">
                             <Lock className="w-3 h-3 inline mr-1" />
-                            Payments processed securely by Flutterwave. Care Bridge Kenya never stores your card details.
+                            Payments processed securely by Flutterwave. Unity Bridge Kenya never stores your card details.
                         </p>
                     </div>
                 </div>

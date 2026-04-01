@@ -4,9 +4,9 @@ import { Leaf, ArrowRight, Trash2, Droplets, Building2, Heart } from "lucide-rea
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-    title: "Restoring Our Environment | Care Bridge Kenya",
+    title: "Restoring Our Environment | Unity Bridge Kenya",
     description:
-        "Help Care Bridge Kenya clean up Kenya — collecting litter from informal dumpsites, unclogging roadside drainage channels, and revitalising public parks, markets, schools, and community buildings.",
+        "Help Unity Bridge Kenya clean up Kenya — collecting litter from informal dumpsites, unclogging roadside drainage channels, and revitalising public parks, markets, schools, and community buildings.",
 };
 
 const ACTIVITIES = [

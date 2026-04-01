@@ -1,5 +1,5 @@
 -- ============================================================
---  Care Bridge Kenya — Donation Tracking Migration
+--  Unity Bridge Kenya — Donation Tracking Migration
 --  Run this in the Supabase SQL Editor
 -- ============================================================
 

@@ -1,10 +1,10 @@
-# Quick Start Guide - Care Bridge Kenya
+# Quick Start Guide - Unity Bridge Kenya
 
-Welcome to Care Bridge Kenya! This guide will help you get the project up and running quickly.
+Welcome to Unity Bridge Kenya! This guide will help you get the project up and running quickly.
 
 ## ✅ What's Already Done
 
-The foundation of Care Bridge Kenya is complete:
+The foundation of Unity Bridge Kenya is complete:
 
 1. ✅ **Project Setup**
    - Next.js 16 with TypeScript
@@ -307,7 +307,7 @@ npm run dev
 
 ## 🎉 You're All Set!
 
-Your Care Bridge Kenya platform is ready for development. The foundation is solid, the design is beautiful, and you're ready to build something amazing for Kenya!
+Your Unity Bridge Kenya platform is ready for development. The foundation is solid, the design is beautiful, and you're ready to build something amazing for Kenya!
 
 **Happy coding! 🇰🇪💚**
 

@@ -7,8 +7,8 @@ import {
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-    title: "Get Involved | Care Bridge Kenya",
-    description: "Donate, volunteer, partner with us, or help spread the word. Every action you take brings Care Bridge Kenya closer to helping more Kenyans.",
+    title: "Get Involved | Unity Bridge Kenya",
+    description: "Donate, volunteer, partner with us, or help spread the word. Every action you take brings Unity Bridge Kenya closer to helping more Kenyans.",
 };
 
 export default function GetInvolvedPage() {
@@ -83,7 +83,7 @@ export default function GetInvolvedPage() {
                             </h2>
                             <div className="space-y-4 text-[var(--text-secondary)] leading-relaxed">
                                 <p>
-                                    Care Bridge Kenya runs almost entirely on the goodwill of volunteers. If you have time, skills, or energy to contribute — we want to hear from you. Our current needs include:
+                                    Unity Bridge Kenya runs almost entirely on the goodwill of volunteers. If you have time, skills, or energy to contribute — we want to hear from you. Our current needs include:
                                 </p>
                             </div>
                             <ul className="mt-5 space-y-3">
@@ -173,7 +173,7 @@ export default function GetInvolvedPage() {
                     </p>
                     <div className="p-6 bg-[var(--bg-primary)] rounded-2xl border border-[var(--border-light)] max-w-lg mx-auto">
                         <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-4">
-                            <strong className="text-[var(--text-primary)]">Self-hosted fundraisers</strong> (coming soon): We are building the infrastructure for verified individuals to host fundraising pages on behalf of Care Bridge Kenya. Watch this space.
+                            <strong className="text-[var(--text-primary)]">Self-hosted fundraisers</strong> (coming soon): We are building the infrastructure for verified individuals to host fundraising pages on behalf of Unity Bridge Kenya. Watch this space.
                         </p>
                         <Link href="/contact">
                             <Button variant="outline" className="gap-2 font-semibold w-full">
@@ -190,7 +190,7 @@ export default function GetInvolvedPage() {
                     <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--primary-green)]">Share</span>
                     <h2 className="text-3xl font-extrabold text-[var(--text-primary)] mt-2 mb-4">Spread the Word</h2>
                     <p className="text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto mb-10">
-                        Sometimes the most powerful thing you can do is tell someone about us. Share Care Bridge Kenya with your network and help us reach donors who want to give with confidence.
+                        Sometimes the most powerful thing you can do is tell someone about us. Share Unity Bridge Kenya with your network and help us reach donors who want to give with confidence.
                     </p>
                     <div className="grid sm:grid-cols-3 gap-5 text-left">
                         {[
@@ -198,7 +198,7 @@ export default function GetInvolvedPage() {
                                 icon: "💬",
                                 title: "Share on WhatsApp",
                                 desc: "Send our link to your contacts, family groups, or church chats.",
-                                href: "https://wa.me/?text=Support+Care+Bridge+Kenya+%F0%9F%87%B0%F0%9F%87%AA+https://carebridgekenya.com",
+                                href: "https://wa.me/?text=Support+Unity+Bridge+Kenya+%F0%9F%87%B0%F0%9F%87%AA+https://unitybridgeke.org",
                                 external: true,
                                 label: "Share via WhatsApp",
                             },
@@ -206,7 +206,7 @@ export default function GetInvolvedPage() {
                                 icon: "📘",
                                 title: "Share on Facebook",
                                 desc: "Post about a project you care about and tag us.",
-                                href: "https://facebook.com/sharer/sharer.php?u=https://carebridgekenya.com",
+                                href: "https://facebook.com/sharer/sharer.php?u=https://unitybridgeke.org",
                                 external: true,
                                 label: "Share on Facebook",
                             },
@@ -214,7 +214,7 @@ export default function GetInvolvedPage() {
                                 icon: "📧",
                                 title: "Tell Someone Today",
                                 desc: "Forward our website to a colleague, friend, or employer who gives.",
-                                href: "mailto:?subject=Support%20Care%20Bridge%20Kenya&body=I%20thought%20you%27d%20want%20to%20know%20about%20this%20organisation%20doing%20great%20work%20in%20Kenya%3A%20https%3A%2F%2Fcarebridge kenya.com",
+                                href: "mailto:?subject=Support%20Unity%20Bridge%20Kenya&body=I%20thought%20you%27d%20want%20to%20know%20about%20this%20organisation%20doing%20great%20work%20in%20Kenya%3A%20https%3A%2F%2Funitybridgeke.org",
                                 external: true,
                                 label: "Share via Email",
                             },

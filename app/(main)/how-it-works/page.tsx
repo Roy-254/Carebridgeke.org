@@ -4,8 +4,8 @@ import { Search, CheckCircle2, CreditCard, RefreshCw, Bell, ArrowRight, Heart, S
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-    title: "How It Works | Care Bridge Kenya",
-    description: "Learn how Care Bridge Kenya selects projects, verifies them, receives donations, and disburses funds to beneficiaries across Kenya.",
+    title: "How It Works | Unity Bridge Kenya",
+    description: "Learn how Unity Bridge Kenya selects projects, verifies them, receives donations, and disburses funds to beneficiaries across Kenya.",
 };
 
 const STEPS = [
@@ -67,7 +67,7 @@ export default function HowItWorksPage() {
                         From a Genuine Need to a Changed Life
                     </h1>
                     <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                        Care Bridge Kenya is not a marketplace where anyone can post a campaign. We do the work of finding, verifying, and managing every project — so you can give with complete confidence.
+                        Unity Bridge Kenya is not a marketplace where anyone can post a campaign. We do the work of finding, verifying, and managing every project — so you can give with complete confidence.
                     </p>
                 </div>
             </section>

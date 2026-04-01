@@ -57,17 +57,17 @@ export async function POST(req: NextRequest) {
         // Call Flutterwave Standard Payments API
         const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
         const flwPayload = {
-            tx_ref: `CBK-${donation.id}`,
-            amount,
+            tx_ref: `UBK-${donation.id}`,
+            amount: Number(amount),
             currency,
-            redirect_url: `${appUrl}/donate/success?tx_ref=CBK-${donation.id}`,
+            redirect_url: `${appUrl}/donate/success?tx_ref=UBK-${donation.id}`,
             customer: {
-                email: donor_email || "donor@carebridgekenya.com",
+                email: donor_email || "donor@unitybridgeke.org",
                 phone_number: donor_phone || "",
                 name: is_anonymous ? "Anonymous Donor" : (donor_name || "Donor"),
             },
             customizations: {
-                title: "Care Bridge Kenya",
+                title: "Unity Bridge Kenya",
                 description: `Donation to campaign`,
                 logo: `${appUrl}/logo.png`,
             },

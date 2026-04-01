@@ -11,7 +11,7 @@ const supabaseAdmin = createClient(
 function generateCode(): string {
   const date = new Date().toISOString().slice(0, 10).replace(/-/g, ""); // YYYYMMDD
   const rand = Math.random().toString(36).toUpperCase().slice(2, 6).padEnd(4, "0");
-  return `CBK-${date}-${rand}`;
+  return `UBK-${date}-${rand}`;
 }
 
 function isValidEmail(email: string): boolean {
@@ -136,9 +136,9 @@ export async function POST(req: NextRequest) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "Care Bridge Kenya <donations@carebridgeke.org>",
+          from: "Unity Bridge Kenya <donations@unitybridgeke.org>",
           to: [donor_email.trim().toLowerCase()],
-          subject: `Your Donation to Care Bridge Kenya — ${confirmationCode}`,
+          subject: `Your Donation to Unity Bridge Kenya — ${confirmationCode}`,
           html: emailHtml,
         }),
       }).catch((e) => console.error("Email send error:", e));
@@ -206,11 +206,11 @@ function buildConfirmationEmail({
   const tillNo = "4721832"; // Updated to real till
   const WHATSAPP = "0740 797 404";
   const SUPPORT_PHONE = "0740 797 404";
-  const supportEmail = "donations@carebridgeke.org";
+  const supportEmail = "donations@unitybridgeke.org";
 
   return `<!DOCTYPE html>
 <html>
-<head><meta charset="utf-8"><title>Donation Instructions — Care Bridge Kenya</title></head>
+<head><meta charset="utf-8"><title>Donation Instructions — Unity Bridge Kenya</title></head>
 <body style="font-family:'Helvetica Neue',Arial,sans-serif;background:#f6f9fc;margin:0;padding:0;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f6f9fc;padding:32px 16px;">
     <tr><td align="center">
@@ -219,7 +219,7 @@ function buildConfirmationEmail({
         <!-- Header -->
         <tr>
           <td style="background:linear-gradient(135deg,#16a34a,#15803d);padding:36px 40px;text-align:center;">
-            <h1 style="color:#fff;margin:0;font-size:26px;letter-spacing:-0.5px;">Care Bridge Kenya</h1>
+            <h1 style="color:#fff;margin:0;font-size:26px;letter-spacing:-0.5px;">Unity Bridge Kenya</h1>
             <p style="color:rgba(255,255,255,0.85);margin:6px 0 0;font-size:13px;">Building Bridges of Hope</p>
           </td>
         </tr>
@@ -355,7 +355,7 @@ function buildConfirmationEmail({
         <!-- Footer -->
         <tr>
           <td style="background:#f8fafc;padding:20px 40px;text-align:center;border-top:1px solid #e2e8f0;">
-            <p style="color:#aaa;font-size:12px;margin:0;">© ${new Date().getFullYear()} Care Bridge Kenya · Nairobi, Kenya</p>
+            <p style="color:#aaa;font-size:12px;margin:0;">© ${new Date().getFullYear()} Unity Bridge Kenya · Nairobi, Kenya</p>
           </td>
         </tr>
       </table>

@@ -57,8 +57,8 @@ export async function POST(req: Request) {
             PartyB: SHORTCODE,
             PhoneNumber: formattedPhone,
             CallBackURL: CALLBACK_URL,
-            AccountReference: reference || "CareBridgeDonation",
-            TransactionDesc: "Care Bridge Kenya Donation",
+            AccountReference: reference || "UnityBridgeDonation",
+            TransactionDesc: "Unity Bridge Kenya Donation",
         };
 
         const res = await fetch("https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest", {
@@ -100,6 +100,6 @@ export async function POST(req: Request) {
         }
     } catch (error: any) {
         console.error("STK Push error:", error);
-        return NextResponse.json({ success: false, error: "Internal server error" }, { status: 500 });
+        return NextResponse.json({ success: false, error: `Internal server error: ${error.message}` }, { status: 500 });
     }
 }

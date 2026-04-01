@@ -76,7 +76,7 @@ const MEGA_NAV: MegaMenu[] = [
             // Using the Our Projects image — community/giving scene
             image: "/site-images/community-leaders.png",
             heading: "Lifting burdens, building futures",
-            body: "Care Bridge Kenya bridges the gap between donors and verified charitable initiatives — from school fees to emergency relief.",
+            body: "Unity Bridge Kenya bridges the gap between donors and verified charitable initiatives — from school fees to emergency relief.",
             cta: { label: "Our Full Story", href: "/about" },
         },
         columns: [
@@ -139,8 +139,8 @@ const MEGA_NAV: MegaMenu[] = [
                 heading: "Share",
                 links: [
                     { label: "Spread the Word", href: "/get-involved#share" },
-                    { label: "Share on WhatsApp", href: "https://wa.me/?text=Support+Care+Bridge+Kenya+%F0%9F%87%B0%F0%9F%87%AA+https://carebridgekenya.com", external: true },
-                    { label: "Share on Facebook", href: "https://facebook.com/sharer/sharer.php?u=https://carebridgekenya.com", external: true },
+                    { label: "Share on WhatsApp", href: "https://wa.me/?text=Support+Unity+Bridge+Kenya+%F0%9F%87%B0%F0%9F%87%AA+https://unitybridgeke.org", external: true },
+                    { label: "Share on Facebook", href: "https://facebook.com/sharer/sharer.php?u=https://unitybridgeke.org", external: true },
                 ],
             },
         ],
@@ -347,11 +347,11 @@ export function Header() {
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity shrink-0" onClick={() => setActiveDropdown(null)}>
                         <div className="relative w-9 h-9 xl:w-11 xl:h-11 shrink-0">
-                            <Image src="/logo.jpeg" alt="Care Bridge Kenya" fill className="object-contain" priority />
+                            <Image src="/logo 2.jpeg" alt="Unity Bridge Kenya" fill className="object-contain" priority />
                         </div>
                         <div className="flex flex-col leading-tight">
-                            <span className="text-base xl:text-lg font-bold text-[var(--text-primary)] whitespace-nowrap hidden sm:block">Care Bridge Kenya</span>
-                            <span className="text-base font-bold text-[var(--text-primary)] sm:hidden">Care Bridge</span>
+                            <span className="text-base xl:text-lg font-bold text-[var(--text-primary)] whitespace-nowrap hidden sm:block">Unity Bridge Kenya</span>
+                            <span className="text-base font-bold text-[var(--text-primary)] sm:hidden">Unity Bridge</span>
                             <span className="text-[10px] font-semibold text-[var(--primary-green)] uppercase tracking-widest hidden sm:block">Building Bridges of Hope</span>
                         </div>
                     </Link>

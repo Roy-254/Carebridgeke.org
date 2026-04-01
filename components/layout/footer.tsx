@@ -11,7 +11,7 @@ export function Footer() {
                     <div>
                         <div className="flex items-center gap-2 mb-4">
                             <Heart className="w-6 h-6 text-[var(--primary-green)]" fill="currentColor" />
-                            <span className="font-bold text-[var(--text-primary)]">Care Bridge Kenya</span>
+                            <span className="font-bold text-[var(--text-primary)]">Unity Bridge Kenya</span>
                         </div>
                         <p className="text-sm text-[var(--text-secondary)]">
                             A registered charity organisation building bridges of hope across Kenya — one project at a time.
@@ -41,7 +41,7 @@ export function Footer() {
 
                     <div>
                         <h4 className="font-bold text-[var(--text-primary)] mb-4">Connect</h4>
-                        <p className="text-sm text-[var(--text-secondary)] mb-2">support@carebridgekenya.com</p>
+                        <p className="text-sm text-[var(--text-secondary)] mb-2">support@unitybridgeke.org</p>
                         <p className="text-sm text-[var(--text-secondary)] mb-4">0740 797 404</p>
                         <div className="flex gap-3">
                             <a href="#" className="w-10 h-10 rounded-full bg-[var(--bg-secondary)] flex items-center justify-center hover:bg-[var(--primary-green)] hover:text-white transition-colors">
@@ -55,7 +55,7 @@ export function Footer() {
                 </div>
 
                 <div className="pt-8 border-t border-[var(--border-light)] text-center text-sm text-[var(--text-secondary)]">
-                    <p>&copy; {new Date().getFullYear()} Care Bridge Kenya. All rights reserved. Registered Charity Organisation.</p>
+                    <p>&copy; {new Date().getFullYear()} Unity Bridge Kenya. All rights reserved. Registered Charity Organisation.</p>
                 </div>
             </div>
         </footer>

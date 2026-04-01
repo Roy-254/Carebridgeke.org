@@ -10,7 +10,7 @@ import {
 
 // ─── Config (update once numbers are live) ─────────────────────
 const WHATSAPP = "0740 797 404";
-const SUPPORT_EMAIL = "donations@carebridgeke.org";
+const SUPPORT_EMAIL = "donations@unitybridgeke.org";
 const SUPPORT_PHONE = "0740 797 404";
 
 // ─── Copy-to-clipboard button ──────────────────────────────────
@@ -206,7 +206,7 @@ function InstructionsContent() {
                         {code && <CopyButton text={code} />}
                     </div>
                     <p className="text-sm text-[var(--text-muted)] mt-3">
-                        Save this code — use it to track your donation at <span className="font-semibold text-[var(--primary-green)]">carebridgeke.org/track</span>. No account needed.
+                        Save this code — use it to track your donation at <span className="font-semibold text-[var(--primary-green)]">unitybridgeke.org/track</span>. No account needed.
                     </p>
                 </div>
             )}
@@ -359,8 +359,10 @@ function InstructionsContent() {
                                 </div>
                             </div>
                             <div className="flex items-center justify-between py-2">
-                                <span className="text-sm text-[var(--text-secondary)] font-bold">Amount</span>
-                                <span className="font-extrabold text-[var(--text-primary)]">{formattedAmount}</span>
+                                <span className="text-sm text-[var(--text-secondary)] font-bold">Support Email</span>
+                                <a href="mailto:support@unitybridge.org" className="text-sm text-[var(--primary-green)] hover:underline font-medium">
+                                    support@unitybridge.org
+                                </a>
                             </div>
                         </div>
                     </div>

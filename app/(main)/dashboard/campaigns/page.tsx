@@ -6,7 +6,7 @@ import { CreatorDashboardClient } from "@/components/dashboard/creator-dashboard
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "My Campaigns — Care Bridge Kenya",
+    title: "My Campaigns — Unity Bridge Kenya",
     description: "Manage your fundraising campaigns and track your impact.",
 };
 

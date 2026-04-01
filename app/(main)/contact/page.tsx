@@ -7,8 +7,8 @@ import {
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-    title: "Contact Us | Care Bridge Kenya",
-    description: "Get in touch with Care Bridge Kenya. We respond to every message. Find our contact details, location, and answers to frequently asked questions.",
+    title: "Contact Us | Unity Bridge Kenya",
+    description: "Get in touch with Unity Bridge Kenya. We respond to every message. Find our contact details, location, and answers to frequently asked questions.",
 };
 
 const FAQS = [
@@ -26,7 +26,7 @@ const FAQS = [
     },
     {
         q: "How can I submit a project for funding?",
-        a: "Currently Care Bridge Kenya curates all projects internally. If you know of a genuine need, please reach out to us via the contact form below or email us directly. We review every submission.",
+        a: "Currently Unity Bridge Kenya curates all projects internally. If you know of a genuine need, please reach out to us via the contact form below or email us directly. We review every submission.",
     },
     {
         q: "What happens if a campaign does not reach its goal?",
@@ -34,7 +34,7 @@ const FAQS = [
     },
     {
         q: "Are donations tax-deductible?",
-        a: "Care Bridge Kenya is currently in the process of obtaining formal NGO registration and tax exemption status in Kenya. At this stage, we cannot issue documents for tax deduction purposes. We will update this as our legal status matures.",
+        a: "Unity Bridge Kenya is currently in the process of obtaining formal NGO registration and tax exemption status in Kenya. At this stage, we cannot issue documents for tax deduction purposes. We will update this as our legal status matures.",
     },
     {
         q: "How long does project verification take?",
@@ -74,7 +74,7 @@ export default function ContactPage() {
                         <div className="space-y-5">
                             <h2 className="text-2xl font-extrabold text-[var(--text-primary)]">How to Reach Us</h2>
                             <p className="text-[var(--text-secondary)] leading-relaxed">
-                                We are a small team and we handle all communications ourselves — so when you reach out, you speak directly with the people running Care Bridge Kenya.
+                                We are a small team and we handle all communications ourselves — so when you reach out, you speak directly with the people running Unity Bridge Kenya.
                             </p>
 
                             <div className="space-y-4 mt-6">
@@ -84,8 +84,8 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <p className="font-bold text-[var(--text-primary)] mb-1">Email</p>
-                                        <a href="mailto:hello@carebridgekenya.com" className="text-sm text-[var(--primary-green)] hover:underline font-medium">
-                                            hello@carebridgekenya.com
+                                        <a href="mailto:support@unitybridgeke.org" className="text-sm text-[var(--primary-green)] hover:underline font-medium">
+                                            support@unitybridgeke.org
                                         </a>
                                         <p className="text-xs text-[var(--text-muted)] mt-1">We aim to reply within 2 business days.</p>
                                     </div>

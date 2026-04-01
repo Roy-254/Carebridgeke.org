@@ -166,7 +166,7 @@ function DonationForm() {
                     donorId: null, // Logged in user ID if applicable
                     isAnonymous: !name.trim(),
                     message: "",
-                    reference: selectedProject?.slug?.slice(0, 15) || "CareBridge",
+                    reference: selectedProject?.slug?.slice(0, 15) || "UnityBridge",
                 }),
             });
 

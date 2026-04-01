@@ -38,7 +38,7 @@ const MOCK_PROJECTS: FeaturedProject[] = [
         category: "school_fees",
         current_amount: 350000,
         target_amount: 500000,
-        creator: { full_name: "Care Bridge Kenya" },
+        creator: { full_name: "Unity Bridge Kenya" },
         images: [{ storage_url: "/school-fees-project.png", order_index: 0 }],
         donations: Array(45).fill({ id: "x" }),
     },
@@ -50,7 +50,7 @@ const MOCK_PROJECTS: FeaturedProject[] = [
         category: "medical",
         current_amount: 180000,
         target_amount: 500000,
-        creator: { full_name: "Care Bridge Kenya" },
+        creator: { full_name: "Unity Bridge Kenya" },
         images: [{ storage_url: "/medical-relief-project.png", order_index: 0 }],
         donations: Array(67).fill({ id: "x" }),
     },
@@ -62,7 +62,7 @@ const MOCK_PROJECTS: FeaturedProject[] = [
         category: "community",
         current_amount: 420000,
         target_amount: 600000,
-        creator: { full_name: "Care Bridge Kenya" },
+        creator: { full_name: "Unity Bridge Kenya" },
         images: [{ storage_url: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&h=600&fit=crop", order_index: 0 }],
         donations: Array(89).fill({ id: "x" }),
     },
@@ -74,7 +74,7 @@ const MOCK_PROJECTS: FeaturedProject[] = [
         category: "community",
         current_amount: 0,
         target_amount: 800000,
-        creator: { full_name: "Care Bridge Kenya" },
+        creator: { full_name: "Unity Bridge Kenya" },
         images: [{ storage_url: "/environment-hero.png", order_index: 0 }],
         donations: Array(0).fill({ id: "x" }),
     },
@@ -176,7 +176,7 @@ export default async function HomePage() {
                         </h1>
 
                         <p className="text-lg md:text-xl text-white/80 mb-10 max-w-xl animate-slide-up" style={{ animationDelay: "0.1s" }}>
-                            We identify, verify, and fund charitable projects across Kenya — covering school fees, medical bills, and urgent community needs.
+                            We identify, verify, and fund charitable projects across Kenya — covering school fees, medical bills, and urgent community needs on Unity Bridge.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 animate-slide-up" style={{ animationDelay: "0.2s" }}>

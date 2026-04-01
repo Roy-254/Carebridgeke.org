@@ -4,8 +4,8 @@ import { Heart, Users, Target, Eye, CheckCircle2, ArrowRight, Handshake } from "
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-    title: "About Us | Care Bridge Kenya",
-    description: "Learn about Care Bridge Kenya — who we are, our mission, vision, values, and the small but passionate team behind the organisation.",
+    title: "About Us | Unity Bridge Kenya",
+    description: "Learn about Unity Bridge Kenya — who we are, our mission, vision, values, and the small but passionate team behind the organisation.",
 };
 
 const VALUES = [
@@ -18,10 +18,10 @@ const VALUES = [
 
 const TEAM: { name: string; role: string; bio: string; initials: string }[] = [
     {
-        name: "The Care Bridge Team",
+        name: "The Unity Bridge Team",
         role: "Founders & Core Team",
-        initials: "CB",
-        bio: "Care Bridge Kenya was founded in 2026 by a group of Kenyans who saw first-hand how financial hardship derails lives — a student dropping out over unpaid school fees, a family liquidating assets for a medical bill. We built this platform to make giving easier and more trustworthy. Our team is small, volunteer-driven, and growing.",
+        initials: "UB",
+        bio: "Unity Bridge Kenya was founded in 2026 by a group of Kenyans who saw first-hand how financial hardship derails lives — a student dropping out over unpaid school fees, a family liquidating assets for a medical bill. We built this platform to make giving easier and more trustworthy. Our team is small, volunteer-driven, and growing.",
     },
 ];
 
@@ -55,10 +55,10 @@ export default function AboutPage() {
                             </h2>
                             <div className="space-y-4 text-[var(--text-secondary)] leading-relaxed">
                                 <p>
-                                    Care Bridge Kenya was founded in early 2026 by a group of Kenyans frustrated by a recurring scene: a family that needed help, a community that wanted to give — but no trusted, easy way to connect the two.
+                                    Unity Bridge Kenya was founded in early 2026 by a group of Kenyans frustrated by a recurring scene: a family that needed help, a community that wanted to give — but no trusted, easy way to connect the two.
                                 </p>
                                 <p>
-                                    School fees go unpaid. Medical bills pile up. Emergencies strike without warning. Meanwhile, well-meaning donors hesitate because they cannot verify where their money will go. This gap — between generosity and trust — is what Care Bridge Kenya exists to close.
+                                    School fees go unpaid. Medical bills pile up. Emergencies strike without warning. Meanwhile, well-meaning donors hesitate because they cannot verify where their money will go. This gap — between generosity and trust — is what Unity Bridge Kenya exists to close.
                                 </p>
                                 <p>
                                     We verify every project before it goes live, provide regular progress updates to donors, and ensure that disbursed funds are tracked and reported. We are just getting started, but our commitment to integrity and impact is unwavering.
@@ -144,18 +144,18 @@ export default function AboutPage() {
             <section id="team" className="py-16 md:py-20 bg-[var(--bg-secondary)] border-t border-[var(--border-light)]">
                 <div className="container-custom max-w-4xl text-center">
                     <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--primary-green)]">Our Team</span>
-                    <h2 className="text-3xl font-extrabold text-[var(--text-primary)] mt-2 mb-4">The People Behind Care Bridge</h2>
+                    <h2 className="text-3xl font-extrabold text-[var(--text-primary)] mt-2 mb-4">The People Behind Unity Bridge</h2>
                     <p className="text-[var(--text-secondary)] mb-10 max-w-2xl mx-auto">
                         We are a lean, passionate team of Kenyans who believe in the power of community. Our team is volunteer-driven in these early stages, and we are actively growing.
                     </p>
                     <div className="max-w-lg mx-auto bg-[var(--bg-primary)] rounded-2xl p-8 border border-[var(--border-light)] text-left">
                         <div className="w-14 h-14 rounded-2xl bg-[var(--primary-green)]/10 flex items-center justify-center text-2xl font-extrabold text-[var(--primary-green)] mb-4">
-                            CB
+                            UB
                         </div>
-                        <h3 className="font-bold text-[var(--text-primary)] text-lg mb-1">The Care Bridge Team</h3>
+                        <h3 className="font-bold text-[var(--text-primary)] text-lg mb-1">The Unity Bridge Team</h3>
                         <p className="text-xs text-[var(--primary-green)] font-semibold uppercase tracking-wider mb-3">Founders &amp; Core Team</p>
                         <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                            Care Bridge Kenya was founded in 2026 by a group of Kenyans who saw first-hand how financial hardship derails lives — a student dropping out over unpaid school fees, a family losing everything to a medical bill. Our team is small, volunteer-driven, and growing. We welcome anyone passionate about changing this narrative.
+                            Unity Bridge Kenya was founded in 2026 by a group of Kenyans who saw first-hand how financial hardship derails lives — a student dropping out over unpaid school fees, a family losing everything to a medical bill. Our team is small, volunteer-driven, and growing. We welcome anyone passionate about changing this narrative.
                         </p>
                     </div>
                     <div className="mt-8">

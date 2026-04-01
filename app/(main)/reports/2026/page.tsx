@@ -4,8 +4,8 @@ import { BarChart3, FileText, Heart, Clock, ArrowRight, Download, TrendingUp, Al
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-    title: "Impact Report 2026 | Care Bridge Kenya",
-    description: "Care Bridge Kenya's 2026 impact report — our first year in operation. An honest account of what we set out to do, what we achieved, and what we are still building.",
+    title: "Impact Report 2026 | Unity Bridge Kenya",
+    description: "Unity Bridge Kenya's 2026 impact report — our first year in operation. An honest account of what we set out to do, what we achieved, and what we are still building.",
 };
 
 const STATS_2026 = [
@@ -42,7 +42,7 @@ export default function Report2026Page() {
                         <div>
                             <p className="font-bold text-amber-800 dark:text-amber-200 mb-1">A note about this report</p>
                             <p className="text-sm text-amber-700 dark:text-amber-300 leading-relaxed">
-                                Care Bridge Kenya was founded in 2026. This is our first year of operation and therefore our first impact report. We do not yet have audited financial statements, a formal regulatory filing, or multi-year data to compare against. What we have is honesty — this report reflects everything we have done and how we have done it, without embellishment. We will publish a more comprehensive report at the end of each year.
+                                Unity Bridge Kenya was founded in 2026. This is our first year of operation and therefore our first impact report. We do not yet have audited financial statements, a formal regulatory filing, or multi-year data to compare against. What we have is honesty — this report reflects everything we have done and how we have done it, without embellishment. We will publish a more comprehensive report at the end of each year.
                             </p>
                         </div>
                     </div>
@@ -91,14 +91,14 @@ export default function Report2026Page() {
                         <div className="bg-[var(--bg-primary)] rounded-2xl border border-[var(--border-light)] p-7">
                             <h3 className="text-lg font-bold text-[var(--text-primary)] mb-3">We built our platform from scratch</h3>
                             <p className="text-[var(--text-secondary)] leading-relaxed">
-                                The Care Bridge Kenya website, payment system, and donor management infrastructure were all built in 2026. We integrated with Flutterwave for M-Pesa and card payments, and implemented end-to-end donor receipts. This is our foundation for scale.
+                                The Unity Bridge Kenya website, payment system, and donor management infrastructure were all built in 2026. We integrated with Flutterwave for M-Pesa and card payments, and implemented end-to-end donor receipts. This is our foundation for scale.
                             </p>
                         </div>
 
                         <div className="bg-[var(--bg-primary)] rounded-2xl border border-[var(--border-light)] p-7">
                             <h3 className="text-lg font-bold text-[var(--text-primary)] mb-3">We are entirely volunteer-driven</h3>
                             <p className="text-[var(--text-secondary)] leading-relaxed">
-                                Every person working on Care Bridge Kenya in 2026 is a volunteer. Our operating costs are covered by the 5% platform fee on donations. No external funding has been raised for operations — all donor money goes to projects.
+                                Every person working on Unity Bridge Kenya in 2026 is a volunteer. Our operating costs are covered by the 5% platform fee on donations. No external funding has been raised for operations — all donor money goes to projects.
                             </p>
                         </div>
                     </div>

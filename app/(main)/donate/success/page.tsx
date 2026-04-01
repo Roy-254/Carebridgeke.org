@@ -25,7 +25,7 @@ function DonationSuccessContent() {
         }
 
         // Poll the donation status from our DB (the webhook updates it)
-        const donationId = txRef.replace("CBK-", "");
+        const donationId = txRef.replace("UBK-", "");
         let attempts = 0;
 
         const poll = async () => {

@@ -12,13 +12,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const { slug } = await params;
     try {
         const campaign = await getCampaignBySlug(slug);
-        if (!campaign) return { title: "Donate — Care Bridge Kenya" };
+        if (!campaign) return { title: "Campaign Not Found — Unity Bridge Kenya" };
         return {
-            title: `Donate to ${campaign.title} — Care Bridge Kenya`,
+            title: `${campaign.title} — Unity Bridge Kenya`,
             description: `Support ${campaign.title} and make a real difference.`,
         };
     } catch {
-        return { title: "Donate — Care Bridge Kenya" };
+        return { title: "Unity Bridge Kenya" };
     }
 }
 
@@ -53,7 +53,7 @@ const DEMO_CAMPAIGNS: Record<string, any> = {
         current_amount: 350000,
         target_amount: 500000,
         images: [{ storage_url: "/school-fees-project.png", order_index: 0 }],
-        creator: { full_name: "Care Bridge Kenya", is_verified: true }
+        creator: { full_name: "Unity Bridge Kenya", is_verified: true }
     },
     "clearing-hospital-bills": {
         id: "demo-2",
@@ -62,7 +62,7 @@ const DEMO_CAMPAIGNS: Record<string, any> = {
         current_amount: 180000,
         target_amount: 500000,
         images: [{ storage_url: "/medical-relief-project.png", order_index: 0 }],
-        creator: { full_name: "Care Bridge Kenya", is_verified: true }
+        creator: { full_name: "Unity Bridge Kenya", is_verified: true }
     },
     "impacting-lives": {
         id: "demo-3",
@@ -71,6 +71,6 @@ const DEMO_CAMPAIGNS: Record<string, any> = {
         current_amount: 420000,
         target_amount: 600000,
         images: [{ storage_url: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=1200", order_index: 0 }],
-        creator: { full_name: "Care Bridge Kenya", is_verified: true }
+        creator: { full_name: "Unity Bridge Kenya", is_verified: true }
     }
 };

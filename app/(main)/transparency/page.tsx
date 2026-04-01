@@ -228,7 +228,7 @@ export default function TransparencyPage() {
                         100% Transparent. <br className="hidden sm:block" />Every Shilling Accounted For.
                     </h1>
                     <p className="text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto mb-6">
-                        This page is updated automatically from our live donation data. We publish this openly so every donor — and every Kenyan — can verify how funds are used.
+                        This page is updated automatically from our live donation data. We publish this openly so every donor — and every Kenyan — can verify how funds are used on Unity Bridge Kenya.
                     </p>
                     <div className="flex flex-wrap gap-3 justify-center">
                         <button onClick={fetchData} disabled={loading} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border-2 border-[var(--primary-green)] text-[var(--primary-green)] font-bold text-sm hover:bg-[var(--primary-green)] hover:text-white transition-all disabled:opacity-50">

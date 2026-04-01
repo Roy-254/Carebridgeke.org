@@ -1,5 +1,5 @@
 -- ============================================================
---  Care Bridge Kenya — Full Database Schema
+--  Unity Bridge Kenya — Full Database Schema
 --  Run in: Supabase Dashboard → SQL Editor → New Query
 --  This script is idempotent (safe to re-run).
 -- ============================================================

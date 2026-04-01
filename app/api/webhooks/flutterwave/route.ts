@@ -7,11 +7,11 @@ const supabaseAdmin = createClient(
     process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-/** Generates a unique human-readable tracking code: CBK-YYYYMMDD-XXXX */
+/** Generates a unique human-readable tracking code: UBK-YYYYMMDD-XXXX */
 function generateConfirmationCode(): string {
     const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, ""); // YYYYMMDD
     const random = Math.random().toString(36).toUpperCase().slice(2, 6).padEnd(4, "0");
-    return `CBK-${dateStr}-${random}`;
+    return `UBK-${dateStr}-${random}`;
 }
 
 export async function POST(req: NextRequest) {
@@ -36,8 +36,8 @@ export async function POST(req: NextRequest) {
         const tx_ref: string = data?.tx_ref ?? "";
         const status: string = data?.status ?? "";
 
-        // Extract our donation ID from the tx_ref (format: CBK-{uuid})
-        const donationId = tx_ref.replace("CBK-", "");
+        // Extract our donation ID from the tx_ref (format: UBK-{uuid})
+        const donationId = tx_ref.replace("UBK-", "");
         if (!donationId) {
             return NextResponse.json({ error: "Invalid tx_ref" }, { status: 400 });
         }
@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
                 return NextResponse.json({ received: true });
             }
 
-            // 3. Generate a unique CBK confirmation code (retry on collision)
+            // 3. Generate a unique UBK confirmation code (retry on collision)
             let confirmationCode = generateConfirmationCode();
             for (let attempt = 0; attempt < 5; attempt++) {
                 const { data: existing } = await supabaseAdmin

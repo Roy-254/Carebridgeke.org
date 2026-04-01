@@ -128,18 +128,18 @@ export const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000
  * Social media links
  */
 export const SOCIAL_LINKS = {
-    facebook: "https://facebook.com/carebridgekenya",
-    twitter: "https://twitter.com/carebridgekenya",
-    instagram: "https://instagram.com/carebridgekenya",
-    whatsapp: "https://wa.me/254700000000",
+    facebook: "https://facebook.com/unitybridgekenya",
+    twitter: "https://twitter.com/unitybridgekenya",
+    instagram: "https://instagram.com/unitybridgekenya",
+    whatsapp: "https://wa.me/254740797404",
 };
 
 /**
  * Contact information
  */
 export const CONTACT_INFO = {
-    email: "support@carebridgekenya.com",
-    phone: "+254 700 000 000",
+    email: "support@unitybridgeke.org",
+    phone: "0740 797 404",
     address: "Nairobi, Kenya",
 };
 

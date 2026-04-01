@@ -4,8 +4,8 @@ import { BookOpen, Heart, ArrowRight, Clock, Eye, Stethoscope, GraduationCap, Bu
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-    title: "Our Work | Care Bridge Kenya",
-    description: "Explore the active projects Care Bridge Kenya is currently funding, read project updates, and follow the stories of the people we are supporting.",
+    title: "Our Work | Unity Bridge Kenya",
+    description: "Explore the active projects Unity Bridge Kenya is currently funding, read project updates, and follow the stories of the people we are supporting.",
 };
 
 const FOCUS_AREAS = [

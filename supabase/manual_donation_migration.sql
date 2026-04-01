@@ -1,5 +1,5 @@
 -- ============================================================
---  Care Bridge Kenya — Manual Donation Flow Migration
+--  Unity Bridge Kenya — Manual Donation Flow Migration
 --  Run this in: Supabase Dashboard → SQL Editor → New Query
 --  This script is idempotent (safe to re-run).
 -- ============================================================
@@ -73,7 +73,7 @@ CREATE POLICY "donations_track_by_code"
     OR confirmation_code IS NOT NULL
   );
 
--- 8. Helper function: generate a CBK-YYYYMMDD-XXXX code (callable from app)
+-- 8. Helper function: generate a UBK-YYYYMMDD-XXXX code (callable from app)
 CREATE OR REPLACE FUNCTION public.generate_confirmation_code()
 RETURNS TEXT LANGUAGE plpgsql AS $$
 DECLARE
@@ -85,7 +85,7 @@ BEGIN
   date_part := TO_CHAR(NOW(), 'YYYYMMDD');
   LOOP
     rand_part := UPPER(SUBSTRING(MD5(RANDOM()::TEXT) FOR 4));
-    candidate := 'CBK-' || date_part || '-' || rand_part;
+    candidate := 'UBK-' || date_part || '-' || rand_part;
     -- Ensure uniqueness
     IF NOT EXISTS (
       SELECT 1 FROM public.donations WHERE confirmation_code = candidate

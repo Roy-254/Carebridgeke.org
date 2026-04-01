@@ -158,7 +158,7 @@ export function Step4Review() {
                                     checked={campaignDraft.agreedToTerms}
                                     onChange={(e) => updateDraft({ agreedToTerms: e.target.checked })}
                                 />
-                                <label htmlFor="tos" className="text-xs text-[var(--text-secondary)]">I agree to Care Bridge Kenya <button className="text-[var(--primary-green)] font-bold">Terms of Service</button></label>
+                                <label htmlFor="tos" className="text-xs text-[var(--text-secondary)]">I agree to Unity Bridge Kenya <button className="text-[var(--primary-green)] font-bold">Terms of Service</button></label>
                             </div>
                             <div className="flex items-start gap-3">
                                 <input

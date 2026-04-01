@@ -207,7 +207,7 @@ export function AuthModal({ isOpen, onClose, initialMode = "signin" }: AuthModal
                                         "Confirm Your Email"}
                     </h2>
                     <p className="text-[var(--text-secondary)] mt-1 text-sm">
-                        {mode === "signin" ? "Sign in to your Care Bridge account" :
+                        {mode === "signin" ? "Sign in to your Unity Bridge account" :
                             mode === "signup" ? "Join thousands helping Kenyans thrive" :
                                 mode === "forgot_password" ? "Enter your email to receive a password reset link" :
                                     mode === "email_sent" ? `We've sent a reset link to ${successEmail}` :

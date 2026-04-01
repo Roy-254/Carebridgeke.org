@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
     const html = `
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8"><title>Donation Receipt – Care Bridge Kenya</title></head>
+<head><meta charset="utf-8"><title>Donation Receipt – Unity Bridge Kenya</title></head>
 <body style="font-family:'Helvetica Neue',Arial,sans-serif;background:#f6f9fc;margin:0;padding:0;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f6f9fc;padding:40px 20px;">
     <tr><td align="center">
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
         <!-- Header -->
         <tr>
           <td style="background:linear-gradient(135deg,#16a34a,#15803d);padding:40px;text-align:center;">
-            <h1 style="color:#ffffff;margin:0;font-size:28px;letter-spacing:-0.5px;">Care Bridge Kenya</h1>
+            <h1 style="color:#ffffff;margin:0;font-size:28px;letter-spacing:-0.5px;">Unity Bridge Kenya</h1>
             <p style="color:rgba(255,255,255,0.85);margin:8px 0 0;font-size:14px;">Building Bridges of Hope</p>
           </td>
         </tr>
@@ -111,7 +111,7 @@ export async function POST(req: NextRequest) {
             </div>` : ""}
 
             <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin:0;border-top:1px solid #e2e8f0;padding-top:24px;">
-              Questions? Reply to this email or contact us at <a href="mailto:hello@carebridgekenya.com" style="color:#16a34a;">hello@carebridgekenya.com</a>. 
+              Questions? Reply to this email or contact us at <a href="mailto:support@unitybridgeke.org" style="color:#16a34a;">support@unitybridgeke.org</a>. 
               You will receive monthly project updates at this address. To unsubscribe, simply reply with "unsubscribe".
             </p>
           </td>
@@ -120,7 +120,7 @@ export async function POST(req: NextRequest) {
         <!-- Footer -->
         <tr>
           <td style="background:#f8fafc;padding:24px 40px;text-align:center;border-top:1px solid #e2e8f0;">
-            <p style="color:#aaa;font-size:12px;margin:0;">© ${new Date().getFullYear()} Care Bridge Kenya · Nairobi, Kenya · Building Bridges of Hope</p>
+            <p style="color:#aaa;font-size:12px;margin:0;">© ${new Date().getFullYear()} Unity Bridge Kenya · Nairobi, Kenya · Building Bridges of Hope</p>
           </td>
         </tr>
       </table>
@@ -136,9 +136,9 @@ export async function POST(req: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Care Bridge Kenya <no-reply@carebridgekenya.com>",
+        from: "Unity Bridge Kenya <no-reply@unitybridgeke.org>",
         to: [to],
-        subject: `✅ ${formattedAmount} donation confirmed | Code: ${confirmation_code ?? "—"} – Care Bridge Kenya`,
+        subject: `✅ ${formattedAmount} donation confirmed | Code: ${confirmation_code ?? "—"} – Unity Bridge Kenya`,
         html,
       }),
     });

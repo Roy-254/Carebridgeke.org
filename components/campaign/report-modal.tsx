@@ -93,7 +93,7 @@ export function ReportModal({ campaignId, campaignTitle, onClose }: ReportModalP
                             <div>
                                 <h3 className="font-extrabold text-[var(--text-primary)] text-lg">Report Submitted</h3>
                                 <p className="text-sm text-[var(--text-secondary)] mt-2">
-                                    Thank you for helping keep Care Bridge Kenya safe. Our team will review this campaign within 24–48 hours.
+                                    Thank you for helping keep Unity Bridge Kenya safe. Our team will review this campaign within 24–48 hours.
                                 </p>
                             </div>
                             <button

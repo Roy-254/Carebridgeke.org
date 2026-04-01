@@ -6,7 +6,7 @@ import { AdminDashboardClient } from "@/components/dashboard/admin-dashboard-cli
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Admin Dashboard — Care Bridge Kenya",
+    title: "Admin Dashboard — Unity Bridge Kenya",
 };
 
 export default async function AdminDashboardPage() {
