@@ -73,7 +73,10 @@ export function FeaturedHorizontal({ projects }: { projects: FeaturedProject[] }
                     <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[var(--bg-primary)] to-transparent z-10 pointer-events-none" />
                     <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[var(--bg-primary)] to-transparent z-10 pointer-events-none" />
 
-                    <motion.div style={{ x }} className="flex gap-8 pl-[10vw]">
+                    <motion.div 
+                        style={{ x: typeof window !== 'undefined' && window.innerWidth >= 768 ? x : 0 }} 
+                        className="flex gap-6 md:gap-8 pl-[5vw] md:pl-[10vw] overflow-x-auto md:overflow-x-visible snap-x snap-mandatory scrollbar-none"
+                    >
                         {projects.map((project) => {
                             const coverImage = getCoverImage(project.images);
                             const categoryColor = CATEGORY_COLORS[project.category] ?? CATEGORY_COLORS.other;
@@ -82,7 +85,7 @@ export function FeaturedHorizontal({ projects }: { projects: FeaturedProject[] }
                             return (
                                 <motion.div 
                                     key={project.id} 
-                                    className="w-[300px] md:w-[420px] shrink-0"
+                                    className="w-[300px] md:w-[420px] shrink-0 snap-start"
                                     whileHover={{ y: -8 }}
                                     transition={{ duration: 0.3 }}
                                 >

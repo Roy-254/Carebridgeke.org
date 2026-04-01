@@ -151,11 +151,10 @@ export default function GetInvolvedPage() {
                         </div>
                         <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
                             <Image
-                                src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800&q=80"
+                                src="/organisational-partnership.png"
                                 alt="Community partnership"
                                 fill
                                 className="object-cover"
-                                unoptimized
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                         </div>
