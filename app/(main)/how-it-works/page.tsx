@@ -153,8 +153,8 @@ export default function HowItWorksPage() {
                         </div>
                         <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
                             <Image
-                                src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80"
-                                alt="Reviewing project documents"
+                                src="https://images.unsplash.com/photo-1540331548438-5929971820c7?w=800&q=80"
+                                alt="Community verification and manual review"
                                 fill
                                 className="object-cover"
                                 unoptimized

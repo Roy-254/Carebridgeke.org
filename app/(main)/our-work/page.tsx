@@ -141,11 +141,7 @@ export default function OurWorkPage() {
                                 </div>
                                 <div className="p-5">
                                     <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--primary-green)]">{project.category}</span>
-                                    <h3 className="font-bold text-[var(--text-primary)] mt-1 mb-3 leading-snug line-clamp-2 group-hover:text-[var(--primary-green)] transition-colors">{project.title}</h3>
-                                    <div className="flex justify-between text-xs text-[var(--text-muted)] font-mono">
-                                        <span>{project.raised} raised</span>
-                                        <span>of {project.goal}</span>
-                                    </div>
+                                    <h3 className="font-bold text-[var(--text-primary)] mt-1 leading-snug line-clamp-2 group-hover:text-[var(--primary-green)] transition-colors">{project.title}</h3>
                                 </div>
                             </Link>
                         ))}

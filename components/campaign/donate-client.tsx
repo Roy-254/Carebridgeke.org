@@ -148,12 +148,10 @@ export function DonateClient({ campaign }: DonateClientProps) {
                                         )}
                                     </div>
                                 )}
-                                <div className="space-y-1.5">
-                                    <ProgressBar current={campaign.current_amount} target={campaign.target_amount} size="sm" />
-                                    <div className="flex justify-between text-xs font-bold text-[var(--text-muted)]">
-                                        <span className="text-[var(--primary-green)]">{percentage}% funded</span>
-                                        <span>{formatCurrency(campaign.current_amount)} raised</span>
-                                    </div>
+                                <div className="pt-2">
+                                    <p className="text-xs text-[var(--text-muted)] leading-relaxed italic">
+                                        Funding status and verification details are updated transparently as contributions are processed.
+                                    </p>
                                 </div>
                             </div>
                         </div>
