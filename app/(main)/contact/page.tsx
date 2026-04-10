@@ -25,12 +25,20 @@ const FAQS = [
         a: "An email receipt is sent automatically to the email address you provide during checkout. If you did not receive one, please check your spam folder or contact us with your transaction reference.",
     },
     {
+        q: "How can I submit a project for funding?",
+        a: "Currently Unity Bridge Kenya curates all projects internally. If you know of a genuine need, please reach out to us via the contact form below or email us directly. We review every submission.",
+    },
+    {
         q: "What happens if a campaign does not reach its goal?",
         a: "We continue fundraising beyond the deadline if needed — campaigns stay open until the need is met or circumstances change. Donors are notified of any significant updates. We do not automatically refund donations if a goal is not reached.",
     },
     {
         q: "Are donations tax-deductible?",
         a: "Unity Bridge Kenya is currently in the process of obtaining formal NGO registration and tax exemption status in Kenya. At this stage, we cannot issue documents for tax deduction purposes. We will update this as our legal status matures.",
+    },
+    {
+        q: "How long does project verification take?",
+        a: "We aim to review all project submissions within 5–10 business days. Complex cases requiring additional documentation may take longer. We will always communicate status updates to applicants.",
     },
     {
         q: "Can corporates or organisations donate?",
@@ -52,7 +60,7 @@ export default function ContactPage() {
                         We Would Love to Hear From You
                     </h1>
                     <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                        Whether you have a question, want to learn more, or are interested in partnering with us — we read and respond to every message.
+                        Whether you have a question, want to submit a project, or simply want to learn more — we read and respond to every message.
                     </p>
                 </div>
             </section>

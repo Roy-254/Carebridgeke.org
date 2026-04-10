@@ -18,53 +18,53 @@ export default function ExploreProjectsPage() {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-    // Initial project framework — actual projects will appear here as they are launched
+    // Mock data — to be replaced by Supabase call
     const projects: any[] = [
         {
             id: "1",
-            title: "Kenya Education Fund",
-            description: "Providing tuition support and learning materials to help underprivileged students stay in school and unlock their potential across multiple counties.",
+            title: "Making sure every kid studies",
+            description: "Providing tuition support and learning materials to help underprivileged students stay in school and unlock their potential.",
             category: "school_fees",
-            slug: "education-fund",
-            images: ["https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800"],
-            current_amount: 0,
-            target_amount: 0,
+            slug: "every-kid-studies",
+            images: ["/school-fees-project.png"],
+            current_amount: 350000,
+            target_amount: 500000,
             is_urgent: false,
-            view_count: 0
+            view_count: 45
         },
         {
             id: "2",
-            title: "Vulnerable Communities Support",
-            description: "Community-led initiatives providing essential resources and sustainable support for vulnerable families facing financial hardship.",
+            title: "Impacting lives of the less privileged",
+            description: "Community-led initiatives providing essential resources and sustainable support for vulnerable families across Kenya.",
             category: "community",
-            slug: "community-support",
+            slug: "impacting-lives",
             images: ["https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800"],
-            current_amount: 0,
-            target_amount: 0,
+            current_amount: 420000,
+            target_amount: 600000,
             is_urgent: false,
-            view_count: 0
+            view_count: 120
         },
         {
             id: "3",
-            title: "Hospital Bills Assistance",
+            title: "Clearing hospital bills",
             description: "Supporting families burdened by medical debt, ensuring quality healthcare is accessible without financial ruin.",
             category: "medical",
-            slug: "medical-assistance",
-            images: ["https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800"],
-            current_amount: 0,
-            target_amount: 0,
+            slug: "clearing-hospital-bills",
+            images: ["/medical-relief-project.png"],
+            current_amount: 180000,
+            target_amount: 500000,
             is_urgent: false,
-            view_count: 0
+            view_count: 89
         },
         {
             id: "4",
-            title: "Environmental Cleaning Initiative",
-            description: "Cleaning up Kenya — collecting litter from informal dumpsites, unclogging roadside drainage channels, and revitalising public spaces.",
+            title: "Restoring Our Environment",
+            description: "Cleaning up Kenya — collecting litter from informal dumpsites, unclogging roadside drainage channels, and revitalising public parks, markets, schools, and community buildings.",
             category: "community",
-            slug: "environmental-cleaning",
-            images: ["https://images.unsplash.com/photo-1542601906990-b4d3fb773b09?w=800"],
+            slug: "restoring-our-environment",
+            images: ["/environment-hero.png"],
             current_amount: 0,
-            target_amount: 0,
+            target_amount: 800000,
             is_urgent: false,
             view_count: 0
         }

@@ -13,7 +13,7 @@ const STEPS = [
         num: "01",
         icon: Search,
         title: "A Need is Identified",
-        body: "In this early stage, Unity Bridge Kenya proactively identifies community needs through our own outreach — visiting communities, speaking with social workers, and working with trusted local contacts to find genuine, verifiable cases.",
+        body: "A family, individual, or community representative submits a request for support. We also proactively identify needs through our own outreach — visiting communities, speaking with social workers, and working with trusted referrers.",
         color: "from-green-500 to-emerald-600",
     },
     {
