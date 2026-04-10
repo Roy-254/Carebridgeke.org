@@ -102,39 +102,39 @@ export default function OurWorkPage() {
                     <div className="grid sm:grid-cols-3 gap-6">
                         {[
                             {
-                                slug: "every-kid-studies",
-                                title: "Making sure every kid studies",
+                                slug: "education-fund",
+                                title: "Kenya Education Fund",
                                 category: "School Fees",
-                                img: "/school-fees-project.png",
-                                raised: "KES 350,000",
-                                goal: "KES 500,000",
-                            },
-                            {
-                                slug: "clearing-hospital-bills",
-                                title: "Clearing hospital bills",
-                                category: "Medical Relief",
-                                img: "/medical-relief-project.png",
-                                raised: "KES 180,000",
-                                goal: "KES 500,000",
-                            },
-                            {
-                                slug: "impacting-lives",
-                                title: "Impacting lives of the less privileged",
-                                category: "Community",
-                                img: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80",
-                                raised: "KES 420,000",
-                                goal: "KES 600,000",
-                            },
-                            {
-                                slug: "restoring-our-environment",
-                                title: "Restoring Our Environment",
-                                category: "Community",
-                                img: "/environment-hero.png",
+                                img: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800",
                                 raised: "KES 0",
-                                goal: "KES 800,000",
+                                goal: "KES 0",
+                            },
+                            {
+                                slug: "medical-assistance",
+                                title: "Hospital Bills Assistance",
+                                category: "Medical Relief",
+                                img: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800",
+                                raised: "KES 0",
+                                goal: "KES 0",
+                            },
+                            {
+                                slug: "community-support",
+                                title: "Vulnerable Communities Support",
+                                category: "Community",
+                                img: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&h=600&fit=crop",
+                                raised: "KES 0",
+                                goal: "KES 0",
+                            },
+                            {
+                                slug: "environmental-cleaning",
+                                title: "Environmental Cleaning Initiative",
+                                category: "Community",
+                                img: "https://images.unsplash.com/photo-1542601906990-b4d3fb773b09?w=800",
+                                raised: "KES 0",
+                                goal: "KES 0",
                             },
                         ].map(project => (
-                            <Link key={project.slug} href={`/donate/${project.slug}`}
+                            <Link key={project.slug} href={`/donate?project=${project.slug}`}
                                 className="group bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-2xl overflow-hidden hover:border-[var(--primary-green)]/40 transition-all">
                                 <div className="relative aspect-video">
                                     <Image src={project.img} alt={project.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" unoptimized />

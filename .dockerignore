@@ -1,0 +1,15 @@
+node_modules
+.next
+.git
+.env*.local
+.agent
+C:\Users\roynm\.gemini\antigravity\brain\2750e97c-13e1-4a34-b4b7-49e6021ce43d\artifacts
+C:\Users\roynm\.gemini\antigravity\brain\2750e97c-13e1-4a34-b4b7-49e6021ce43d\logs
+README.md
+PROJECT_SUMMARY.md
+QUICKSTART.md
+Safaricom APIs.postman_collection.json
+Dockerfile
+docker-compose.yml
+.vscode
+*.tsbuildinfo

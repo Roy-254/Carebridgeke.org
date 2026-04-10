@@ -53,31 +53,21 @@ interface TransparencyData {
 // ─── Demo data (shown when Supabase returns zeros) ──────────
 const DEMO: TransparencyData = {
     stats: {
-        total_raised: 952000,
-        donor_count: 214,
-        projects_funded: 8,
-        this_month_raised: 147500,
-        school_fees_total: 428400,
-        medical_total: 285600,
-        emergency_total: 142800,
-        community_total: 95200,
+        total_raised: 0,
+        donor_count: 0,
+        projects_funded: 0,
+        this_month_raised: 0,
+        school_fees_total: 0,
+        medical_total: 0,
+        emergency_total: 0,
+        community_total: 0,
     },
-    recentDonations: [
-        { id: "1", donor_name: "James M.", amount: 5000, currency: "KES", created_at: new Date(Date.now() - 86400000).toISOString(), campaign: { title: "School Fees for Mwangi", slug: "#" } },
-        { id: "2", donor_name: "Anonymous", amount: 2500, currency: "KES", created_at: new Date(Date.now() - 172800000).toISOString(), campaign: { title: "Medical Fund for Baby Grace", slug: "#" } },
-        { id: "3", donor_name: "Wanjiru N.", amount: 10000, currency: "KES", created_at: new Date(Date.now() - 259200000).toISOString(), campaign: { title: "Community Borehole – Turkana", slug: "#" } },
-        { id: "4", donor_name: "Peter K.", amount: 1000, currency: "KES", created_at: new Date(Date.now() - 345600000).toISOString(), campaign: { title: "Emergency Food – Mandera", slug: "#" } },
-        { id: "5", donor_name: "Anonymous", amount: 3000, currency: "KES", created_at: new Date(Date.now() - 432000000).toISOString(), campaign: { title: "School Fees for Mwangi", slug: "#" } },
-    ],
-    recentUpdates: [
-        { id: "1", title: "Mwangi secures his Form 4 place!", content: "Thanks to your donations, David Mwangi has enrolled at Kangundo High School and started the term. He sends his deepest gratitude.", created_at: new Date(Date.now() - 345600000).toISOString(), campaign: { title: "School Fees for Mwangi", slug: "#", category: "school_fees" } },
-        { id: "2", title: "Baby Grace discharged from hospital", content: "After 3 weeks of treatment at KNH, Baby Grace has been discharged in stable condition. Funds covered the full medical bill.", created_at: new Date(Date.now() - 691200000).toISOString(), campaign: { title: "Medical Fund for Baby Grace", slug: "#", category: "medical" } },
-        { id: "3", title: "Borehole drilling begins in Turkana", content: "Construction crews broke ground this week. The borehole is expected to serve over 450 community members once complete.", created_at: new Date(Date.now() - 1036800000).toISOString(), campaign: { title: "Community Borehole – Turkana", slug: "#", category: "community" } },
-    ],
+    recentDonations: [],
+    recentUpdates: [],
     activeCampaigns: [
-        { id: "1", title: "School Fees for Mwangi", slug: "#", category: "school_fees", current_amount: 42800, target_amount: 55000 },
-        { id: "2", title: "Medical Fund for Baby Grace", slug: "#", category: "medical", current_amount: 29000, target_amount: 35000 },
-        { id: "3", title: "Community Borehole – Turkana", slug: "#", category: "community", current_amount: 185000, target_amount: 200000 },
+        { id: "1", title: "Upcoming Education Support", slug: "#", category: "school_fees", current_amount: 0, target_amount: 0 },
+        { id: "2", title: "Upcoming Medical Emergency Fund", slug: "#", category: "medical", current_amount: 0, target_amount: 0 },
+        { id: "3", title: "Future Community Water Project", slug: "#", category: "community", current_amount: 0, target_amount: 0 },
     ],
 };
 
@@ -228,7 +218,7 @@ export default function TransparencyPage() {
                         100% Transparent. <br className="hidden sm:block" />Every Shilling Accounted For.
                     </h1>
                     <p className="text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto mb-6">
-                        This page is updated automatically from our live donation data. We publish this openly so every donor — and every Kenyan — can verify how funds are used on Unity Bridge Kenya.
+                        Unity Bridge Kenya has recently launched. As a new organization, our primary focus is verifying upcoming community needs and establishing our foundation. This dashboard will update automatically as we begin our first rounds of funding and support.
                     </p>
                     <div className="flex flex-wrap gap-3 justify-center">
                         <button onClick={fetchData} disabled={loading} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border-2 border-[var(--primary-green)] text-[var(--primary-green)] font-bold text-sm hover:bg-[var(--primary-green)] hover:text-white transition-all disabled:opacity-50">
@@ -247,6 +237,17 @@ export default function TransparencyPage() {
             </section>
 
             <div className="container-custom max-w-6xl py-12 space-y-10">
+
+                {/* ── New Launch Notice ── */}
+                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-2xl p-6 flex items-start gap-4">
+                    <AlertCircle className="w-6 h-6 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+                    <div>
+                        <h3 className="font-bold text-blue-900 dark:text-blue-100">Newly Established Organization</h3>
+                        <p className="text-sm text-blue-800 dark:text-blue-200 mt-1">
+                            Unity Bridge Kenya is in its initial founding phase for 2026. The graphs and tallies below currently show zero as we prepare for our first active projects. We have retained this structure to demonstrate our commitment to full transparency from day one.
+                        </p>
+                    </div>
+                </div>
 
                 {/* ── Top Stats ── */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">

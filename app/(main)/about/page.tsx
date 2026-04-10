@@ -18,10 +18,10 @@ const VALUES = [
 
 const TEAM: { name: string; role: string; bio: string; initials: string }[] = [
     {
-        name: "The Unity Bridge Team",
-        role: "Founders & Core Team",
-        initials: "UB",
-        bio: "Unity Bridge Kenya was founded in 2026 by a group of Kenyans who saw first-hand how financial hardship derails lives — a student dropping out over unpaid school fees, a family liquidating assets for a medical bill. We built this platform to make giving easier and more trustworthy. Our team is small, volunteer-driven, and growing.",
+        name: "Stephen Munene Wagura",
+        role: "Founder",
+        initials: "SMW",
+        bio: "Unity Bridge Kenya was founded in 2026 by Stephen Munene Wagura, who saw first-hand how financial hardship derails lives — a student dropping out over unpaid school fees, a family liquidating assets for a medical bill. He built this platform to make giving easier and more trustworthy. Our team is small, volunteer-driven, and growing.",
     },
 ];
 
@@ -55,10 +55,10 @@ export default function AboutPage() {
                             </h2>
                             <div className="space-y-4 text-[var(--text-secondary)] leading-relaxed">
                                 <p>
-                                    Unity Bridge Kenya was founded in early 2026 by a group of Kenyans frustrated by a recurring scene: a family that needed help, a community that wanted to give — but no trusted, easy way to connect the two.
+                                    Unity Bridge Kenya was founded in early 2026 by Stephen Munene Wagura, who was frustrated by a recurring scene: a family that needed help, a community that wanted to give — but no trusted, easy way to connect the two.
                                 </p>
                                 <p>
-                                    School fees go unpaid. Medical bills pile up. Emergencies strike without warning. Meanwhile, well-meaning donors hesitate because they cannot verify where their money will go. This gap — between generosity and trust — is what Unity Bridge Kenya exists to close.
+                                    School fees go unpaid, medical bills pile up, and emergencies strike without warning. Beyond personal crises, our communities face environmental challenges: roads are often dirty with clogged drainages due to littering, and the general environment suffers from widespread waste. Meanwhile, well-meaning donors hesitate because they cannot verify where their money will go. This gap — between generosity and trust — is what Unity Bridge Kenya exists to close.
                                 </p>
                                 <p>
                                     We verify every project before it goes live, provide regular progress updates to donors, and ensure that disbursed funds are tracked and reported. We are just getting started, but our commitment to integrity and impact is unwavering.
@@ -150,12 +150,12 @@ export default function AboutPage() {
                     </p>
                     <div className="max-w-lg mx-auto bg-[var(--bg-primary)] rounded-2xl p-8 border border-[var(--border-light)] text-left">
                         <div className="w-14 h-14 rounded-2xl bg-[var(--primary-green)]/10 flex items-center justify-center text-2xl font-extrabold text-[var(--primary-green)] mb-4">
-                            UB
+                            SMW
                         </div>
-                        <h3 className="font-bold text-[var(--text-primary)] text-lg mb-1">The Unity Bridge Team</h3>
-                        <p className="text-xs text-[var(--primary-green)] font-semibold uppercase tracking-wider mb-3">Founders &amp; Core Team</p>
+                        <h3 className="font-bold text-[var(--text-primary)] text-lg mb-1">Stephen Munene Wagura</h3>
+                        <p className="text-xs text-[var(--primary-green)] font-semibold uppercase tracking-wider mb-3">Founder</p>
                         <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                            Unity Bridge Kenya was founded in 2026 by a group of Kenyans who saw first-hand how financial hardship derails lives — a student dropping out over unpaid school fees, a family losing everything to a medical bill. Our team is small, volunteer-driven, and growing. We welcome anyone passionate about changing this narrative.
+                            Unity Bridge Kenya was founded in 2026 by Stephen Munene Wagura, who saw first-hand how financial hardship derails lives — a student dropping out over unpaid school fees, a family losing everything to a medical bill. Our team is small, volunteer-driven, and growing. We welcome anyone passionate about changing this narrative.
                         </p>
                     </div>
                     <div className="mt-8">
