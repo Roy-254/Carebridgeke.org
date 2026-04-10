@@ -159,9 +159,9 @@ export default function AboutPage() {
                         </p>
                     </div>
                     <div className="mt-8">
-                        <Link href="/volunteer">
-                            <Button variant="primary" className="gap-2 font-bold">
-                                <Users className="w-4 h-4" /> Join Our Team
+                        <Link href="/contact">
+                            <Button variant="primary" className="gap-2 font-bold px-8">
+                                Contact Us
                             </Button>
                         </Link>
                     </div>

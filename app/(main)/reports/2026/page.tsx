@@ -9,9 +9,9 @@ export const metadata = {
 };
 
 const STATS_2026 = [
-    { value: "3", label: "Projects launched", icon: TrendingUp },
-    { value: "KES 950K+", label: "Raised from donors", icon: BarChart3 },
-    { value: "200+", label: "Individual supporters", icon: Heart },
+    { value: "0", label: "Projects launched", icon: TrendingUp },
+    { value: "KES 0", label: "Raised from donors", icon: BarChart3 },
+    { value: "0", label: "Individual supporters", icon: Heart },
     { value: "2026", label: "Year of founding", icon: Clock },
 ];
 
@@ -79,19 +79,19 @@ export default function Report2026Page() {
                     </div>
                     <div className="space-y-6">
                         <div className="bg-[var(--bg-primary)] rounded-2xl border border-[var(--border-light)] p-7">
-                            <h3 className="text-lg font-bold text-[var(--text-primary)] mb-3">We launched three verified projects</h3>
+                            <h3 className="text-lg font-bold text-[var(--text-primary)] mb-3">Goal: Support verified community needs</h3>
                             <p className="text-[var(--text-secondary)] leading-relaxed mb-4">
-                                In 2026, we identified and verified three charitable needs: school fees support for underprivileged students, medical bill relief for families facing crippling healthcare costs, and a community development initiative serving marginalised households. Each project underwent manual review before being published on our platform.
+                                In 2026, we set out to identify and verify charitable needs across Kenya: school fees support for underprivileged students, medical bill relief for families, and community development initiatives. Our framework ensures that every project undergoes manual review before being published.
                             </p>
                             <Link href="/explore" className="text-[var(--primary-green)] text-sm font-bold hover:underline flex items-center gap-1">
-                                Browse active projects <ArrowRight className="w-3.5 h-3.5" />
+                                View our areas of focus <ArrowRight className="w-3.5 h-3.5" />
                             </Link>
                         </div>
 
                         <div className="bg-[var(--bg-primary)] rounded-2xl border border-[var(--border-light)] p-7">
-                            <h3 className="text-lg font-bold text-[var(--text-primary)] mb-3">We built our platform from scratch</h3>
+                            <h3 className="text-lg font-bold text-[var(--text-primary)] mb-3">Established a foundation for trust</h3>
                             <p className="text-[var(--text-secondary)] leading-relaxed">
-                                The Unity Bridge Kenya website, payment system, and donor management infrastructure were all built in 2026. We integrated with Flutterwave for M-Pesa and card payments, and implemented end-to-end donor receipts. This is our foundation for scale.
+                                The Unity Bridge Kenya website and payment infrastructure were built in 2026 to provide a safe, transparent way for donors to contribute. By integrating secure M-Pesa and card payment systems, we have created a foundation that ensures every shilling can be tracked and reported.
                             </p>
                         </div>
 
