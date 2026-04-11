@@ -105,7 +105,7 @@ export default function AccountabilityPage() {
                         <div>
                             <p className="font-bold text-[var(--text-primary)] text-sm mb-1">Platform Fee — 5%</p>
                             <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                                Unity Bridge Kenya retains a small 5% platform fee from each donation to cover payment processing, staff, operations, and ongoing development. The remaining <strong>95%</strong> goes directly to the project. We are committed to publishing a full breakdown of how operating funds are used as we grow.
+                                Unity Bridge Kenya retains a small 5% platform fee from each donation to cover payment processing, administrative operations, and salaries for the employees and individuals who manage and operate the platform. The remaining <strong>95%</strong> goes directly to the project.
                             </p>
                         </div>
                     </div>

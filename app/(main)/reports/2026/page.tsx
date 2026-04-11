@@ -128,7 +128,7 @@ export default function Report2026Page() {
                                 <h3 className="font-bold text-[var(--text-primary)]">5% — Platform Operations</h3>
                             </div>
                             <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                                Covers payment processing fees, website hosting, email services, and administrative expenses. In 2026, no individual has been paid from this fund.
+                                Covers payment processing fees, website hosting, administrative expenses, and salaries for the employees and individuals who manage and operate the platform.
                             </p>
                         </div>
                     </div>
