@@ -96,9 +96,9 @@ export default function Report2026Page() {
                         </div>
 
                         <div className="bg-[var(--bg-primary)] rounded-2xl border border-[var(--border-light)] p-7">
-                            <h3 className="text-lg font-bold text-[var(--text-primary)] mb-3">We are entirely volunteer-driven</h3>
+                            <h3 className="text-lg font-bold text-[var(--text-primary)] mb-3">Our Goal for Year 1: Connecting Communities</h3>
                             <p className="text-[var(--text-secondary)] leading-relaxed">
-                                Every person working on Unity Bridge Kenya in 2026 is a volunteer. Our operating costs are covered by the 5% platform fee on donations. No external funding has been raised for operations — all donor money goes to projects.
+                                In our first year of operation, we aim to verify and support at least 50 community-led projects across Kenya. By providing a professional, transparent platform, we set a target to mobilize over KES 10 Million in direct aid for education, healthcare, and environmental initiatives.
                             </p>
                         </div>
                     </div>

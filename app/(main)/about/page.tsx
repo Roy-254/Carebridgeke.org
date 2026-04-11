@@ -146,7 +146,7 @@ export default function AboutPage() {
                     <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--primary-green)]">Our Team</span>
                     <h2 className="text-3xl font-extrabold text-[var(--text-primary)] mt-2 mb-4">The People Behind Unity Bridge</h2>
                     <p className="text-[var(--text-secondary)] mb-10 max-w-2xl mx-auto">
-                        We are a lean, passionate team of Kenyans who believe in the power of community. Our team is volunteer-driven in these early stages, and we are actively growing.
+                        We are a lean, passionate team of Kenyans who believe in the power of community. Our team is professionally managed and dedicated to radical transparency.
                     </p>
                     <div className="max-w-lg mx-auto bg-[var(--bg-primary)] rounded-2xl p-8 border border-[var(--border-light)] text-left">
                         <div className="w-14 h-14 rounded-2xl bg-[var(--primary-green)]/10 flex items-center justify-center text-2xl font-extrabold text-[var(--primary-green)] mb-4">
@@ -155,7 +155,7 @@ export default function AboutPage() {
                         <h3 className="font-bold text-[var(--text-primary)] text-lg mb-1">Stephen Munene Wagura</h3>
                         <p className="text-xs text-[var(--primary-green)] font-semibold uppercase tracking-wider mb-3">Founder</p>
                         <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                            Unity Bridge Kenya was founded in 2026 by Stephen Munene Wagura, who saw first-hand how financial hardship derails lives — a student dropping out over unpaid school fees, a family losing everything to a medical bill. Our team is small, volunteer-driven, and growing. We welcome anyone passionate about changing this narrative.
+                            Unity Bridge Kenya was founded in 2026 by Stephen Munene Wagura, who saw first-hand how financial hardship derails lives — a student dropping out over unpaid school fees, a family losing everything to a medical bill. Our team is small, focused, and growing. We welcome anyone passionate about changing this narrative.
                         </p>
                     </div>
                     <div className="mt-8">
