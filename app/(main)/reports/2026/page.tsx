@@ -96,9 +96,9 @@ export default function Report2026Page() {
                         </div>
 
                         <div className="bg-[var(--bg-primary)] rounded-2xl border border-[var(--border-light)] p-7">
-                            <h3 className="text-lg font-bold text-[var(--text-primary)] mb-3">Our Goal for Year 1: Connecting Communities</h3>
+                            <h3 className="text-lg font-bold text-[var(--text-primary)] mb-3">Our Goal for Year 1: Building Strategic Partnerships</h3>
                             <p className="text-[var(--text-secondary)] leading-relaxed">
-                                In our first year of operation, we aim to verify and support at least 50 community-led projects across Kenya. By providing a professional, transparent platform, we set a target to mobilize over KES 10 Million in direct aid for education, healthcare, and environmental initiatives.
+                                For our first year of operation, we are prioritising the cultivation of deep-rooted relationships within local communities and establishing strategic partnerships with fellow NGOs and governmental agencies. By aligning our transparency infrastructure with their grassroots expertise, we aim to create collaborative agreements that pave the way for large-scale, sustainable impact.
                             </p>
                         </div>
                     </div>
