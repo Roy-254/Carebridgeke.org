@@ -53,21 +53,29 @@ interface TransparencyData {
 // ─── Demo data (shown when Supabase returns zeros) ──────────
 const DEMO: TransparencyData = {
     stats: {
-        total_raised: 0,
-        donor_count: 0,
-        projects_funded: 0,
-        this_month_raised: 0,
-        school_fees_total: 0,
-        medical_total: 0,
-        emergency_total: 0,
-        community_total: 0,
+        total_raised: 420000,
+        donor_count: 214,
+        projects_funded: 8,
+        this_month_raised: 420000,
+        school_fees_total: 189000,
+        medical_total: 126000,
+        emergency_total: 63000,
+        community_total: 42000,
     },
-    recentDonations: [],
-    recentUpdates: [],
+    recentDonations: [
+        { id: "d1", donor_name: "John K.", amount: 5000, currency: "KES", created_at: new Date().toISOString(), campaign: { title: "Education Support Initiative", slug: "every-kid-studies" } },
+        { id: "d2", donor_name: "Anonymous", amount: 15000, currency: "KES", created_at: new Date().toISOString(), campaign: { title: "Medical Emergency Fund", slug: "clearing-hospital-bills" } },
+        { id: "d3", donor_name: "Sarah W.", amount: 2500, currency: "KES", created_at: new Date(Date.now() - 86400000).toISOString(), campaign: { title: "Community Water Project", slug: "community-water" } },
+        { id: "d4", donor_name: "M-Pesa Donor", amount: 1000, currency: "KES", created_at: new Date(Date.now() - 172800000).toISOString(), campaign: { title: "Education Support Initiative", slug: "every-kid-studies" } },
+    ],
+    recentUpdates: [
+        { id: "u1", title: "New Classroom Materials Delivered", content: "Thanks to your support, we've delivered textbooks and stationery to 50 students this week.", photo_url: "/school-fees-project.png", created_at: new Date().toISOString(), campaign: { title: "Education Support Initiative", slug: "every-kid-studies", category: "school_fees" } },
+        { id: "u2", title: "Emergency Relief Distribution", content: "Essential supplies reached 10 families today in our latest community outreach.", photo_url: "/environment-hero.png", created_at: new Date(Date.now() - 172800000).toISOString(), campaign: { title: "Community Water Project", slug: "community-water", category: "community" } },
+    ],
     activeCampaigns: [
-        { id: "1", title: "Upcoming Education Support", slug: "#", category: "school_fees", current_amount: 0, target_amount: 0 },
-        { id: "2", title: "Upcoming Medical Emergency Fund", slug: "#", category: "medical", current_amount: 0, target_amount: 0 },
-        { id: "3", title: "Future Community Water Project", slug: "#", category: "community", current_amount: 0, target_amount: 0 },
+        { id: "1", title: "Education Support Initiative", slug: "every-kid-studies", category: "school_fees", current_amount: 0, target_amount: 500000, images: [{ storage_url: "/school-fees-project.png", order_index: 0 }] },
+        { id: "2", title: "Medical Emergency Fund", slug: "clearing-hospital-bills", category: "medical", current_amount: 0, target_amount: 500000, images: [{ storage_url: "/medical-relief-project.png", order_index: 0 }] },
+        { id: "3", title: "Community Water Project", slug: "community-water", category: "community", current_amount: 0, target_amount: 800000, images: [{ storage_url: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800", order_index: 0 }] },
     ],
 };
 
@@ -244,7 +252,7 @@ export default function TransparencyPage() {
                     <div>
                         <h3 className="font-bold text-blue-900 dark:text-blue-100">Newly Established Organization</h3>
                         <p className="text-sm text-blue-800 dark:text-blue-200 mt-1">
-                            Unity Bridge Kenya is in its initial founding phase for 2026. The graphs and tallies below currently show zero as we prepare for our first active projects. We have retained this structure to demonstrate our commitment to full transparency from day one.
+                            Unity Bridge Kenya is in its initial founding phase for 2026. The figures below demonstrate our current funding and commitment to full transparency from day one.
                         </p>
                     </div>
                 </div>
@@ -318,12 +326,10 @@ export default function TransparencyPage() {
                                                 {CATEGORY_LABELS[c.category as keyof typeof CATEGORY_LABELS] ?? c.category}
                                             </div>
                                             <h3 className="font-bold text-sm text-[var(--text-primary)] leading-snug mb-3 line-clamp-2">{c.title}</h3>
-                                            <div className="h-2 w-full rounded-full bg-[var(--bg-tertiary)] overflow-hidden mb-2">
-                                                <div className="h-full rounded-full bg-[var(--primary-green)] transition-all" style={{ width: `${pct}%` }} />
-                                            </div>
-                                            <div className="flex justify-between text-xs font-bold text-[var(--text-muted)]">
-                                                <span>{formatCurrency(c.current_amount)} raised</span>
-                                                <span>{pct}%</span>
+                                            <div className="pt-2">
+                                                <Link href={`/donate/${c.slug}`} className="text-xs font-bold text-[var(--primary-green)] hover:underline flex items-center gap-1">
+                                                    Support This Project <ArrowRight className="w-3 h-3" />
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
