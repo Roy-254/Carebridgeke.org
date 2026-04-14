@@ -325,7 +325,7 @@ export default function TransparencyPage() {
                                             <div className="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-[var(--primary-green)]/10 text-[var(--primary-green)] mb-2">
                                                 {CATEGORY_LABELS[c.category as keyof typeof CATEGORY_LABELS] ?? c.category}
                                             </div>
-                                            <h3 className="font-bold text-sm text-[var(--text-primary)] leading-snug mb-3 line-clamp-2">{c.title}</h3>
+                                            <h3 className="font-bold text-sm text-[var(--text-primary)] leading-snug mb-3 line-clamp-2">{c.title.replace(/^(Upcoming|Future)\s+/i, "")}</h3>
                                             <div className="pt-2">
                                                 <Link href={`/donate/${c.slug}`} className="text-xs font-bold text-[var(--primary-green)] hover:underline flex items-center gap-1">
                                                     Support This Project <ArrowRight className="w-3 h-3" />

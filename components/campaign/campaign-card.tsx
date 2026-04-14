@@ -39,7 +39,7 @@ export function CampaignCard({ campaign }: CampaignCardProps) {
                         </div>
 
                         <h3 className="text-base font-bold text-[var(--text-primary)] mb-2 line-clamp-2 leading-tight group-hover:text-[var(--primary-green)] transition-colors">
-                            {campaign.title}
+                            {campaign.title.replace(/^(Upcoming|Future)\s+/i, "")}
                         </h3>
                         {campaign.description && (
                             <p className="text-sm text-[var(--text-secondary)] line-clamp-2 leading-snug">
