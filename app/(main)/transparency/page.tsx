@@ -181,12 +181,14 @@ export default function TransparencyPage() {
         try {
             const res = await fetch("/api/transparency");
             const json = await res.json();
-            // Use live data if it has any donations, else show demo
-            if (json.stats?.total_raised > 0) {
-                setData(json);
-            } else {
-                setData({ ...json, stats: DEMO.stats, recentDonations: json.recentDonations.length > 0 ? json.recentDonations : DEMO.recentDonations, recentUpdates: json.recentUpdates.length > 0 ? json.recentUpdates : DEMO.recentUpdates, activeCampaigns: json.activeCampaigns.length > 0 ? json.activeCampaigns : DEMO.activeCampaigns });
-            }
+            // Forcing mock data as requested by the user to show 420k
+            setData({ 
+                ...json, 
+                stats: DEMO.stats, 
+                recentDonations: DEMO.recentDonations, 
+                recentUpdates: DEMO.recentUpdates, 
+                activeCampaigns: DEMO.activeCampaigns 
+            });
         } catch {
             setData(DEMO);
         } finally {
