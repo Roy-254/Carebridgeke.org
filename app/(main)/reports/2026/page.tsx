@@ -9,9 +9,9 @@ export const metadata = {
 };
 
 const STATS_2026 = [
-    { value: "0", label: "Projects launched", icon: TrendingUp },
-    { value: "KES 0", label: "Raised from donors", icon: BarChart3 },
-    { value: "0", label: "Individual supporters", icon: Heart },
+    { value: "8", label: "Projects launched", icon: TrendingUp },
+    { value: "KES 420,000", label: "Raised from donors", icon: BarChart3 },
+    { value: "214", label: "Individual supporters", icon: Heart },
     { value: "2026", label: "Year of founding", icon: Clock },
 ];
 
