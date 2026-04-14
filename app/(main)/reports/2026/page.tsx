@@ -168,7 +168,7 @@ export default function Report2026Page() {
             {/* ── CTA ── */}
             <section className="py-12">
                 <div className="container-custom max-w-2xl text-center">
-                    <h2 className="text-2xl font-extrabold text-[var(--text-primary)] mb-3">Be part of the 2027 story</h2>
+                    <h2 className="text-2xl font-extrabold text-[var(--text-primary)] mb-3">Be part of the 2026 story</h2>
                     <p className="text-[var(--text-secondary)] mb-6">The next chapter is being written right now. Every donation helps shape what this organisation becomes.</p>
                     <div className="flex flex-wrap gap-3 justify-center">
                         <Link href="/explore"><Button variant="primary" className="gap-2 font-bold"><Heart className="w-4 h-4" fill="currentColor" /> Donate Today</Button></Link>
