@@ -41,7 +41,7 @@ export default async function CampaignDetailPage({ params }: PageProps) {
 
     // Demo fallback so you can see the UI without Supabase configured
     if (!campaign) {
-        if (slug === "every-kid-studies" || slug === "clearing-hospital-bills" || slug === "impacting-lives") {
+        if (slug === "every-kid-studies" || slug === "clearing-hospital-bills" || slug === "impacting-lives" || slug === "sisters-shield") {
             campaign = DEMO_CAMPAIGNS[slug] ?? DEMO_CAMPAIGNS["every-kid-studies"];
         } else {
             notFound();
@@ -53,6 +53,36 @@ export default async function CampaignDetailPage({ params }: PageProps) {
 
 // ─── Demo campaigns for development (no Supabase required) ───
 const DEMO_CAMPAIGNS: Record<string, any> = {
+    "sisters-shield": {
+        id: "demo-4",
+        title: "The Sisters' Shield Initiative",
+        slug: "sisters-shield",
+        category: "women_empowerment",
+        county: "Kenya",
+        story: `Empowerment begins with safety and opportunity. For many women in Kenya, the path to independence is blocked by systemic barriers, harmful cultural practices, and economic dependency. The Sisters' Shield Initiative at Unity Bridge Kenya is more than just a fund — it is a lifeline.
+
+We focus on three critical pillars of support:
+1. **Safe Transitions**: Providing the immediate financial assistance needed to move from unsafe or restrictive environments into secure housing.
+2. **Access to Education**: Funding vocational training, business courses, and formal education to ensure long-term self-sufficiency.
+3. **Economic Independence**: Offering startup capital and micro-grants to help women launch their own 'hustles' or small businesses, breaking the cycle of dependency.
+
+By partnering with specialized legal and psychological support organizations, we ensure that every woman we support has a holistic path forward. Your contribution doesn't just clear a one-time bill — it builds a foundation for a future where every woman is free to pursue her dreams and secure her own destiny.
+
+Together, we are not just rebuilding lives; we are shielding the futures of Kenya's women.`,
+        current_amount: 50000,
+        target_amount: 1000000,
+        deadline: null,
+        created_at: "2026-03-01T12:00:00Z",
+        view_count: 850,
+        is_verified: true,
+        creator: { id: "u4", full_name: "Unity Bridge Kenya", is_verified: true, county: "Nairobi" },
+        images: [
+            { storage_url: "/sisters-shield.png", order_index: 0 },
+        ],
+        documents: [],
+        updates: [],
+        donations: [],
+    },
     "every-kid-studies": {
         id: "demo-1",
         title: "Making sure every kid studies",

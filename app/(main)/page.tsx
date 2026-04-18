@@ -82,7 +82,7 @@ const MOCK_PROJECTS: FeaturedProject[] = [
         id: "5",
         slug: "sisters-shield",
         title: "The Sisters' Shield Initiative",
-        description: "Empowering women to escape FGM, domestic abuse, and restrictive environments. We provide relocation funds, business capital, and legal support partnerships.",
+        description: "Helping women overcome barriers by providing access to education, safe transitions, and financial support for a more secure and empowered future",
         category: "women_empowerment",
         current_amount: 0,
         target_amount: 1000000,
