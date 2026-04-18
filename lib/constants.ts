@@ -6,6 +6,7 @@ export const CAMPAIGN_CATEGORIES = {
     MEDICAL: "medical",
     EMERGENCY: "emergency",
     COMMUNITY: "community",
+    WOMEN_EMPOWERMENT: "women_empowerment",
     OTHER: "other",
 } as const;
 
@@ -16,6 +17,7 @@ export const CATEGORY_LABELS: Record<CampaignCategory, string> = {
     medical: "Medical",
     emergency: "Emergency",
     community: "Community",
+    women_empowerment: "Women's Empowerment",
     other: "Other",
 };
 
@@ -24,6 +26,7 @@ export const CATEGORY_COLORS: Record<CampaignCategory, string> = {
     medical: "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300",
     emergency: "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300",
     community: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
+    women_empowerment: "bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300",
     other: "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300",
 };
 

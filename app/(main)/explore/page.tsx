@@ -67,6 +67,18 @@ export default function ExploreProjectsPage() {
             target_amount: 800000,
             is_urgent: false,
             view_count: 0
+        },
+        {
+            id: "5",
+            title: "The Sisters' Shield Initiative",
+            description: "Empowering women to escape harmful cultural practices, domestic abuse, or restrictive environments. Providing financial aid for relocation, business setup, and partner referrals.",
+            category: "women_empowerment",
+            slug: "sisters-shield",
+            images: ["/sisters-shield.png"],
+            current_amount: 0,
+            target_amount: 1000000,
+            is_urgent: true,
+            view_count: 0
         }
     ];
 

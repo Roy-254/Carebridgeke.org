@@ -78,6 +78,18 @@ const MOCK_PROJECTS: FeaturedProject[] = [
         images: [{ storage_url: "/environment-hero.png", order_index: 0 }],
         donations: Array(0).fill({ id: "x" }),
     },
+    {
+        id: "5",
+        slug: "sisters-shield",
+        title: "The Sisters' Shield Initiative",
+        description: "Empowering women to escape FGM, domestic abuse, and restrictive environments. We provide relocation funds, business capital, and legal support partnerships.",
+        category: "women_empowerment",
+        current_amount: 0,
+        target_amount: 1000000,
+        creator: { full_name: "Unity Bridge Kenya" },
+        images: [{ storage_url: "/sisters-shield.png", order_index: 0 }],
+        donations: [],
+    },
 ];
 
 // ─── Helpers ─────────────────────────────────────────
@@ -91,6 +103,7 @@ const CATEGORY_COLORS: Record<string, string> = {
     medical: "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300",
     emergency: "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300",
     community: "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300",
+    women_empowerment: "bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300",
     other: "bg-gray-100 dark:bg-gray-900/30 text-gray-700 dark:text-gray-300",
 };
 

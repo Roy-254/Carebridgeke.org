@@ -44,6 +44,7 @@ export async function GET() {
             medical_total: 0,
             emergency_total: 0,
             community_total: 0,
+            women_empowerment_total: 0,
         },
         recentDonations: (recentDonations ?? []).map((d: any) => ({
             ...d,

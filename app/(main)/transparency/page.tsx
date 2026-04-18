@@ -22,6 +22,7 @@ interface TransparencyData {
         medical_total: number;
         emergency_total: number;
         community_total: number;
+        women_empowerment_total: number;
     };
     recentDonations: {
         id: string;
@@ -53,14 +54,15 @@ interface TransparencyData {
 // ─── Demo data (shown when Supabase returns zeros) ──────────
 const DEMO: TransparencyData = {
     stats: {
-        total_raised: 420000,
-        donor_count: 214,
-        projects_funded: 8,
-        this_month_raised: 420000,
+        total_raised: 470000,
+        donor_count: 242,
+        projects_funded: 9,
+        this_month_raised: 470000,
         school_fees_total: 189000,
         medical_total: 126000,
         emergency_total: 63000,
         community_total: 42000,
+        women_empowerment_total: 50000,
     },
     recentDonations: [
         { id: "d1", donor_name: "John K.", amount: 5000, currency: "KES", created_at: new Date().toISOString(), campaign: { title: "Education Support Initiative", slug: "every-kid-studies" } },
@@ -76,6 +78,7 @@ const DEMO: TransparencyData = {
         { id: "1", title: "Education Support Initiative", slug: "every-kid-studies", category: "school_fees", current_amount: 0, target_amount: 500000, images: [{ storage_url: "/school-fees-project.png", order_index: 0 }] },
         { id: "2", title: "Medical Emergency Fund", slug: "clearing-hospital-bills", category: "medical", current_amount: 0, target_amount: 500000, images: [{ storage_url: "/medical-relief-project.png", order_index: 0 }] },
         { id: "3", title: "Community Water Project", slug: "community-water", category: "community", current_amount: 0, target_amount: 800000, images: [{ storage_url: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800", order_index: 0 }] },
+        { id: "4", title: "The Sisters' Shield Initiative", slug: "sisters-shield", category: "women_empowerment", current_amount: 50000, target_amount: 1000000, images: [{ storage_url: "/sisters-shield.png", order_index: 0 }] },
     ],
 };
 
@@ -85,6 +88,7 @@ const CATEGORY_CHART_COLORS: Record<string, string> = {
     medical: "#ef4444",
     emergency: "#f97316",
     community: "#16a34a",
+    women_empowerment: "#e11d48",
     other: "#8b5cf6",
 };
 
@@ -206,6 +210,7 @@ export default function TransparencyPage() {
         { label: "Medical", value: s.medical_total, color: CATEGORY_CHART_COLORS.medical },
         { label: "Emergency", value: s.emergency_total, color: CATEGORY_CHART_COLORS.emergency },
         { label: "Community", value: s.community_total, color: CATEGORY_CHART_COLORS.community },
+        { label: "Women's Empowerment", value: s.women_empowerment_total, color: CATEGORY_CHART_COLORS.women_empowerment },
     ];
 
     const STAT_CARDS = [
@@ -294,6 +299,7 @@ export default function TransparencyPage() {
                             { label: "Medical Bills", value: s.medical_total, max: maxCategory, color: CATEGORY_CHART_COLORS.medical },
                             { label: "Emergency Relief", value: s.emergency_total, max: maxCategory, color: CATEGORY_CHART_COLORS.emergency },
                             { label: "Community Projects", value: s.community_total, max: maxCategory, color: CATEGORY_CHART_COLORS.community },
+                            { label: "Women's Empowerment", value: s.women_empowerment_total, max: maxCategory, color: CATEGORY_CHART_COLORS.women_empowerment },
                         ]} />
                     </div>
                 </div>
