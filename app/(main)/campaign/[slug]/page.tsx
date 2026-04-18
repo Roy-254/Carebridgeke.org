@@ -61,12 +61,9 @@ const DEMO_CAMPAIGNS: Record<string, any> = {
         county: "Kenya",
         story: `Empowerment begins with safety and opportunity. For many women in Kenya, the path to independence is blocked by systemic barriers, harmful cultural practices, and economic dependency. The Sisters' Shield Initiative at Unity Bridge Kenya is more than just a fund — it is a lifeline.
 
-We focus on three critical pillars of support:
-1. **Safe Transitions**: Providing the immediate financial assistance needed to move from unsafe or restrictive environments into secure housing.
-2. **Access to Education**: Funding vocational training, business courses, and formal education to ensure long-term self-sufficiency.
-3. **Economic Independence**: Offering startup capital and micro-grants to help women launch their own 'hustles' or small businesses, breaking the cycle of dependency.
+Many women face challenges that limit their ability to live freely and build independent futures—ranging from restrictive environments and lack of access to education, to financial barriers that make it difficult to take the first step forward. At Unity Bridge Kenya, we respond by providing targeted financial support where it matters most—whether that means helping someone transition into a safer environment, funding access to education or skills training, or offering capital to start small income-generating initiatives.
 
-By partnering with specialized legal and psychological support organizations, we ensure that every woman we support has a holistic path forward. Your contribution doesn't just clear a one-time bill — it builds a foundation for a future where every woman is free to pursue her dreams and secure her own destiny.
+While our role is primarily financial, we recognize that some situations require deeper, specialized support. In such cases, we work alongside trusted partner organizations to ensure that every woman we assist has access to the broader care and protection she may need, creating a more complete and sustainable path toward independence.
 
 Together, we are not just rebuilding lives; we are shielding the futures of Kenya's women.`,
         current_amount: 50000,
